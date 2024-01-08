@@ -1,0 +1,14 @@
+GEO Functions:
+
+#1: Will compare scanned data to TSS Geo Data stored
+	If a match is found, that TSS Data is assigned to their respective 	variables and a new variable is made with the complete string.
+	Gameobjects will be assigned these strings.
+
+#2: Receive input of left or right arrow
+	Three conditions: 
+		one is for right arrow and a scan exists
+		second is for left arrow and a scan exists
+		third is if scan DNE for either directions 
+
+#3: Exit display
+	Closes the display (sets display status to False)

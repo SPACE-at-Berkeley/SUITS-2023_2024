@@ -1,0 +1,7 @@
+DCU Functions:
+
+#1: Five functions that are near identical 
+	Each change one of the five data that correlates to their switches
+
+#2: Exit display
+	Closes the display (sets display status to False)
