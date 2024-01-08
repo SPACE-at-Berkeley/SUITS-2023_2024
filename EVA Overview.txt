@@ -1,0 +1,8 @@
+EVA Checklist Overview:
+EVA Checklist will display all the EVA mission objectives in a checklist style. The checklist will have icons indicating whether a given mission objective is completed, in progress, or not completed. There will also be a minimized view of the EVA Checklist, which will display the mission objective that is currently in progress, as well as the subsequent mission objective.
+
+EVA Checklist Functions:
+Set conditions for completion of a given EVA Task by comparing these conditions to TSS variables (if the mission objective uses TSS)
+Be able to manually input completion status of objective if the objective does not use TSS
+Check to see if TSS variables are changing to indicate if the objective is in progress
+Update the checklist with proper completion status icon, as well as the minimized view where the new in progress task is updated and the subsequent objective is updated
