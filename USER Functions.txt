@@ -1,0 +1,19 @@
+Function 1: Display TSS data accurately 
+Function 2: Notify user and LMCC if changes are dangerous
+
+* Repeat below for Biometric data, Suit data, User 2 Data
+
+Boolean condition to determine if data is successfully connected
+* True if data is connected and displayed which would result in the green check mark in the upper right corner
+* False if data cannot connect or cannot be displayed resulting in red “x” in the upper right corner
+* Assign to variable 
+
+If statements placed in a while loop to determine when the color would change depending on the danger level
+* While previous boolean condition is true 
+* If -else statement to determine what color will be displayed
+
+While loop to display numerical data in addition to color 
+* While previous boolean condition is true
+* Print current numerical data 
+
+If statement to send a notification to LMCC and both Users if any of the levels are in the yellow or red zones
