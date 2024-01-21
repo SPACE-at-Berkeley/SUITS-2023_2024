@@ -1,0 +1,51 @@
+﻿Pin():
+Private:
+* Double xCoordinate
+* Double yCoordinate
+* Double zCoordinate
+* String loc_name
+
+
+Public:
+* setX(double)
+* setY(double)
+* setZ(double)
+* setName()
+* getX()
+* getY()
+* getZ()
+* getName()
+
+
+What we need to know:
+1. How the data is stored in unity
+2. What the GPS data looks like
+3. How we’re getting the terrain data
+
+
+//Public Member function implementations in the Pin class:
+
+
+/**
+* function:
+* parameters:
+* 
+setX(double x) {
+* xCoordinate = x;
+* x is the 
+}
+
+
+setY(double y) {
+* xCoordinate = x;
+}
+
+
+getGPS(){
+        Access GPS data from TSS
+}
+
+
+calculateRoute(){
+        Calculate route based on coordinates and getGPS()
+}
