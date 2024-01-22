@@ -1,0 +1,81 @@
+EVA USER CASE 0: Initialize EVA Display
+
+Start
+- User chooses EVA Display
+
+Initialize
+- TSS Data
+- Completion statuses
+
+Output
+- EVA Task Checklist
+
+Pseduocode:
+displayEVA():
+    // if variable of checklist equals false, set gameobject to true
+    // else (if true), set gameobject to false
+
+
+------------------------------------------------------------------------------------------------------------------
+EVA USER CASE 1: Minimizes EVA Display
+
+Input
+- User minimizes EVA Display
+
+Initialize
+- All procedures within current task
+- Procedure completion statuses
+
+Output
+- Current and Next Procedure Window
+
+Pseudocode:
+minimizeEVA():
+    // if variable of mini equals false, set gameobject to true,
+    // else (if true) , set gameobject to false, set checklist to false
+
+------------------------------------------------------------------------------------------------------------------
+EVA USER CASE 2: Procedure Completion
+
+Input
+- IVA sends EVA Task to User through LMCC
+- User commpletes Procedure of Task
+
+Evaluate
+- Compare the data sent by TSS to variables set to satisfy completion
+  OR
+  LMCC User sends message indicating completion status of procedure
+
+Output:
+- Displays an updated minimized screen of current task and subsequent task (original subsequent task to current, then new task)
+  OR
+  Displays the same current and subsequent task
+
+
+Pseudocode:
+checkData()
+    // if variable of procedure status is false, set gameobject to true
+    // if variable of procedure status is true, set to false, update procedure display
+------------------------------------------------------------------------------------------------------------------
+EVA USER CASE 3: Task Completion
+
+Input
+- User completes all procedures of Task
+
+Evaluate
+- Check if all procedures of EVA tasks are complete
+
+Output:
+- Displays updated checklist with an indication of if the task is completed, not completed, or in progress
+
+Pseudocode:
+statusCheck()
+    // check data
+    // if variable is false and data is not changing (no procedure is completed), 
+       set completion status to Not Completed
+    // if variable is false and data is changing, (procedure is in progress or if at least one procedure is
+       completed), set completion status to In Progress
+    // if variable is true, set completoin status to Completed
+
+
+
