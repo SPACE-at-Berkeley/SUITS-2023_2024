@@ -1,0 +1,45 @@
+------------------------------------------------------------------------------
+DCU USER CASE 0: Initialize DCU Display
+
+START
+- User chooses DCU Display
+
+INITIALIZE
+- TSS data
+- Switches (Power, Oxygen Ventilation)
+- Warning (range outbound)
+
+OUTPUT
+- Display UI objects
+
+
+
+PSUEDOCODE:
+displayGEO():
+	//if variable of display equals false, set gameobject to true
+	//else (if true), set to false
+
+
+------------------------------------------------------------------------------
+DCU USER CASE 1: Switch Flip
+
+INPUT
+- User presses OR uses voice command
+
+EVALUATE
+- Change the variable of the switch's status between on/off
+
+OUTPUT
+- Display the switch's arm from pointing up to down (On to Off)
+  OR 
+  Display the switch's arm from pointing down to up (Off to On)
+
+
+
+PSUEDOCODE:
+change___():   [5 variations of same function]
+	//if variable of status is false, set gameobject to true
+	// let data rate change
+	//else (if true), set to false
+	// data won't change or will contantly rise/fall
+

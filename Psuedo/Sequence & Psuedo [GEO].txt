@@ -1,0 +1,75 @@
+------------------------------------------------------------------------------
+GEO USER CASE 0: Initialize GEO Display
+
+START
+- User chooses GEO Display
+
+INITIALIZE
+- TSS Geo ranges
+-Dropdown or Analysis Selector
+- Images? (rojan)
+- XRF status (retrieved or not)
+
+OUTPUT
+- Display UI objects
+
+
+
+PSUEDOCODE:
+displayGEO():
+	//if false, set gameobject to true
+	//else (if true), set to false
+
+
+------------------------------------------------------------------------------
+GEO USER CASE 1: Data Display
+
+INPUT
+- User presses OR uses voice command
+- 
+
+EVALUATE
+- Retrieve the rock's data match within TSS GEO ranges
+
+OUTPUT
+- Display relevant TSS Data and rock info with pre-designed format
+
+
+
+PSUEDOCODE:
+initialVarSet():
+	//grab data that XRF sends from rock scan
+	//initialize the placeholder variables with this data, for each scan made
+	//send alert to DE that scan was a success
+
+getGeoRange():
+	//compare placeholder variables to their respective data ranges through the TSS
+	//if there is a 100% match, return that rock type
+
+displayMatch():
+	//return data as output for their respective gameobject textfield
+
+
+------------------------------------------------------------------------------
+GEO USER CASE 2: Scan Change
+
+INPUT
+- User presses OR uses voice command
+
+EVALUATE
+- Register if left or right arrow was pressed and if a scan exists in that direction
+
+OUTPUT
+- Display existing scan in direction pressed
+- Error message (Scan DNE)
+
+
+
+PSUEDOCODE:
+switchCheck():
+	//check input of left or right
+	//if no scan exist in that respective direction, return error message
+	/else, change scan data displayed in that direction 
+
+
+
