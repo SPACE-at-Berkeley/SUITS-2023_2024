@@ -1,78 +1,79 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class Coordinate : MonoBehaviour {
-    protected:
-        double xCoordinate;
-        double yCoordinate;
-    public:
-        void setX();
-        void setY()
-        double getX();  
-        double getY();
+//public class Coordinate : MonoBehaviour {
+//    protected:
+//        double xCoordinate;
+//        double yCoordinate;
+//    public:
+//        void setX();
+//        void setY()
+//        double getX();  
+//        double getY();
+//
+//    Coordinate(){
+//        xCoordinate = 0;
+//        yCoordinate = 0;
+//    }
+//    Coordinate(double x, double y){
+//        xCoordinate = x;
+//        yCoordinate = y;
+//    }
 
-    Coordinate(){
-        xCoordinate = 0;
-        yCoordinate = 0;
-    }
-    Coordinate(double x, double y){
-        xCoordinate = x;
-        yCoordinate = y;
-    }
+//    void setX(double x){
+//        xCoordinate = x;
+//    }
+//    void setY(double y){
+//        yCoordinate = y;
+//    }
 
-    void setX(double x){
-        xCoordinate = x;
-    }
-    void setY(double y){
-        yCoordinate = y;
-    }
+//    double getX(){
+//        return xCoordinate;
+//    }
+//    double getY(){
+//        return yCoordinate;
+//    }
+//}
 
-    double getX(){
-        return xCoordinate;
-    }
-    double getY(){
-        return yCoordinate;
-    }
-}
+//public class Pin : public Coordinate{
+//    private string locName;
 
-public class Pin : public Coordinate{
-    private string locName;
+//    public:
+//        void setName;
+//        string getName;
 
-    public:
-        void setName;
-        string getName;
-    
-    Pin(){
-        locName = "";
-        xCoordinate = 0;
-        yCoordinate = 0;
-    }
-    Pin(string name, double x, double y){
-        locName = name;
-        xCoordinate = x;
-        yCoordinate = y;
-    }
+//    Pin(){
+//        locName = "";
+//        xCoordinate = 0;
+//        yCoordinate = 0;
+//    }
+//    Pin(string name, double x, double y){
+//        locName = name;
+//        xCoordinate = x;
+//        yCoordinate = y;
+//    }
 
-    void setName(string name){
-        locName = name;
-    }
+//    void setName(string name){
+//        locName = name;
+//    }
 
-    string getName(){
-        return name;
-    }
-}
+//    string getName(){
+//        return name;
+//    }
+//}
 
-public class Route{
+//public class Route{
 
-}
-public class NAV : MonoBehaviour
-{
+//}
+
+//public class NAV : MonoBehaviour
+//{
     // Start is called before the first frame update
-    void Start()
-    {
+//    void Start()
+//    {
         
-    }
+//    }
 
     //public void changeFIVEVAR() :   [5 variations of same function]
         //if variable of status is false, set gameobject to true
@@ -81,8 +82,8 @@ public class NAV : MonoBehaviour
         // data won't change or will contantly rise/fall
 
     // Update is called once per frame
-    void Update()
-    {
+//    void Update()
+//    {
         
-    }
-}
+//    }
+//}
