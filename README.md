@@ -1,2 +1,2 @@
-# BEARS
-Repo for the 2023-24 NASA SUITS Challenge
+# UIATracking
+This part tracks the UIA board and presents virtual instructions to users in Hololens2. 
