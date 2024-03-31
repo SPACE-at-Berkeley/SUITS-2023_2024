@@ -1,0 +1,49 @@
+Initialized:
+Instructions.txt: helper file that contains task instructions
+
+
+List<String> getInstructions(String stage) {
+return tasks for given stage (i.e ingress, egress, etc.) from instructions file 
+}
+
+void addTask(string tasks<>&, int index, string newTask){
+	Add newTask string into task list at index integer
+}
+
+void removeTaskPre(string tasks<>&, int index) {
+	Remove the task from tasks list at index integer
+}
+
+void editTaskPre(string tasks<>&, String info, int index) {
+	Replaces item at index with the task info string
+}
+
+// Pre Deliverance
+void sendTasks(string tasks<>&, int[] indices&) {
+    if task is not checked to be sent then remove it from the list
+    removeTaskPre(string tasks<>&, int index);
+    after tasks are selected, make the list a queue
+}
+
+// Post-Deliverance
+void editTaskPost(string tasks<>&, String info, int index){
+Replaces item at index of task list with String info variable
+}
+
+void taskComplete (string tasks<>&, int index) {
+    if task is completed, remove it from the queue
+}
+
+void markComplete(string tasks<>&, int index) {
+    if task does not rely on TSS DATA, user can mark the task as complete, function then operates the same way as taskComplete
+}
+
+void removeTasksPost(string tasks<>, int index) {
+    In case of an emergency or circumstance, the top task is removed from the queue so the EVA Procedure can continue
+}
+
+Mock usage of functions:
+
+List<String> instructions = getInstructions(stage);
+addTask(instructions, index, newTaskString);
+sendTasks(instructions, indicesToRemove);
