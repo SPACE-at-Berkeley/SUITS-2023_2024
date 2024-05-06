@@ -8,20 +8,67 @@ using System.IO;
 [Serializable]
 public class RootObject
 {
-    public Telemetry telemetry;
+    public Telemetry telemetry; //TELEMETRY.json
+    public Telemetry eva; //EVA.json
+    public Telemetry comm; //COMM.json
+    public Telemetry dcu; //DCU.json
+    public Telemetry error; //ERROR.json
+    public Telemetry imu; //IMU.json
+    public Telemetry rover; //ROVER.json
+    public Telemetry spec; //SPEC.json
+    public Telemetry uia; //UIA.json
 }
 
 [Serializable]
 public class Telemetry
 {
+    //TELEMETRY.json
     public int eva_time;
+
+    //TELEMETRY.json, DCU.json, IMU.json, SPEC.json
     public EvaData eva1;
     public EvaData eva2;
+
+    //EVA.json
+    public bool started;
+    public bool paused;
+    public bool completed;
+    public int total_time;
+    public EvaData uia;
+    public EvaData dcu;
+    public EvaData rover;
+    public EvaData spec;
+
+    //COMM.json
+    public bool comm_tower;
+
+    //ERROR.json
+    public bool fan_error;
+    public bool oxy_error;
+    public bool pump_error;
+
+    //ROVER.json
+    public bool posx;
+    public bool posy;
+    public int qr_id;
+
+    //UIA.json
+    public bool eva1_power;
+    public bool eva1_oxy;
+    public bool eva1_water_supply;
+    public bool eva1_water_waste;
+    public bool eva2_power;
+    public bool eva2_oxy;
+    public bool eva2_water_supply;
+    public bool eva2_water_waste;
+    public bool oxy_vent;
+    public bool depress;
 }
 
 [Serializable]
 public class EvaData
 {
+    //TELEMETRY.json
     public float batt_time_left;
     public float oxy_time_left;
     public float heart_rate;
@@ -47,10 +94,33 @@ public class EvaData
     public float coolant_ml;
     public float coolant_gas_pressure;
     public float coolant_liquid_pressure;
+
+    //EVA.json
+    public bool started;
+    public bool completed;
+    public float time;
+
+    //DCU.json
+    public bool batt;
+    public bool oxy;
+    public bool comm;
+    public bool fan;
+    public bool pump;
+    public bool co2;
+
+    //IMU.json
+    public float posx;
+    public float posy;
+    public float heading;
+
+    //SPEC.json
+    public string name;
+    //...
 }
 
 public class displayTSS : MonoBehaviour
 {
+    //TELEMETRY.json
     public TMP_Text timeText1;
     public TMP_Text suitText1;
     public TMP_Text oxyText1;
@@ -60,14 +130,51 @@ public class displayTSS : MonoBehaviour
     public TMP_Text oxyText2;
     public TMP_Text fanText2;
 
-    public float updateInterval = 1f; // Update every 1 seconds.
-    private string filePath = "/home/space/TSS_2024/public/json_data/teams/10/TELEMETRY.json";
+    //COMM.json
+    public TMP_Text towerText;
 
+    //DCU.json
+    public TMP_Text dcuText1;
+    public TMP_Text dcuText2;
+
+    //ERROR.json
+    public TMP_Text errorText;
+
+    //IMU.json
+    public TMP_Text imuText1;
+    public TMP_Text imuText2;
+
+    //ROVER.json
+    public TMP_Text roverText;
+
+    //SPEC.json
+    public TMP_Text geoText1;
+    public TMP_Text geoText2;
+
+    //UIA.json
+    public TMP_Text uiaText1;
+    public TMP_Text uiaText2;
+
+
+    //file paths
+    public float updateInterval = 1f; // Update every 1 seconds.
+    private string filePathTELEMETRY = "/home/space/TSS_2024/public/json_data/teams/10/TELEMETRY.json";
+    private string filePathEVA = "/home/space/TSS_2024/public/json_data/teams/10/EVA.json";
+    private string filePathCOMM = "/home/space/TSS_2024/public/json_data/COMM.json";
+    private string filePathDCU = "/home/space/TSS_2024/public/json_data/DCU.json";
+    private string filePathERROR = "/home/space/TSS_2024/public/json_data/ERROR.json";
+    private string filePathIMU = "/home/space/TSS_2024/public/json_data/IMU.json";
+    private string filePathROVER = "/home/space/TSS_2024/public/json_data/ROVER.json";
+    private string filePathSPEC = "/home/space/TSS_2024/public/json_data/SPEC.json";
+    private string filePathUIA = "/home/space/TSS_2024/public/json_data/UIA.json";
+
+
+    //yet to update lines below this point
     void Start()
     {
-        if (!File.Exists(filePath))
+        if (!File.Exists(filePathTELEMETRY))
         {
-            Debug.LogError("JSON file does not exist: " + filePath);
+            Debug.LogError("JSON file does not exist: " + filePathTELEMETRY);
             return;
         }
 
@@ -78,7 +185,7 @@ public class displayTSS : MonoBehaviour
     {
         while (true)
         {
-            string json = File.ReadAllText(filePath);
+            string json = File.ReadAllText(filePathTELEMETRY);
             RootObject rootObject = JsonUtility.FromJson<RootObject>(json);
             UpdateUI(rootObject.telemetry);
             yield return new WaitForSeconds(updateInterval);
@@ -89,7 +196,7 @@ public class displayTSS : MonoBehaviour
     {
         if (telemetry != null && telemetry.eva1 != null)
         {
-            timeText1.text = $"EVA Time\t\t\t {telemetry.eva_time} seconds\n" +
+            timeText1.text = $"EVA Time\t\t\t {telemetry.eva_time} seconds\n" + //reminder to relocate
             		    $"Battery Time Left\t\t {telemetry.eva1.batt_time_left} seconds\n" +
             		    $"Oxygen Time Left\t\t {telemetry.eva1.oxy_time_left} seconds\n" +
             		    $"Heart Rate\t\t\t {telemetry.eva1.heart_rate} bpm";
@@ -119,7 +226,7 @@ public class displayTSS : MonoBehaviour
 
         if (telemetry != null && telemetry.eva2 != null)
         {
-            timeText2.text = $"EVA Time\t\t\t {telemetry.eva_time} seconds\n" +
+            timeText2.text = $"EVA Time\t\t\t {telemetry.eva_time} seconds\n" + //reminder to relocate
                         $"Battery Time Left\t\t {telemetry.eva2.batt_time_left} seconds\n" +
                         $"Oxygen Time Left\t\t {telemetry.eva2.oxy_time_left} seconds\n" +
                         $"Heart Rate\t\t\t {telemetry.eva2.heart_rate} bpm";
