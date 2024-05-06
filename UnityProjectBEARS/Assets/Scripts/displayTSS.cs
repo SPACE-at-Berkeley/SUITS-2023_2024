@@ -51,12 +51,16 @@ public class EvaData
 
 public class displayTSS : MonoBehaviour
 {
-    public TMP_Text timeText;
-    public TMP_Text suitText;
-    public TMP_Text oxyText;
-    public TMP_Text fanText;
+    public TMP_Text timeText1;
+    public TMP_Text suitText1;
+    public TMP_Text oxyText1;
+    public TMP_Text fanText1;
+    public TMP_Text timeText2;
+    public TMP_Text suitText2;
+    public TMP_Text oxyText2;
+    public TMP_Text fanText2;
 
-    public float updateInterval = 2f; // Update every 2 seconds.
+    public float updateInterval = 1f; // Update every 1 seconds.
     private string filePath = "/home/space/TSS_2024/public/json_data/teams/10/TELEMETRY.json";
 
     void Start()
@@ -85,12 +89,12 @@ public class displayTSS : MonoBehaviour
     {
         if (telemetry != null && telemetry.eva1 != null)
         {
-            timeText.text = $"EVA Time\t\t\t {telemetry.eva_time} seconds\n" +
+            timeText1.text = $"EVA Time\t\t\t {telemetry.eva_time} seconds\n" +
             		    $"Battery Time Left\t\t {telemetry.eva1.batt_time_left} seconds\n" +
             		    $"Oxygen Time Left\t\t {telemetry.eva1.oxy_time_left} seconds\n" +
             		    $"Heart Rate\t\t\t {telemetry.eva1.heart_rate} bpm";
             		    
-            suitText.text = $"Suit O2 Pressure\t\t {telemetry.eva1.suit_pressure_oxy} psi\n" +
+            suitText1.text = $"Suit O2 Pressure\t\t {telemetry.eva1.suit_pressure_oxy} psi\n" +
             		    $"Suit CO2 Pressure\t {telemetry.eva1.suit_pressure_co2} psi\n" +
             		    $"Suit Other Pressure\t {telemetry.eva1.suit_pressure_other} psi\n" +
             		    $"Suit Total Pressure\t {telemetry.eva1.suit_pressure_total} psi\n" +
@@ -99,18 +103,48 @@ public class displayTSS : MonoBehaviour
             		    $"Scrubber B Pressure\t {telemetry.eva1.scrubber_b_co2_storage} psi\n" +
             		    $"CO2 Production\t\t {telemetry.eva1.co2_production} psi/min";
             		    
-            oxyText.text = $"Primary O2 Storage\t {telemetry.eva1.oxy_pri_storage} %\n" +
+            oxyText1.text = $"Primary O2 Storage\t {telemetry.eva1.oxy_pri_storage} %\n" +
             		   $"Secondary O2 Storage\t {telemetry.eva1.oxy_sec_storage} %\n" +
             		   $"Primary O2 Pressure\t {telemetry.eva1.oxy_pri_pressure} psi\n" +
             		   $"Secondary O2 Pressure\t {telemetry.eva1.oxy_sec_pressure} psi\n" +
             		   $"O2 Consumption\t\t {telemetry.eva1.oxy_consumption} psi/min";
             		   
-            fanText.text = $"Primary Fan\t\t {telemetry.eva1.fan_pri_rpm} rpm\n" +
+            fanText1.text = $"Primary Fan\t\t {telemetry.eva1.fan_pri_rpm} rpm\n" +
             		   $"Secondary Fan\t\t {telemetry.eva1.fan_sec_rpm} rpm\n" +
             		   $"Temperature\t\t {telemetry.eva1.temperature} °F\n" +
             		   $"Coolant\t\t\t {telemetry.eva1.coolant_ml} ml\n" +
             		   $"H2O Gas Pressure\t {telemetry.eva1.coolant_gas_pressure} psi\n" +
             		   $"H2O Liquid Pressure\t {telemetry.eva1.coolant_liquid_pressure} psi";
+        }
+
+        if (telemetry != null && telemetry.eva2 != null)
+        {
+            timeText2.text = $"EVA Time\t\t\t {telemetry.eva_time} seconds\n" +
+                        $"Battery Time Left\t\t {telemetry.eva2.batt_time_left} seconds\n" +
+                        $"Oxygen Time Left\t\t {telemetry.eva2.oxy_time_left} seconds\n" +
+                        $"Heart Rate\t\t\t {telemetry.eva2.heart_rate} bpm";
+
+            suitText2.text = $"Suit O2 Pressure\t\t {telemetry.eva2.suit_pressure_oxy} psi\n" +
+                        $"Suit CO2 Pressure\t {telemetry.eva2.suit_pressure_co2} psi\n" +
+                        $"Suit Other Pressure\t {telemetry.eva2.suit_pressure_other} psi\n" +
+                        $"Suit Total Pressure\t {telemetry.eva2.suit_pressure_total} psi\n" +
+                        $"Helmet CO2 Pressure\t {telemetry.eva2.helmet_pressure_co2} psi\n" +
+                        $"Scrubber A Pressure\t {telemetry.eva2.scrubber_a_co2_storage} psi\n" +
+                        $"Scrubber B Pressure\t {telemetry.eva2.scrubber_b_co2_storage} psi\n" +
+                        $"CO2 Production\t\t {telemetry.eva2.co2_production} psi/min";
+
+            oxyText2.text = $"Primary O2 Storage\t {telemetry.eva2.oxy_pri_storage} %\n" +
+                       $"Secondary O2 Storage\t {telemetry.eva2.oxy_sec_storage} %\n" +
+                       $"Primary O2 Pressure\t {telemetry.eva2.oxy_pri_pressure} psi\n" +
+                       $"Secondary O2 Pressure\t {telemetry.eva2.oxy_sec_pressure} psi\n" +
+                       $"O2 Consumption\t\t {telemetry.eva2.oxy_consumption} psi/min";
+
+            fanText2.text = $"Primary Fan\t\t {telemetry.eva2.fan_pri_rpm} rpm\n" +
+                       $"Secondary Fan\t\t {telemetry.eva2.fan_sec_rpm} rpm\n" +
+                       $"Temperature\t\t {telemetry.eva2.temperature} °F\n" +
+                       $"Coolant\t\t\t {telemetry.eva2.coolant_ml} ml\n" +
+                       $"H2O Gas Pressure\t {telemetry.eva2.coolant_gas_pressure} psi\n" +
+                       $"H2O Liquid Pressure\t {telemetry.eva2.coolant_liquid_pressure} psi";
         }
     }
 } 
