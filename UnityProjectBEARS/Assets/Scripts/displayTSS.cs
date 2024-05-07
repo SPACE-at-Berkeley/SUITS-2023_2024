@@ -50,7 +50,7 @@ public class Telemetry
     //ROVER.json
     public bool posx;
     public bool posy;
-    public int qr_id;
+    //public int qr_id;
 
     //UIA.json
     public bool eva1_power;
@@ -175,7 +175,8 @@ public class displayTSS : MonoBehaviour
 
     //UIA.json
     public TMP_Text uiaText1;
-    //public TMP_Text uiaText2;
+    public TMP_Text uiaText2;
+    public TMP_Text uiaSide;
 
 
     //file paths
@@ -360,7 +361,7 @@ public class displayTSS : MonoBehaviour
         }
     }
 
-    void UpdateEvaUI(Telemetry eva)
+    void UpdateEvaUI(Telemetry eva) //
     {
         if (eva != null)
         {
@@ -386,7 +387,7 @@ public class displayTSS : MonoBehaviour
         }
     }
 
-    void UpdateCommUI(Telemetry comm)
+    void UpdateCommUI(Telemetry comm) //
     {
         if (comm != null)
         {
@@ -394,7 +395,7 @@ public class displayTSS : MonoBehaviour
         }
     }
 
-    void UpdateDcuUI(Telemetry dcu)
+    void UpdateDcuUI(Telemetry dcu) //
     {
         if (dcu != null && dcu.eva1 != null)
         {
@@ -407,7 +408,7 @@ public class displayTSS : MonoBehaviour
         }
     }
 
-    void UpdateErrorUI(Telemetry error)
+    void UpdateErrorUI(Telemetry error) //
     {
         if (error != null)
         {
@@ -415,11 +416,13 @@ public class displayTSS : MonoBehaviour
         }
     }
 
-    void UpdateImuUI(Telemetry imu)
+    void UpdateImuUI(Telemetry imu) //
     {
         if (imu != null && imu.eva1 != null)
         {
-            imuText1.text = $"imu test1:\t {imu.eva1.posx} units";
+            imuText1.text = $"Your X Coordinate\t {imu.eva1.posx} units\n" +
+                        $"Your Y Coordinate\t {imu.eva1.posy} units\n" +
+                        $"Your Heading\t {imu.eva1.heading} ";
         }
 
         if (imu != null && imu.eva2 != null)
@@ -432,11 +435,14 @@ public class displayTSS : MonoBehaviour
     {
         if (rover != null)
         {
-            roverText.text = $"rover test:\t {rover.posx} units";
+            roverText.text = $"Rover X Coordinate\t {rover.posx} \n" +
+                        $"Rover Y Coordinate\t {rover.posy} ";
+                        //$"Oxygen\t {rover.posy} \n" +
+                        //$"Water Waste\t {rover.qr_id} ";
         }
     }
 
-    void UpdateSpecUI(Telemetry spec)
+    void UpdateSpecUI(Telemetry spec) //
     {
         if (spec != null && spec.eva1 != null)
         {
@@ -453,7 +459,18 @@ public class displayTSS : MonoBehaviour
     {
         if (uia != null)
         {
-            uiaText1.text = $"uia test:\t {uia.eva1_power} units";
+            uiaText1.text = $"Power\t {uia.eva1_power} \n" +
+                       $"Oxygen\t {uia.eva1_oxy} \n" +
+                       $"Water Supply\t {uia.eva1_water_supply} \n" +
+                       $"Water Waste\t {uia.eva1_water_waste} ";
+
+            uiaText2.text = $"Power\t {uia.eva2_power} \n" +
+                       $"Oxygen\t {uia.eva2_oxy} \n" +
+                       $"Water Supply\t {uia.eva2_water_supply} \n" +
+                       $"Water Waste\t {uia.eva2_water_waste} ";
+
+            uiaSide.text = $"Oxygen Vent\t {uia.oxy_vent} \n" +
+                       $"Depress\t {uia.depress} ";
         }
     }
 
