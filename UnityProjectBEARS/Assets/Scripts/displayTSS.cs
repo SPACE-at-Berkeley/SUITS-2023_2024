@@ -113,10 +113,27 @@ public class EvaData
     public float posy;
     public float heading;
 
-    //SPEC.json
+    //SPEC.json w/o "id"
     public string name;
-    //...
+    public Comps data;
 }
+
+[Serializable]
+public class Comps
+{
+    //SPEC.json
+    public float Si02;
+    public float Ti02;
+    public float Al203;
+    public float Fe0;
+    public float Mn0;
+    public float Mg0;
+    public float Ca0;
+    public float K20;
+    public float P203;
+    public float other;
+}
+
 
 public class displayTSS : MonoBehaviour
 {
@@ -129,6 +146,11 @@ public class displayTSS : MonoBehaviour
     public TMP_Text suitText2;
     public TMP_Text oxyText2;
     public TMP_Text fanText2;
+
+    //EVA.json
+    public TMP_Text evaText;
+    public TMP_Text evaStatus;
+    public TMP_Text evaTotal;
 
     //COMM.json
     public TMP_Text towerText;
@@ -153,13 +175,13 @@ public class displayTSS : MonoBehaviour
 
     //UIA.json
     public TMP_Text uiaText1;
-    public TMP_Text uiaText2;
+    //public TMP_Text uiaText2;
 
 
     //file paths
-    public float updateInterval = 1f; // Update every 1 seconds.
+    public float updateInterval = 1f; // Update every second
     private string filePathTELEMETRY = "/home/space/TSS_2024/public/json_data/teams/10/TELEMETRY.json";
-    private string filePathEVA = "/home/space/TSS_2024/public/json_data/teams/10/EVA.json";
+    private string filePathEVA = "/home/space/TSS_2024/public/json_data/teams/10/EVA.json"; //later add custom variable for 0-10 to set unique team-combo scenarios
     private string filePathCOMM = "/home/space/TSS_2024/public/json_data/COMM.json";
     private string filePathDCU = "/home/space/TSS_2024/public/json_data/DCU.json";
     private string filePathERROR = "/home/space/TSS_2024/public/json_data/ERROR.json";
@@ -177,51 +199,134 @@ public class displayTSS : MonoBehaviour
             Debug.LogError("JSON file does not exist: " + filePathTELEMETRY);
             return;
         }
+        else if (!File.Exists(filePathEVA))
+        {
+            Debug.LogError("JSON file does not exist: " + filePathEVA);
+            return;
+        }
+        else if (!File.Exists(filePathCOMM))
+        {
+            Debug.LogError("JSON file does not exist: " + filePathCOMM);
+            return;
+        }
+        else if (!File.Exists(filePathDCU))
+        {
+            Debug.LogError("JSON file does not exist: " + filePathDCU);
+            return;
+        }
+        else if (!File.Exists(filePathERROR))
+        {
+            Debug.LogError("JSON file does not exist: " + filePathERROR);
+            return;
+        }
+        else if (!File.Exists(filePathIMU))
+        {
+            Debug.LogError("JSON file does not exist: " + filePathIMU);
+            return;
+        }
+        else if (!File.Exists(filePathROVER))
+        {
+            Debug.LogError("JSON file does not exist: " + filePathROVER);
+            return;
+        }
+        else if (!File.Exists(filePathSPEC))
+        {
+            Debug.LogError("JSON file does not exist: " + filePathSPEC);
+            return;
+        }
+        else if (!File.Exists(filePathUIA))
+        {
+            Debug.LogError("JSON file does not exist: " + filePathUIA);
+            return;
+        }
+        else
+        {
+            Debug.Log("All files located");
+            StartCoroutine(UpdateTSSUI());
+        }
 
-        StartCoroutine(UpdateTelemetry());
+        //StartCoroutine(UpdateTelemetry());
     }
 
-    IEnumerator UpdateTelemetry()
+    IEnumerator UpdateTSSUI()
     {
         while (true)
         {
-            string json = File.ReadAllText(filePathTELEMETRY);
-            RootObject rootObject = JsonUtility.FromJson<RootObject>(json);
-            UpdateUI(rootObject.telemetry);
+            //string json = File.ReadAllText(filePathTELEMETRY);
+            //RootObject rootObject = JsonUtility.FromJson<RootObject>(json);
+            //UpdateUI(rootObject.telemetry);
+            //yield return new WaitForSeconds(updateInterval);
+
+            string jsonTELE = File.ReadAllText(filePathTELEMETRY);
+            RootObject teleObject = JsonUtility.FromJson<RootObject>(jsonTELE);
+            UpdateTelemetryUI(teleObject.telemetry);
+
+            string jsonEVA = File.ReadAllText(filePathEVA);
+            RootObject evaObject = JsonUtility.FromJson<RootObject>(jsonEVA);
+            UpdateEvaUI(evaObject.eva);
+
+            string jsonCOMM = File.ReadAllText(filePathCOMM);
+            RootObject commObject = JsonUtility.FromJson<RootObject>(jsonCOMM);
+            UpdateCommUI(commObject.comm);
+
+            string jsonDCU = File.ReadAllText(filePathDCU);
+            RootObject dcuObject = JsonUtility.FromJson<RootObject>(jsonDCU);
+            UpdateDcuUI(dcuObject.dcu);
+
+            string jsonERROR = File.ReadAllText(filePathERROR);
+            RootObject errorObject = JsonUtility.FromJson<RootObject>(jsonERROR);
+            UpdateErrorUI(errorObject.error);
+
+            string jsonIMU = File.ReadAllText(filePathIMU);
+            RootObject imuObject = JsonUtility.FromJson<RootObject>(jsonIMU);
+            UpdateImuUI(imuObject.imu);
+
+            string jsonROVER = File.ReadAllText(filePathROVER);
+            RootObject roverObject = JsonUtility.FromJson<RootObject>(jsonROVER);
+            UpdateRoverUI(roverObject.rover);
+
+            string jsonSPEC = File.ReadAllText(filePathSPEC);
+            RootObject specObject = JsonUtility.FromJson<RootObject>(jsonSPEC);
+            UpdateSpecUI(specObject.spec);
+
+            string jsonUIA = File.ReadAllText(filePathUIA);
+            RootObject uiaObject = JsonUtility.FromJson<RootObject>(jsonUIA);
+            UpdateUiaUI(uiaObject.uia);
+
             yield return new WaitForSeconds(updateInterval);
         }
     }
 
-    void UpdateUI(Telemetry telemetry)
+    void UpdateTelemetryUI(Telemetry telemetry)
     {
         if (telemetry != null && telemetry.eva1 != null)
         {
             timeText1.text = $"EVA Time\t\t\t {telemetry.eva_time} seconds\n" + //reminder to relocate
-            		    $"Battery Time Left\t\t {telemetry.eva1.batt_time_left} seconds\n" +
-            		    $"Oxygen Time Left\t\t {telemetry.eva1.oxy_time_left} seconds\n" +
-            		    $"Heart Rate\t\t\t {telemetry.eva1.heart_rate} bpm";
-            		    
+                        $"Battery Time Left\t\t {telemetry.eva1.batt_time_left} seconds\n" +
+                        $"Oxygen Time Left\t\t {telemetry.eva1.oxy_time_left} seconds\n" +
+                        $"Heart Rate\t\t\t {telemetry.eva1.heart_rate} bpm";
+
             suitText1.text = $"Suit O2 Pressure\t\t {telemetry.eva1.suit_pressure_oxy} psi\n" +
-            		    $"Suit CO2 Pressure\t {telemetry.eva1.suit_pressure_co2} psi\n" +
-            		    $"Suit Other Pressure\t {telemetry.eva1.suit_pressure_other} psi\n" +
-            		    $"Suit Total Pressure\t {telemetry.eva1.suit_pressure_total} psi\n" +
-            		    $"Helmet CO2 Pressure\t {telemetry.eva1.helmet_pressure_co2} psi\n" +
-            		    $"Scrubber A Pressure\t {telemetry.eva1.scrubber_a_co2_storage} psi\n" +
-            		    $"Scrubber B Pressure\t {telemetry.eva1.scrubber_b_co2_storage} psi\n" +
-            		    $"CO2 Production\t\t {telemetry.eva1.co2_production} psi/min";
+                        $"Suit CO2 Pressure\t {telemetry.eva1.suit_pressure_co2} psi\n" +
+                        $"Suit Other Pressure\t {telemetry.eva1.suit_pressure_other} psi\n" +
+                        $"Suit Total Pressure\t {telemetry.eva1.suit_pressure_total} psi\n" +
+                        $"Helmet CO2 Pressure\t {telemetry.eva1.helmet_pressure_co2} psi\n" +
+                        $"Scrubber A Pressure\t {telemetry.eva1.scrubber_a_co2_storage} psi\n" +
+                        $"Scrubber B Pressure\t {telemetry.eva1.scrubber_b_co2_storage} psi\n" +
+                        $"CO2 Production\t\t {telemetry.eva1.co2_production} psi/min";
 
             oxyText1.text = $"Primary O2 Storage\t {telemetry.eva1.oxy_pri_storage} %\n" +
-            		   $"Secondary O2 Storage\t {telemetry.eva1.oxy_sec_storage} %\n" +
-            		   $"Primary O2 Pressure\t {telemetry.eva1.oxy_pri_pressure} psi\n" +
-            		   $"Secondary O2 Pressure\t {telemetry.eva1.oxy_sec_pressure} psi\n" +
-            		   $"O2 Consumption\t\t {telemetry.eva1.oxy_consumption} psi/min";
+                       $"Secondary O2 Storage\t {telemetry.eva1.oxy_sec_storage} %\n" +
+                       $"Primary O2 Pressure\t {telemetry.eva1.oxy_pri_pressure} psi\n" +
+                       $"Secondary O2 Pressure\t {telemetry.eva1.oxy_sec_pressure} psi\n" +
+                       $"O2 Consumption\t\t {telemetry.eva1.oxy_consumption} psi/min";
 
             fanText1.text = $"Primary Fan\t\t {telemetry.eva1.fan_pri_rpm} rpm\n" +
-            		   $"Secondary Fan\t\t {telemetry.eva1.fan_sec_rpm} rpm\n" +
-            		   $"Temperature\t\t {telemetry.eva1.temperature} °F\n" +
-            		   $"Coolant\t\t\t {telemetry.eva1.coolant_ml} ml\n" +
-            		   $"H2O Gas Pressure\t {telemetry.eva1.coolant_gas_pressure} psi\n" +
-            		   $"H2O Liquid Pressure\t {telemetry.eva1.coolant_liquid_pressure} psi";
+                       $"Secondary Fan\t\t {telemetry.eva1.fan_sec_rpm} rpm\n" +
+                       $"Temperature\t\t {telemetry.eva1.temperature} °F\n" +
+                       $"Coolant\t\t\t {telemetry.eva1.coolant_ml} ml\n" +
+                       $"H2O Gas Pressure\t {telemetry.eva1.coolant_gas_pressure} psi\n" +
+                       $"H2O Liquid Pressure\t {telemetry.eva1.coolant_liquid_pressure} psi";
         }
 
         if (telemetry != null && telemetry.eva2 != null)
@@ -254,4 +359,102 @@ public class displayTSS : MonoBehaviour
                        $"H2O Liquid Pressure\t {telemetry.eva2.coolant_liquid_pressure} psi";
         }
     }
-} 
+
+    void UpdateEvaUI(Telemetry eva)
+    {
+        if (eva != null)
+        {
+            if (eva.started == true)
+            {
+                evaStatus.text = $"EVA Status:\t\t Ongoing";
+            }
+            else if (eva.paused == true)
+            {
+                evaStatus.text = $"EVA Status:\t\t Paused";
+            }
+            else
+            {
+                evaStatus.text = $"EVA Status:\t\t Completed";
+            }
+            
+            evaTotal.text = $"EVA Alloted Time:\t {eva.total_time} seconds";
+            
+            //evaText.text = $"EVA Status\t\t\t {eva.eva_time} seconds\n" +
+            //            $"Battery Time Left\t\t {telemetry.eva1.batt_time_left} seconds\n" +
+            //            $"Oxygen Time Left\t\t {telemetry.eva1.oxy_time_left} seconds\n" +
+            //            $"Heart Rate\t\t\t {telemetry.eva1.heart_rate} bpm";
+        }
+    }
+
+    void UpdateCommUI(Telemetry comm)
+    {
+        if (comm != null)
+        {
+            towerText.text = $"comm test:\t {comm.comm_tower} units";
+        }
+    }
+
+    void UpdateDcuUI(Telemetry dcu)
+    {
+        if (dcu != null && dcu.eva1 != null)
+        {
+            dcuText1.text = $"dcu1 test:\t {dcu.eva1.batt} units";
+        }
+
+        if (dcu != null && dcu.eva2 != null)
+        {
+            dcuText2.text = $"dcu2 test:\t {dcu.eva2.batt} units";
+        }
+    }
+
+    void UpdateErrorUI(Telemetry error)
+    {
+        if (error != null)
+        {
+            errorText.text = $"error test:\t {error.fan_error} units";
+        }
+    }
+
+    void UpdateImuUI(Telemetry imu)
+    {
+        if (imu != null && imu.eva1 != null)
+        {
+            imuText1.text = $"imu test1:\t {imu.eva1.posx} units";
+        }
+
+        if (imu != null && imu.eva2 != null)
+        {
+            imuText2.text = $"imu test2:\t {imu.eva2.posx} units";
+        }
+    }
+
+    void UpdateRoverUI(Telemetry rover)
+    {
+        if (rover != null)
+        {
+            roverText.text = $"rover test:\t {rover.posx} units";
+        }
+    }
+
+    void UpdateSpecUI(Telemetry spec)
+    {
+        if (spec != null && spec.eva1 != null)
+        {
+            geoText1.text = $"spec test1:\t {spec.eva1.data.Si02} units";
+        }
+
+        if (spec != null && spec.eva2 != null)
+        {
+            geoText2.text = $"spec test2:\t {spec.eva2.data.Si02} units";
+        }
+    }
+
+    void UpdateUiaUI(Telemetry uia)
+    {
+        if (uia != null)
+        {
+            uiaText1.text = $"uia test:\t {uia.eva1_power} units";
+        }
+    }
+
+}
