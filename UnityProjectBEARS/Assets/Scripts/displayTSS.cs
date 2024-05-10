@@ -148,9 +148,17 @@ public class displayTSS : MonoBehaviour
     public TMP_Text fanText2;
 
     //EVA.json
-    public TMP_Text evaText;
+    //public TMP_Text evaText;
     public TMP_Text evaStatus;
     public TMP_Text evaTotal;
+    public TMP_Text evaStatusUIA;
+    public TMP_Text evaTotalUIA;
+    public TMP_Text evaStatusDCU;
+    public TMP_Text evaTotalDCU;
+    public TMP_Text evaStatusGEO;
+    public TMP_Text evaTotalGEO;
+    public TMP_Text evaStatusROVER;
+    public TMP_Text evaTotalROVER;
 
     //COMM.json
     public TMP_Text towerText;
@@ -361,25 +369,84 @@ public class displayTSS : MonoBehaviour
         }
     }
 
-    void UpdateEvaUI(Telemetry eva) //
+    void UpdateEvaUI(Telemetry eva)
     {
         if (eva != null)
         {
             if (eva.started == true)
             {
-                evaStatus.text = $"EVA Status:\t\t Ongoing";
+                evaStatus.text = $"EVA Mission Status:\t\t Ongoing";
             }
             else if (eva.paused == true)
             {
-                evaStatus.text = $"EVA Status:\t\t Paused";
+                evaStatus.text = $"EVA Mission Status:\t\t Paused";
             }
             else
             {
-                evaStatus.text = $"EVA Status:\t\t Completed";
+                evaStatus.text = $"EVA Mission Status:\t\t Completed";
             }
-            
-            evaTotal.text = $"EVA Alloted Time:\t {eva.total_time} seconds";
-            
+            evaTotal.text = $"EVA Mission Time:\t {eva.total_time} seconds";
+
+
+            if (eva.uia.completed == true)
+            {
+                evaStatusUIA.text = $"UIA Task Status:\t\t Completed"; //false true    true true
+            }
+            else if (eva.uia.started == true)
+            {
+                evaStatusUIA.text = $"UIA Task Status:\t\t Ongoing"; //true false
+            }
+            else
+            {
+                evaStatusUIA.text = $"UIA Task Status:\t\t Not Assigned"; //false false
+            }
+            evaTotalUIA.text = $"UIA Task Time:\t {eva.uia.time} seconds";
+
+
+            if (eva.dcu.completed == true)
+            {
+                evaStatusDCU.text = $"DCU Task Status:\t\t Completed"; //false true    true true
+            }
+            else if (eva.dcu.started == true)
+            {
+                evaStatusDCU.text = $"DCU Task Status:\t\t Ongoing"; //true false
+            }
+            else
+            {
+                evaStatusDCU.text = $"DCU Task Status:\t\t Not Assigned"; //false false
+            }
+            evaTotalDCU.text = $"DCU Task Time:\t {eva.dcu.time} seconds";
+
+
+            if (eva.rover.completed == true)
+            {
+                evaStatusROVER.text = $"ROVER Task Status:\t\t Completed"; //false true    true true
+            }
+            else if (eva.rover.started == true)
+            {
+                evaStatusROVER.text = $"ROVER Task Status:\t\t Ongoing"; //true false
+            }
+            else
+            {
+                evaStatusROVER.text = $"ROVER Task Status:\t\t Not Assigned"; //false false
+            }
+            evaTotalROVER.text = $"ROVER Task Time:\t {eva.rover.time} seconds";
+
+
+            if (eva.spec.completed == true)
+            {
+                evaStatusGEO.text = $"GEO Task Status:\t\t Completed"; //false true    true true
+            }
+            else if (eva.spec.started == true)
+            {
+                evaStatusGEO.text = $"GEO Scan Task Status:\t\t Ongoing"; //true false
+            }
+            else
+            {
+                evaStatusGEO.text = $"GEO Scan Task Status:\t\t Not Assigned"; //false false
+            }
+            evaTotalGEO.text = $"GEO Scan Task Time:\t {eva.spec.time} seconds";
+
             //evaText.text = $"EVA Status\t\t\t {eva.eva_time} seconds\n" +
             //            $"Battery Time Left\t\t {telemetry.eva1.batt_time_left} seconds\n" +
             //            $"Oxygen Time Left\t\t {telemetry.eva1.oxy_time_left} seconds\n" +
@@ -387,47 +454,61 @@ public class displayTSS : MonoBehaviour
         }
     }
 
-    void UpdateCommUI(Telemetry comm) //
+    void UpdateCommUI(Telemetry comm)
     {
         if (comm != null)
         {
-            towerText.text = $"comm test:\t {comm.comm_tower} units";
+            towerText.text = $"Communication Tower Online:\t {comm.comm_tower}";
         }
     }
 
-    void UpdateDcuUI(Telemetry dcu) //
+    void UpdateDcuUI(Telemetry dcu)
     {
         if (dcu != null && dcu.eva1 != null)
         {
-            dcuText1.text = $"dcu1 test:\t {dcu.eva1.batt} units";
+            dcuText1.text = $"Battery On\t {dcu.eva1.batt} \n" +
+                        $"Oxygen Pump\t {dcu.eva1.oxy} \n" +
+                        $"Battery On\t {dcu.eva1.comm} \n" +
+                        $"Battery On\t {dcu.eva1.fan} \n" +
+                        $"Oxygen Pump\t {dcu.eva1.pump} \n" +
+                        $"Water Pump Error\t {dcu.eva1.co2} ";
         }
 
         if (dcu != null && dcu.eva2 != null)
         {
-            dcuText2.text = $"dcu2 test:\t {dcu.eva2.batt} units";
+            dcuText2.text = $"Battery On\t {dcu.eva2.batt} \n" +
+                        $"Oxygen Pump\t {dcu.eva2.oxy} \n" +
+                        $"Battery On\t {dcu.eva2.comm} \n" +
+                        $"Battery On\t {dcu.eva2.fan} \n" +
+                        $"Oxygen Pump\t {dcu.eva2.pump} \n" +
+                        $"Water Pump Error\t {dcu.eva2.co2} ";
         }
     }
 
-    void UpdateErrorUI(Telemetry error) //
+    void UpdateErrorUI(Telemetry error)
     {
         if (error != null)
         {
-            errorText.text = $"error test:\t {error.fan_error} units";
+            errorText.text = $"Fan Error\t {error.fan_error} units\n" +
+                        $"Oxygen Pump\t {error.oxy_error} units\n" +
+                        $"Water Pump Error\t {error.pump_error} units";
         }
     }
 
-    void UpdateImuUI(Telemetry imu) //
+    void UpdateImuUI(Telemetry imu)
     {
         if (imu != null && imu.eva1 != null)
         {
             imuText1.text = $"Your X Coordinate\t {imu.eva1.posx} units\n" +
                         $"Your Y Coordinate\t {imu.eva1.posy} units\n" +
-                        $"Your Heading\t {imu.eva1.heading} ";
+                        $"Your Heading\t {imu.eva1.heading} units";
         }
 
         if (imu != null && imu.eva2 != null)
         {
-            imuText2.text = $"imu test2:\t {imu.eva2.posx} units";
+            imuText2.text = $"Partner's X Coordinate\t {imu.eva2.posx} units\n" +
+                        $"Partner's Y Coordinate\t {imu.eva2.posy} units\n" +
+                        $"Partner's Heading\t {imu.eva2.heading} units";
         }
     }
 
@@ -442,16 +523,34 @@ public class displayTSS : MonoBehaviour
         }
     }
 
-    void UpdateSpecUI(Telemetry spec) //
+    void UpdateSpecUI(Telemetry spec)
     {
         if (spec != null && spec.eva1 != null)
         {
-            geoText1.text = $"spec test1:\t {spec.eva1.data.Si02} units";
+            geoText1.text = $"Si02\t\t {spec.eva1.data.Si02} %\n" +
+                        $"Ti02\t\t {spec.eva1.data.Ti02} %\n" +
+                        $"Al203\t\t {spec.eva1.data.Al203} %\n" +
+                        $"Fe0\t\t {spec.eva1.data.Fe0} %\n" +
+                        $"Mn0\t\t {spec.eva1.data.Mn0} %\n" +
+                        $"Mg0\t\t {spec.eva1.data.Mg0} %\n" +
+                        $"Ca0\t\t {spec.eva1.data.Ca0} %\n" +
+                        $"K20\t\t {spec.eva1.data.K20} %\n" +
+                        $"P203\t\t {spec.eva1.data.P203} %\n" +
+                        $"Other\t\t {spec.eva1.data.other} %";
         }
 
         if (spec != null && spec.eva2 != null)
         {
-            geoText2.text = $"spec test2:\t {spec.eva2.data.Si02} units";
+            geoText2.text = $"Si02\t\t {spec.eva2.data.Si02} %\n" +
+                        $"Ti02\t\t {spec.eva2.data.Ti02} %\n" +
+                        $"Al203\t\t {spec.eva2.data.Al203} %\n" +
+                        $"Fe0\t\t {spec.eva2.data.Fe0} %\n" +
+                        $"Mn0\t\t {spec.eva2.data.Mn0} %\n" +
+                        $"Mg0\t\t {spec.eva2.data.Mg0} %\n" +
+                        $"Ca0\t\t {spec.eva2.data.Ca0} %\n" +
+                        $"K20\t\t {spec.eva2.data.K20} %\n" +
+                        $"P203\t\t {spec.eva2.data.P203} %\n" +
+                        $"Other\t\t {spec.eva2.data.other} %";
         }
     }
 
