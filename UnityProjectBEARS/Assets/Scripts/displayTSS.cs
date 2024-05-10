@@ -150,15 +150,10 @@ public class displayTSS : MonoBehaviour
     //EVA.json
     //public TMP_Text evaText;
     public TMP_Text evaStatus;
-    public TMP_Text evaTotal;
     public TMP_Text evaStatusUIA;
-    public TMP_Text evaTotalUIA;
     public TMP_Text evaStatusDCU;
-    public TMP_Text evaTotalDCU;
     public TMP_Text evaStatusGEO;
-    public TMP_Text evaTotalGEO;
     public TMP_Text evaStatusROVER;
-    public TMP_Text evaTotalROVER;
 
     //COMM.json
     public TMP_Text towerText;
@@ -375,82 +370,87 @@ public class displayTSS : MonoBehaviour
         {
             if (eva.started == true)
             {
-                evaStatus.text = $"EVA Mission Status:\t\t Ongoing";
+                evaStatus.text = $"EVA Mission Status:\t\t Ongoing\n" +
+                                $"EVA Mission Time:\t {eva.total_time} seconds";
             }
             else if (eva.paused == true)
             {
-                evaStatus.text = $"EVA Mission Status:\t\t Paused";
+                evaStatus.text = $"EVA Mission Status:\t\t Paused\n" +
+                                $"EVA Mission Time:\t {eva.total_time} seconds";
             }
             else
             {
-                evaStatus.text = $"EVA Mission Status:\t\t Completed";
+                evaStatus.text = $"EVA Mission Status:\t\t Completed\n" +
+                                $"EVA Mission Time:\t {eva.total_time} seconds";
             }
-            evaTotal.text = $"EVA Mission Time:\t {eva.total_time} seconds";
 
 
             if (eva.uia.completed == true)
             {
-                evaStatusUIA.text = $"UIA Task Status:\t\t Completed"; //false true    true true
+                evaStatusUIA.text = $"UIA Task Status:\t\t Completed\n" + //false true    true true
+                    $"UIA Task Time:\t {eva.uia.time} seconds";
             }
             else if (eva.uia.started == true)
             {
-                evaStatusUIA.text = $"UIA Task Status:\t\t Ongoing"; //true false
+                evaStatusUIA.text = $"UIA Task Status:\t\t Ongoing\n" + //true false
+                    $"UIA Task Time:\t {eva.uia.time} seconds";
             }
             else
             {
-                evaStatusUIA.text = $"UIA Task Status:\t\t Not Assigned"; //false false
+                evaStatusUIA.text = $"UIA Task Status:\t\t Not Assigned\n" + //false false
+                    $"UIA Task Time:\t {eva.uia.time} seconds";
             }
-            evaTotalUIA.text = $"UIA Task Time:\t {eva.uia.time} seconds";
 
 
             if (eva.dcu.completed == true)
             {
-                evaStatusDCU.text = $"DCU Task Status:\t\t Completed"; //false true    true true
+                evaStatusDCU.text = $"DCU Task Status:\t\t Completed\n" + //false true    true true
+                    $"DCU Task Time:\t {eva.dcu.time} seconds";
             }
             else if (eva.dcu.started == true)
             {
-                evaStatusDCU.text = $"DCU Task Status:\t\t Ongoing"; //true false
+                evaStatusDCU.text = $"DCU Task Status:\t\t Ongoing\n" + //true false
+                    $"DCU Task Time:\t {eva.dcu.time} seconds";
             }
             else
             {
-                evaStatusDCU.text = $"DCU Task Status:\t\t Not Assigned"; //false false
+                evaStatusDCU.text = $"DCU Task Status:\t\t Not Assigned\n" + //false false
+                    $"DCU Task Time:\t {eva.dcu.time} seconds";
             }
-            evaTotalDCU.text = $"DCU Task Time:\t {eva.dcu.time} seconds";
 
 
             if (eva.rover.completed == true)
             {
-                evaStatusROVER.text = $"ROVER Task Status:\t\t Completed"; //false true    true true
+                evaStatusROVER.text = $"ROVER Task Status:\t\t Completed\n" + //false true    true true
+                    $"ROVER Task Time:\t {eva.rover.time} seconds";
             }
             else if (eva.rover.started == true)
             {
-                evaStatusROVER.text = $"ROVER Task Status:\t\t Ongoing"; //true false
+                evaStatusROVER.text = $"ROVER Task Status:\t\t Ongoing\n" + //true false
+                    $"ROVER Task Time:\t {eva.rover.time} seconds";
             }
             else
             {
-                evaStatusROVER.text = $"ROVER Task Status:\t\t Not Assigned"; //false false
+                evaStatusROVER.text = $"ROVER Task Status:\t\t Not Assigned\n" + //false false
+                    $"ROVER Task Time:\t {eva.rover.time} seconds";
             }
-            evaTotalROVER.text = $"ROVER Task Time:\t {eva.rover.time} seconds";
 
 
             if (eva.spec.completed == true)
             {
-                evaStatusGEO.text = $"GEO Task Status:\t\t Completed"; //false true    true true
+                evaStatusGEO.text = $"GEO Task Status:\t\t Completed\n" + //false true    true true
+                    $"GEO Scan Task Time:\t {eva.spec.time} seconds";
             }
             else if (eva.spec.started == true)
             {
-                evaStatusGEO.text = $"GEO Scan Task Status:\t\t Ongoing"; //true false
+                evaStatusGEO.text = $"GEO Scan Task Status:\t\t Ongoing\n" + //true false
+                    $"GEO Scan Task Time:\t {eva.spec.time} seconds";
             }
             else
             {
-                evaStatusGEO.text = $"GEO Scan Task Status:\t\t Not Assigned"; //false false
+                evaStatusGEO.text = $"GEO Scan Task Status:\t\t Not Assigned\n" + //false false
+                    $"GEO Scan Task Time:\t {eva.spec.time} seconds";
             }
-            evaTotalGEO.text = $"GEO Scan Task Time:\t {eva.spec.time} seconds";
-
-            //evaText.text = $"EVA Status\t\t\t {eva.eva_time} seconds\n" +
-            //            $"Battery Time Left\t\t {telemetry.eva1.batt_time_left} seconds\n" +
-            //            $"Oxygen Time Left\t\t {telemetry.eva1.oxy_time_left} seconds\n" +
-            //            $"Heart Rate\t\t\t {telemetry.eva1.heart_rate} bpm";
         }
     }
 
@@ -485,13 +485,13 @@ public class displayTSS : MonoBehaviour
         }
     }
 
-    void UpdateErrorUI(Telemetry error)
+    void UpdateErrorUI(Telemetry error) //convert into if statments for DCU alerts
     {
         if (error != null)
         {
-            errorText.text = $"Fan Error\t {error.fan_error} units\n" +
-                        $"Oxygen Pump\t {error.oxy_error} units\n" +
-                        $"Water Pump Error\t {error.pump_error} units";
+            errorText.text = $"Fan Error\t {error.fan_error} \n" +
+                        $"Oxygen Pump\t {error.oxy_error} \n" +
+                        $"Water Pump Error\t {error.pump_error} ";
         }
     }
 
@@ -499,16 +499,16 @@ public class displayTSS : MonoBehaviour
     {
         if (imu != null && imu.eva1 != null)
         {
-            imuText1.text = $"Your X Coordinate\t {imu.eva1.posx} units\n" +
-                        $"Your Y Coordinate\t {imu.eva1.posy} units\n" +
-                        $"Your Heading\t {imu.eva1.heading} units";
+            imuText1.text = $"Your X Coordinate\t {imu.eva1.posx} longitude\n" +
+                        $"Your Y Coordinate\t {imu.eva1.posy} latitude\n" +
+                        $"Your Heading\t {imu.eva1.heading} °";
         }
 
         if (imu != null && imu.eva2 != null)
         {
-            imuText2.text = $"Partner's X Coordinate\t {imu.eva2.posx} units\n" +
-                        $"Partner's Y Coordinate\t {imu.eva2.posy} units\n" +
-                        $"Partner's Heading\t {imu.eva2.heading} units";
+            imuText2.text = $"Partner's X Coordinate\t {imu.eva2.posx} longitude\n" +
+                        $"Partner's Y Coordinate\t {imu.eva2.posy} latitude\n" +
+                        $"Partner's Heading\t {imu.eva2.heading} °";
         }
     }
 
@@ -516,8 +516,8 @@ public class displayTSS : MonoBehaviour
     {
         if (rover != null)
         {
-            roverText.text = $"Rover X Coordinate\t {rover.posx} \n" +
-                        $"Rover Y Coordinate\t {rover.posy} ";
+            roverText.text = $"Rover X Coordinate\t {rover.posx} longitude\n" +
+                        $"Rover Y Coordinate\t {rover.posy} latitude";
                         //$"Oxygen\t {rover.posy} \n" +
                         //$"Water Waste\t {rover.qr_id} ";
         }
