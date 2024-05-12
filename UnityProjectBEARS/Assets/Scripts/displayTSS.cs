@@ -122,15 +122,15 @@ public class EvaData
 public class Comps
 {
     //SPEC.json
-    public float Si02;
-    public float Ti02;
-    public float Al203;
-    public float Fe0;
-    public float Mn0;
-    public float Mg0;
-    public float Ca0;
-    public float K20;
-    public float P203;
+    public float SiO2;
+    public float TiO2;
+    public float Al2O3;
+    public float FeO;
+    public float MnO;
+    public float MgO;
+    public float CaO;
+    public float K2O;
+    public float P2O3;
     public float other;
 }
 
@@ -527,29 +527,29 @@ public class displayTSS : MonoBehaviour
     {
         if (spec != null && spec.eva1 != null)
         {
-            geoText1.text = $"Si02\t\t {spec.eva1.data.Si02} %\n" +
-                        $"Ti02\t\t {spec.eva1.data.Ti02} %\n" +
-                        $"Al203\t\t {spec.eva1.data.Al203} %\n" +
-                        $"Fe0\t\t {spec.eva1.data.Fe0} %\n" +
-                        $"Mn0\t\t {spec.eva1.data.Mn0} %\n" +
-                        $"Mg0\t\t {spec.eva1.data.Mg0} %\n" +
-                        $"Ca0\t\t {spec.eva1.data.Ca0} %\n" +
-                        $"K20\t\t {spec.eva1.data.K20} %\n" +
-                        $"P203\t\t {spec.eva1.data.P203} %\n" +
+            geoText1.text = $"Si02\t\t {spec.eva1.data.SiO2} %\n" +
+                        $"Ti02\t\t {spec.eva1.data.TiO2} %\n" +
+                        $"Al203\t\t {spec.eva1.data.Al2O3} %\n" +
+                        $"Fe0\t\t {spec.eva1.data.FeO} %\n" +
+                        $"Mn0\t\t {spec.eva1.data.MnO} %\n" +
+                        $"Mg0\t\t {spec.eva1.data.MgO} %\n" +
+                        $"Ca0\t\t {spec.eva1.data.CaO} %\n" +
+                        $"K20\t\t {spec.eva1.data.K2O} %\n" +
+                        $"P203\t\t {spec.eva1.data.P2O3} %\n" +
                         $"Other\t\t {spec.eva1.data.other} %";
         }
 
         if (spec != null && spec.eva2 != null)
         {
-            geoText2.text = $"Si02\t\t {spec.eva2.data.Si02} %\n" +
-                        $"Ti02\t\t {spec.eva2.data.Ti02} %\n" +
-                        $"Al203\t\t {spec.eva2.data.Al203} %\n" +
-                        $"Fe0\t\t {spec.eva2.data.Fe0} %\n" +
-                        $"Mn0\t\t {spec.eva2.data.Mn0} %\n" +
-                        $"Mg0\t\t {spec.eva2.data.Mg0} %\n" +
-                        $"Ca0\t\t {spec.eva2.data.Ca0} %\n" +
-                        $"K20\t\t {spec.eva2.data.K20} %\n" +
-                        $"P203\t\t {spec.eva2.data.P203} %\n" +
+            geoText2.text = $"Si02\t\t {spec.eva2.data.SiO2} %\n" +
+                        $"Ti02\t\t {spec.eva2.data.TiO2} %\n" +
+                        $"Al203\t\t {spec.eva2.data.Al2O3} %\n" +
+                        $"Fe0\t\t {spec.eva2.data.FeO} %\n" +
+                        $"Mn0\t\t {spec.eva2.data.MnO} %\n" +
+                        $"Mg0\t\t {spec.eva2.data.MgO} %\n" +
+                        $"Ca0\t\t {spec.eva2.data.CaO} %\n" +
+                        $"K20\t\t {spec.eva2.data.K2O} %\n" +
+                        $"P203\t\t {spec.eva2.data.P2O3} %\n" +
                         $"Other\t\t {spec.eva2.data.other} %";
         }
     }
