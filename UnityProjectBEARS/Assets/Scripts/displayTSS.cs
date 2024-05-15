@@ -467,21 +467,21 @@ public class displayTSS : MonoBehaviour
         if (dcu != null && dcu.eva1 != null)
         {
             dcuText1.text = $"Battery On\t {dcu.eva1.batt} \n" +
-                        $"Oxygen Pump\t {dcu.eva1.oxy} \n" +
-                        $"Battery On\t {dcu.eva1.comm} \n" +
-                        $"Battery On\t {dcu.eva1.fan} \n" +
-                        $"Oxygen Pump\t {dcu.eva1.pump} \n" +
-                        $"Water Pump Error\t {dcu.eva1.co2} ";
+                        $"Oxygen On\t {dcu.eva1.oxy} \n" +
+                        $"Comms On\t {dcu.eva1.comm} \n" +
+                        $"Fan On\t {dcu.eva1.fan} \n" +
+                        $"Pump On\t {dcu.eva1.pump} \n" +
+                        $"CO2 On\t {dcu.eva1.co2} ";
         }
 
         if (dcu != null && dcu.eva2 != null)
         {
             dcuText2.text = $"Battery On\t {dcu.eva2.batt} \n" +
-                        $"Oxygen Pump\t {dcu.eva2.oxy} \n" +
-                        $"Battery On\t {dcu.eva2.comm} \n" +
-                        $"Battery On\t {dcu.eva2.fan} \n" +
-                        $"Oxygen Pump\t {dcu.eva2.pump} \n" +
-                        $"Water Pump Error\t {dcu.eva2.co2} ";
+                        $"Oxygen On\t {dcu.eva2.oxy} \n" +
+                        $"Comms On\t {dcu.eva2.comm} \n" +
+                        $"Fan On\t {dcu.eva2.fan} \n" +
+                        $"Pump On\t {dcu.eva2.pump} \n" +
+                        $"CO2 On\t {dcu.eva2.co2} ";
         }
     }
 
