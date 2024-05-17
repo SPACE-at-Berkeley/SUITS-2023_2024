@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -72,7 +72,7 @@ public class EvaData
     public float batt_time_left;
     public float oxy_time_left;
     public float heart_rate;
-    
+
     public float suit_pressure_oxy;
     public float suit_pressure_co2;
     public float suit_pressure_other;
@@ -81,13 +81,13 @@ public class EvaData
     public float scrubber_a_co2_storage;
     public float scrubber_b_co2_storage;
     public float co2_production;
-    
+
     public float oxy_pri_storage;
     public float oxy_sec_storage;
     public float oxy_pri_pressure;
     public float oxy_sec_pressure;
     public float oxy_consumption;
-    
+
     public float fan_pri_rpm;
     public float fan_sec_rpm;
     public float temperature;
@@ -135,17 +135,57 @@ public class Comps
 }
 
 
-public class displayTSS : MonoBehaviour
+public class displayReTSS : MonoBehaviour
 {
     //TELEMETRY.json
-    public TMP_Text timeText1;
-    public TMP_Text suitText1;
-    public TMP_Text oxyText1;
-    public TMP_Text fanText1;
-    public TMP_Text timeText2;
-    public TMP_Text suitText2;
-    public TMP_Text oxyText2;
-    public TMP_Text fanText2;
+    public TMP_Text timeText;
+
+    public TMP_Text battTimeText1;
+    public TMP_Text oxyTimeText1;
+    public TMP_Text heartRateText1;
+    public TMP_Text suitOxyText1;
+    public TMP_Text suitCo2Text1;
+    public TMP_Text suitOtherText1;
+    public TMP_Text suitTotalText1;
+    public TMP_Text helmetCo2Text1;
+    public TMP_Text scrubberAText1;
+    public TMP_Text scrubberBText1;
+    public TMP_Text co2ProductionText1;
+    public TMP_Text priOxyStorageText1;
+    public TMP_Text secOxyStorageText1;
+    public TMP_Text priOxyPressureText1;
+    public TMP_Text secOxyPressureText1;
+    public TMP_Text oxyConsumptionText1;
+    public TMP_Text priFanText1;
+    public TMP_Text secFanText1;
+    public TMP_Text temperatureText1;
+    public TMP_Text coolantText1;
+    public TMP_Text coolantGasPressureText1;
+    public TMP_Text coolantLiquidPressureText1;
+
+    public TMP_Text battTimeText2;
+    public TMP_Text oxyTimeText2;
+    public TMP_Text heartRateText2;
+    public TMP_Text suitOxyText2;
+    public TMP_Text suitCo2Text2;
+    public TMP_Text suitOtherText2;
+    public TMP_Text suitTotalText2;
+    public TMP_Text helmetCo2Text2;
+    public TMP_Text scrubberAText2;
+    public TMP_Text scrubberBText2;
+    public TMP_Text co2ProductionText2;
+    public TMP_Text priOxyStorageText2;
+    public TMP_Text secOxyStorageText2;
+    public TMP_Text priOxyPressureText2;
+    public TMP_Text secOxyPressureText2;
+    public TMP_Text oxyConsumptionText2;
+    public TMP_Text priFanText2;
+    public TMP_Text secFanText2;
+    public TMP_Text temperatureText2;
+    public TMP_Text coolantText2;
+    public TMP_Text coolantGasPressureText2;
+    public TMP_Text coolantLiquidPressureText2;
+
 
     //EVA.json
     //public TMP_Text evaText;
@@ -184,15 +224,16 @@ public class displayTSS : MonoBehaviour
 
     //file paths
     public float updateInterval = 1f; // Update every second
-    private string filePathTELEMETRY = "/home/space/TSS_2024/public/json_data/teams/10/TELEMETRY.json";
-    private string filePathEVA = "/home/space/TSS_2024/public/json_data/teams/10/EVA.json"; //later add custom variable for 0-10 to set unique team-combo scenarios
-    private string filePathCOMM = "/home/space/TSS_2024/public/json_data/COMM.json";
-    private string filePathDCU = "/home/space/TSS_2024/public/json_data/DCU.json";
-    private string filePathERROR = "/home/space/TSS_2024/public/json_data/ERROR.json";
-    private string filePathIMU = "/home/space/TSS_2024/public/json_data/IMU.json";
-    private string filePathROVER = "/home/space/TSS_2024/public/json_data/ROVER.json";
-    private string filePathSPEC = "/home/space/TSS_2024/public/json_data/SPEC.json";
-    private string filePathUIA = "/home/space/TSS_2024/public/json_data/UIA.json";
+    //LMCC Laptop path: /home/space/TSS_2024/public/json_data/
+    private string filePathTELEMETRY = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/teams/10/TELEMETRY.json";
+    private string filePathEVA = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/teams/10/EVA.json"; //later add custom variable for 0-10 to set unique team-combo scenarios
+    private string filePathCOMM = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/COMM.json";
+    private string filePathDCU = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/DCU.json";
+    private string filePathERROR = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/ERROR.json";
+    private string filePathIMU = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/IMU.json";
+    private string filePathROVER = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/ROVER.json";
+    private string filePathSPEC = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/SPEC.json";
+    private string filePathUIA = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/UIA.json";
 
 
     //yet to update lines below this point
@@ -303,64 +344,72 @@ public class displayTSS : MonoBehaviour
 
     void UpdateTelemetryUI(Telemetry telemetry)
     {
+        if (telemetry != null)
+        {
+            TimeSpan evaTimeSpan = TimeSpan.FromSeconds(telemetry.eva_time);
+            string formattedEvaTime = string.Format("{0:D2}:{1:D2}:{2:D2}", evaTimeSpan.Hours, evaTimeSpan.Minutes, evaTimeSpan.Seconds);
+            timeText.text = $"EVA Time\n{formattedEvaTime}";
+        }
+
         if (telemetry != null && telemetry.eva1 != null)
         {
-            timeText1.text = $"EVA Time\t\t\t {telemetry.eva_time} seconds\n" + //reminder to relocate
-                        $"Battery Time Left\t\t {telemetry.eva1.batt_time_left} seconds\n" +
-                        $"Oxygen Time Left\t\t {telemetry.eva1.oxy_time_left} seconds\n" +
-                        $"Heart Rate\t\t\t {telemetry.eva1.heart_rate} bpm";
+            //top bar
+            heartRateText1.text = $"Heart Rate\n{telemetry.eva1.heart_rate} bpm";
+            temperatureText1.text = $"Temperature\n{telemetry.eva1.temperature} 캟";
+            battTimeText1.text = $"Battery Time Left\n{telemetry.eva1.batt_time_left} seconds";
+            oxyTimeText1.text = $"Oxygen Time Left\n{telemetry.eva1.oxy_time_left} seconds";
+            co2ProductionText1.text = $"CO2 Production\n{telemetry.eva1.co2_production} psi/min";
+            oxyConsumptionText1.text = $"O2 Consumption\n{telemetry.eva1.oxy_consumption} psi/min";
 
-            suitText1.text = $"Suit O2 Pressure\t\t {telemetry.eva1.suit_pressure_oxy} psi\n" +
-                        $"Suit CO2 Pressure\t {telemetry.eva1.suit_pressure_co2} psi\n" +
-                        $"Suit Other Pressure\t {telemetry.eva1.suit_pressure_other} psi\n" +
-                        $"Suit Total Pressure\t {telemetry.eva1.suit_pressure_total} psi\n" +
-                        $"Helmet CO2 Pressure\t {telemetry.eva1.helmet_pressure_co2} psi\n" +
-                        $"Scrubber A Pressure\t {telemetry.eva1.scrubber_a_co2_storage} psi\n" +
-                        $"Scrubber B Pressure\t {telemetry.eva1.scrubber_b_co2_storage} psi\n" +
-                        $"CO2 Production\t\t {telemetry.eva1.co2_production} psi/min";
+            //suit spot
+            suitOxyText1.text = $"Suit O2 Pressure\n{telemetry.eva1.suit_pressure_oxy} psi";
+            suitCo2Text1.text = $"Suit CO2 Pressure\n{telemetry.eva1.suit_pressure_co2} psi";
+            suitOtherText1.text = $"Suit Other Pressure\n{telemetry.eva1.suit_pressure_other} psi";
+            suitTotalText1.text = $"Suit Total Pressure\n{telemetry.eva1.suit_pressure_total} psi";
+            helmetCo2Text1.text = $"Helmet CO2 Pressure\n{telemetry.eva1.helmet_pressure_co2} psi";
+            scrubberAText1.text = $"Scrubber A Pressure\n{telemetry.eva1.scrubber_a_co2_storage} psi";
+            scrubberBText1.text = $"Scrubber B Pressure\n{telemetry.eva1.scrubber_b_co2_storage} psi";
 
-            oxyText1.text = $"Primary O2 Storage\t {telemetry.eva1.oxy_pri_storage} %\n" +
-                       $"Secondary O2 Storage\t {telemetry.eva1.oxy_sec_storage} %\n" +
-                       $"Primary O2 Pressure\t {telemetry.eva1.oxy_pri_pressure} psi\n" +
-                       $"Secondary O2 Pressure\t {telemetry.eva1.oxy_sec_pressure} psi\n" +
-                       $"O2 Consumption\t\t {telemetry.eva1.oxy_consumption} psi/min";
+            //oxygen spot
+            priOxyStorageText1.text = $"Primary O2 Storage\n{telemetry.eva1.oxy_pri_storage} %";
+            secOxyStorageText1.text = $"Secondary O2 Storage\n{telemetry.eva1.oxy_sec_storage} %";
+            priOxyPressureText1.text = $"Primary O2 Pressure\n{telemetry.eva1.oxy_pri_pressure} psi";
+            secOxyPressureText1.text = $"Secondary O2 Pressure\n{telemetry.eva1.oxy_sec_pressure} psi";
 
-            fanText1.text = $"Primary Fan\t\t {telemetry.eva1.fan_pri_rpm} rpm\n" +
-                       $"Secondary Fan\t\t {telemetry.eva1.fan_sec_rpm} rpm\n" +
-                       $"Temperature\t\t {telemetry.eva1.temperature} 째F\n" +
-                       $"Coolant\t\t\t {telemetry.eva1.coolant_ml} ml\n" +
-                       $"H2O Gas Pressure\t {telemetry.eva1.coolant_gas_pressure} psi\n" +
-                       $"H2O Liquid Pressure\t {telemetry.eva1.coolant_liquid_pressure} psi";
+            priFanText1.text = $"Primary Fan\n{telemetry.eva1.fan_pri_rpm} rpm";
+            secFanText1.text = $"Secondary Fan\n{telemetry.eva1.fan_sec_rpm} rpm";
+            coolantGasPressureText1.text = $"H2O Gas Pressure\n{telemetry.eva1.coolant_gas_pressure} psi";
+            coolantLiquidPressureText1.text = $"H2O Liquid Pressure\n{telemetry.eva1.coolant_liquid_pressure} psi";
+            coolantText1.text = $"Coolant\n{telemetry.eva1.coolant_ml} ml";
         }
 
         if (telemetry != null && telemetry.eva2 != null)
         {
-            timeText2.text = $"EVA Time\t\t\t {telemetry.eva_time} seconds\n" + //reminder to relocate
-                        $"Battery Time Left\t\t {telemetry.eva2.batt_time_left} seconds\n" +
-                        $"Oxygen Time Left\t\t {telemetry.eva2.oxy_time_left} seconds\n" +
-                        $"Heart Rate\t\t\t {telemetry.eva2.heart_rate} bpm";
+            heartRateText2.text = $"Heart Rate\n{telemetry.eva2.heart_rate} bpm";
+            temperatureText2.text = $"Temperature\n{telemetry.eva2.temperature} 캟";
+            battTimeText2.text = $"Battery Time Left\n{telemetry.eva2.batt_time_left} seconds";
+            oxyTimeText2.text = $"Oxygen Time Left\n{telemetry.eva2.oxy_time_left} seconds";
+            co2ProductionText2.text = $"CO2 Production\n{telemetry.eva2.co2_production} psi/min";
+            oxyConsumptionText2.text = $"O2 Consumption\n{telemetry.eva2.oxy_consumption} psi/min";
 
-            suitText2.text = $"Suit O2 Pressure\t\t {telemetry.eva2.suit_pressure_oxy} psi\n" +
-                        $"Suit CO2 Pressure\t {telemetry.eva2.suit_pressure_co2} psi\n" +
-                        $"Suit Other Pressure\t {telemetry.eva2.suit_pressure_other} psi\n" +
-                        $"Suit Total Pressure\t {telemetry.eva2.suit_pressure_total} psi\n" +
-                        $"Helmet CO2 Pressure\t {telemetry.eva2.helmet_pressure_co2} psi\n" +
-                        $"Scrubber A Pressure\t {telemetry.eva2.scrubber_a_co2_storage} psi\n" +
-                        $"Scrubber B Pressure\t {telemetry.eva2.scrubber_b_co2_storage} psi\n" +
-                        $"CO2 Production\t\t {telemetry.eva2.co2_production} psi/min";
+            suitOxyText2.text = $"Suit O2 Pressure\n{telemetry.eva2.suit_pressure_oxy} psi";
+            suitCo2Text2.text = $"Suit CO2 Pressure\n{telemetry.eva2.suit_pressure_co2} psi";
+            suitOtherText2.text = $"Suit Other Pressure\n{telemetry.eva2.suit_pressure_other} psi";
+            suitTotalText2.text = $"Suit Total Pressure\n{telemetry.eva2.suit_pressure_total} psi";
+            helmetCo2Text2.text = $"Helmet CO2 Pressure\n{telemetry.eva2.helmet_pressure_co2} psi";
+            scrubberAText2.text = $"Scrubber A Pressure\n{telemetry.eva2.scrubber_a_co2_storage} psi";
+            scrubberBText2.text = $"Scrubber B Pressure\n{telemetry.eva2.scrubber_b_co2_storage} psi";
 
-            oxyText2.text = $"Primary O2 Storage\t {telemetry.eva2.oxy_pri_storage} %\n" +
-                       $"Secondary O2 Storage\t {telemetry.eva2.oxy_sec_storage} %\n" +
-                       $"Primary O2 Pressure\t {telemetry.eva2.oxy_pri_pressure} psi\n" +
-                       $"Secondary O2 Pressure\t {telemetry.eva2.oxy_sec_pressure} psi\n" +
-                       $"O2 Consumption\t\t {telemetry.eva2.oxy_consumption} psi/min";
+            priOxyStorageText2.text = $"Primary O2 Storage\n{telemetry.eva2.oxy_pri_storage} %";
+            secOxyStorageText2.text = $"Secondary O2 Storage\n{telemetry.eva2.oxy_sec_storage} %";
+            priOxyPressureText2.text = $"Primary O2 Pressure\n{telemetry.eva2.oxy_pri_pressure} psi";
+            secOxyPressureText2.text = $"Secondary O2 Pressure\n{telemetry.eva2.oxy_sec_pressure} psi";
 
-            fanText2.text = $"Primary Fan\t\t {telemetry.eva2.fan_pri_rpm} rpm\n" +
-                       $"Secondary Fan\t\t {telemetry.eva2.fan_sec_rpm} rpm\n" +
-                       $"Temperature\t\t {telemetry.eva2.temperature} 째F\n" +
-                       $"Coolant\t\t\t {telemetry.eva2.coolant_ml} ml\n" +
-                       $"H2O Gas Pressure\t {telemetry.eva2.coolant_gas_pressure} psi\n" +
-                       $"H2O Liquid Pressure\t {telemetry.eva2.coolant_liquid_pressure} psi";
+            priFanText2.text = $"Primary Fan\n{telemetry.eva2.fan_pri_rpm} rpm";
+            secFanText2.text = $"Secondary Fan\n{telemetry.eva2.fan_sec_rpm} rpm";
+            coolantGasPressureText2.text = $"H2O Gas Pressure\n{telemetry.eva2.coolant_gas_pressure} psi";
+            coolantLiquidPressureText2.text = $"H2O Liquid Pressure\n{telemetry.eva2.coolant_liquid_pressure} psi";
+            coolantText2.text = $"Coolant\n{telemetry.eva2.coolant_ml} ml";
         }
     }
 
@@ -501,14 +550,14 @@ public class displayTSS : MonoBehaviour
         {
             imuText1.text = $"Your X Coordinate\t {imu.eva1.posx} longitude\n" +
                         $"Your Y Coordinate\t {imu.eva1.posy} latitude\n" +
-                        $"Your Heading\t {imu.eva1.heading} 째";
+                        $"Your Heading\t {imu.eva1.heading} �";
         }
 
         if (imu != null && imu.eva2 != null)
         {
             imuText2.text = $"Partner's X Coordinate\t {imu.eva2.posx} longitude\n" +
                         $"Partner's Y Coordinate\t {imu.eva2.posy} latitude\n" +
-                        $"Partner's Heading\t {imu.eva2.heading} 째";
+                        $"Partner's Heading\t {imu.eva2.heading} �";
         }
     }
 
@@ -518,8 +567,8 @@ public class displayTSS : MonoBehaviour
         {
             roverText.text = $"Rover X Coordinate\t {rover.posx} longitude\n" +
                         $"Rover Y Coordinate\t {rover.posy} latitude";
-                        //$"Oxygen\t {rover.posy} \n" +
-                        //$"Water Waste\t {rover.qr_id} ";
+            //$"Oxygen\t {rover.posy} \n" +
+            //$"Water Waste\t {rover.qr_id} ";
         }
     }
 
@@ -573,4 +622,4 @@ public class displayTSS : MonoBehaviour
         }
     }
 
-}*/
+}
