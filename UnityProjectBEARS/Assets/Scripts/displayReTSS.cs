@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using System;
 using System.IO;
 
@@ -140,9 +141,14 @@ public class displayReTSS : MonoBehaviour
     //TELEMETRY.json
     public TMP_Text timeText;
 
+    //ev-1
+    public TMP_Text heartRateText1;
+    public TMP_Text temperatureText1;
     public TMP_Text battTimeText1;
     public TMP_Text oxyTimeText1;
-    public TMP_Text heartRateText1;
+    public TMP_Text oxyConsumptionText1;
+    public TMP_Text co2ProductionText1;
+
     public TMP_Text suitOxyText1;
     public TMP_Text suitCo2Text1;
     public TMP_Text suitOtherText1;
@@ -150,22 +156,26 @@ public class displayReTSS : MonoBehaviour
     public TMP_Text helmetCo2Text1;
     public TMP_Text scrubberAText1;
     public TMP_Text scrubberBText1;
-    public TMP_Text co2ProductionText1;
+
     public TMP_Text priOxyStorageText1;
     public TMP_Text secOxyStorageText1;
     public TMP_Text priOxyPressureText1;
     public TMP_Text secOxyPressureText1;
-    public TMP_Text oxyConsumptionText1;
+
     public TMP_Text priFanText1;
     public TMP_Text secFanText1;
-    public TMP_Text temperatureText1;
-    public TMP_Text coolantText1;
     public TMP_Text coolantGasPressureText1;
     public TMP_Text coolantLiquidPressureText1;
+    public TMP_Text coolantText1;
 
+    //ev-2
+    public TMP_Text heartRateText2;
+    public TMP_Text temperatureText2;
     public TMP_Text battTimeText2;
     public TMP_Text oxyTimeText2;
-    public TMP_Text heartRateText2;
+    public TMP_Text oxyConsumptionText2;
+    public TMP_Text co2ProductionText2;
+
     public TMP_Text suitOxyText2;
     public TMP_Text suitCo2Text2;
     public TMP_Text suitOtherText2;
@@ -173,18 +183,18 @@ public class displayReTSS : MonoBehaviour
     public TMP_Text helmetCo2Text2;
     public TMP_Text scrubberAText2;
     public TMP_Text scrubberBText2;
-    public TMP_Text co2ProductionText2;
+
     public TMP_Text priOxyStorageText2;
     public TMP_Text secOxyStorageText2;
     public TMP_Text priOxyPressureText2;
     public TMP_Text secOxyPressureText2;
-    public TMP_Text oxyConsumptionText2;
+
     public TMP_Text priFanText2;
     public TMP_Text secFanText2;
-    public TMP_Text temperatureText2;
-    public TMP_Text coolantText2;
     public TMP_Text coolantGasPressureText2;
     public TMP_Text coolantLiquidPressureText2;
+    public TMP_Text coolantText2;
+
 
 
     //EVA.json
@@ -212,14 +222,48 @@ public class displayReTSS : MonoBehaviour
     //ROVER.json
     public TMP_Text roverText;
 
+
     //SPEC.json
-    public TMP_Text geoText1;
-    public TMP_Text geoText2;
+    //public TMP_Text geoText1;
+    public TMP_Text typeBasalt1;
+    public TMP_Text siText1;
+    public TMP_Text tiText1;
+    public TMP_Text alText1;
+    public TMP_Text feText1;
+    public TMP_Text mnText1;
+    public TMP_Text mgText1;
+    public TMP_Text caText1;
+    public TMP_Text kText1;
+    public TMP_Text pText1;
+    public TMP_Text otherText1;
+    //public TMP_Text geoText2;
+    public TMP_Text typeBasalt2;
+    public TMP_Text siText2;
+    public TMP_Text tiText2;
+    public TMP_Text alText2;
+    public TMP_Text feText2;
+    public TMP_Text mnText2;
+    public TMP_Text mgText2;
+    public TMP_Text caText2;
+    public TMP_Text kText2;
+    public TMP_Text pText2;
+    public TMP_Text otherText2;
+
 
     //UIA.json
-    public TMP_Text uiaText1;
-    public TMP_Text uiaText2;
-    public TMP_Text uiaSide;
+    //public TMP_Text uiaText1;
+    public Slider supplyFlip1;
+    public Slider wasteFlip1;
+    public Slider powerFlip1;
+    public Slider oxygenFlip1;
+    //public TMP_Text uiaText2;
+    public Slider supplyFlip2;
+    public Slider wasteFlip2;
+    public Slider powerFlip2;
+    public Slider oxygenFlip2;
+    //public TMP_Text uiaSide;
+    public Slider ventFlip;
+    public Slider depressFlip;
 
 
     //file paths
@@ -576,6 +620,102 @@ public class displayReTSS : MonoBehaviour
     {
         if (spec != null && spec.eva1 != null)
         {
+            var data = spec.eva1.data;
+
+            siText1.text = $"{data.SiO2}%";
+            tiText1.text = $"{data.TiO2}%";
+            alText1.text = $"{data.Al2O3}%";
+            feText1.text = $"{data.FeO}%";
+            mnText1.text = $"{data.MnO}%";
+            mgText1.text = $"{data.MgO}%";
+            caText1.text = $"{data.CaO}%";
+            kText1.text = $"{data.K2O}%";
+            pText1.text = $"{data.P2O3}%";
+            otherText1.text = $"{data.other}%";
+
+            if (data.SiO2 == 30.75 && data.TiO2 == 0.92 && data.Al2O3 == 4.88 && data.FeO == 17.12 && data.MnO == 0.2 && data.MgO == 12.95 && data.CaO == 2.03 && data.K2O == 0.22 && data.P2O3 == 0.69)
+            {
+                typeBasalt1.text = "Mare Basalt";
+            }
+            else if (data.SiO2 == 25.9 && data.TiO2 == 0.88 && data.Al2O3 == 4.75 && data.FeO == 14.1 && data.MnO == 0.24 && data.MgO == 11.22 && data.CaO == 9.01 && data.K2O == 0.23 && data.P2O3 == 0.65)
+            {
+                typeBasalt1.text = "Vesicular Basalt";
+            }
+            else if (data.SiO2 == 36.64 && data.TiO2 == 0.92 && data.Al2O3 == 8.33 && data.FeO == 18.68 && data.MnO == 0.43 && data.MgO == 6.84 && data.CaO == 5.91 && data.K2O == 0.5 && data.P2O3 == 1.19)
+            {
+                typeBasalt1.text = "Olivine-1 Basalt";
+            }
+            else if (data.SiO2 == 38.29 && data.TiO2 == 1.47 && data.Al2O3 == 7.63 && data.FeO == 18.74 && data.MnO == 0.46 && data.MgO == 2.64 && data.CaO == 7.76 && data.K2O == 0.75 && data.P2O3 == 1.68)
+            {
+                typeBasalt1.text = "Feldspathic Basalt";
+            }
+            else if (data.SiO2 == 39.41 && data.TiO2 == 0.39 && data.Al2O3 == 1.94 && data.FeO == 29.3 && data.MnO == 0.71 && data.MgO == 19.27 && data.CaO == 3.8 && data.K2O == 0.12 && data.P2O3 == 0.3)
+            {
+                typeBasalt1.text = "Pigeonite Basalt";
+            }
+            else if (data.SiO2 == 40.36 && data.TiO2 == 0.99 && data.Al2O3 == 2.32 && data.FeO == 25.71 && data.MnO == 0.58 && data.MgO == 12.81 && data.CaO == 5.95 && data.K2O == 0.2 && data.P2O3 == 0.28)
+            {
+                typeBasalt1.text = "Olivine-2 Basalt";
+            }
+            else if (data.SiO2 == 43.98 && data.TiO2 == 1.04 && data.Al2O3 == 5.75 && data.FeO == 20.4 && data.MnO == 0.51 && data.MgO == 6.02 && data.CaO == 8.89 && data.K2O == 0.71 && data.P2O3 == 1.09)
+            {
+                typeBasalt1.text = "Ilmenite Basalt";
+            }
+            else
+            {
+                typeBasalt1.text = "Basalt Type Unknown";
+            }
+        }
+
+        if (spec != null && spec.eva2 != null)
+        {
+            var data = spec.eva2.data;
+
+            siText2.text = $"{data.SiO2}%";
+            tiText2.text = $"{data.TiO2}%";
+            alText2.text = $"{data.Al2O3}%";
+            feText2.text = $"{data.FeO}%";
+            mnText2.text = $"{data.MnO}%";
+            mgText2.text = $"{data.MgO}%";
+            caText2.text = $"{data.CaO}%";
+            kText2.text = $"{data.K2O}%";
+            pText2.text = $"{data.P2O3}%";
+            otherText2.text = $"{data.other}%";
+
+            if (data.SiO2 == 30.75 && data.TiO2 == 0.92 && data.Al2O3 == 4.88 && data.FeO == 17.12 && data.MnO == 0.2 && data.MgO == 12.95 && data.CaO == 2.03 && data.K2O == 0.22 && data.P2O3 == 0.69)
+            {
+                typeBasalt1.text = "Mare Basalt";
+            }
+            else if (data.SiO2 == 25.9 && data.TiO2 == 0.88 && data.Al2O3 == 4.75 && data.FeO == 14.1 && data.MnO == 0.24 && data.MgO == 11.22 && data.CaO == 9.01 && data.K2O == 0.23 && data.P2O3 == 0.65)
+            {
+                typeBasalt1.text = "Vesicular Basalt";
+            }
+            else if (data.SiO2 == 36.64 && data.TiO2 == 0.92 && data.Al2O3 == 8.33 && data.FeO == 18.68 && data.MnO == 0.43 && data.MgO == 6.84 && data.CaO == 5.91 && data.K2O == 0.5 && data.P2O3 == 1.19)
+            {
+                typeBasalt1.text = "Olivine-1 Basalt";
+            }
+            else if (data.SiO2 == 38.29 && data.TiO2 == 1.47 && data.Al2O3 == 7.63 && data.FeO == 18.74 && data.MnO == 0.46 && data.MgO == 2.64 && data.CaO == 7.76 && data.K2O == 0.75 && data.P2O3 == 1.68)
+            {
+                typeBasalt1.text = "Feldspathic Basalt";
+            }
+            else if (data.SiO2 == 39.41 && data.TiO2 == 0.39 && data.Al2O3 == 1.94 && data.FeO == 29.3 && data.MnO == 0.71 && data.MgO == 19.27 && data.CaO == 3.8 && data.K2O == 0.12 && data.P2O3 == 0.3)
+            {
+                typeBasalt1.text = "Pigeonite Basalt";
+            }
+            else if (data.SiO2 == 40.36 && data.TiO2 == 0.99 && data.Al2O3 == 2.32 && data.FeO == 25.71 && data.MnO == 0.58 && data.MgO == 12.81 && data.CaO == 5.95 && data.K2O == 0.2 && data.P2O3 == 0.28)
+            {
+                typeBasalt1.text = "Olivine-2 Basalt";
+            }
+            else if (data.SiO2 == 43.98 && data.TiO2 == 1.04 && data.Al2O3 == 5.75 && data.FeO == 20.4 && data.MnO == 0.51 && data.MgO == 6.02 && data.CaO == 8.89 && data.K2O == 0.71 && data.P2O3 == 1.09)
+            {
+                typeBasalt1.text = "Ilmenite Basalt";
+            }
+            else
+            {
+                typeBasalt1.text = "Basalt Type Unknown";
+            }
+        }
+        /*if (spec != null && spec.eva1 != null) {
             geoText1.text = $"Si02\t\t {spec.eva1.data.SiO2} %\n" +
                         $"Ti02\t\t {spec.eva1.data.TiO2} %\n" +
                         $"Al203\t\t {spec.eva1.data.Al2O3} %\n" +
@@ -587,9 +727,7 @@ public class displayReTSS : MonoBehaviour
                         $"P203\t\t {spec.eva1.data.P2O3} %\n" +
                         $"Other\t\t {spec.eva1.data.other} %";
         }
-
-        if (spec != null && spec.eva2 != null)
-        {
+        if (spec != null && spec.eva2 != null) {
             geoText2.text = $"Si02\t\t {spec.eva2.data.SiO2} %\n" +
                         $"Ti02\t\t {spec.eva2.data.TiO2} %\n" +
                         $"Al203\t\t {spec.eva2.data.Al2O3} %\n" +
@@ -600,25 +738,92 @@ public class displayReTSS : MonoBehaviour
                         $"K20\t\t {spec.eva2.data.K2O} %\n" +
                         $"P203\t\t {spec.eva2.data.P2O3} %\n" +
                         $"Other\t\t {spec.eva2.data.other} %";
-        }
+        }*/
     }
 
     void UpdateUiaUI(Telemetry uia)
     {
         if (uia != null)
         {
-            uiaText1.text = $"Power\t {uia.eva1_power} \n" +
-                       $"Oxygen\t {uia.eva1_oxy} \n" +
-                       $"Water Supply\t {uia.eva1_water_supply} \n" +
-                       $"Water Waste\t {uia.eva1_water_waste} ";
+            if (uia.eva1_water_supply == true) {
+                supplyFlip1.value = 1.0f;
+            }
+            else {
+                supplyFlip1.value = 0.0f;
+            }
 
-            uiaText2.text = $"Power\t {uia.eva2_power} \n" +
-                       $"Oxygen\t {uia.eva2_oxy} \n" +
-                       $"Water Supply\t {uia.eva2_water_supply} \n" +
-                       $"Water Waste\t {uia.eva2_water_waste} ";
+            if (uia.eva1_water_waste == true) {
+                wasteFlip1.value = 1.0f;
+            }
+            else {
+                wasteFlip1.value = 0.0f;
+            }
 
-            uiaSide.text = $"Oxygen Vent\t {uia.oxy_vent} \n" +
-                       $"Depress\t {uia.depress} ";
+            if (uia.eva1_power == true) {
+                powerFlip1.value = 1.0f;
+            }
+            else {
+                powerFlip1.value = 0.0f;
+            }
+
+            if (uia.eva1_oxy == true) {
+                oxygenFlip1.value = 1.0f;
+            }
+            else {
+                oxygenFlip1.value = 0.0f;
+            }
+    //uiaText1.text = $"Power\t {uia.eva1_power} \n" +
+    //           $"Oxygen\t {uia.eva1_oxy} \n" +
+    //           $"Water Supply\t {uia.eva1_water_supply} \n" +
+    //           $"Water Waste\t {uia.eva1_water_waste} ";
+
+            if (uia.eva2_water_supply == true) {
+                supplyFlip2.value = 1.0f;
+            }
+            else {
+                supplyFlip2.value = 0.0f;
+            }
+
+            if (uia.eva2_water_waste == true) {
+                wasteFlip2.value = 1.0f;
+            }
+            else {
+                wasteFlip2.value = 0.0f;
+            }
+
+            if (uia.eva2_power == true) {
+                powerFlip2.value = 1.0f;
+            }
+            else {
+                powerFlip2.value = 0.0f;
+            }
+
+            if (uia.eva2_oxy == true) {
+                oxygenFlip2.value = 1.0f;
+            }
+            else {
+                oxygenFlip2.value = 0.0f;
+            }
+            //uiaText2.text = $"Power\t {uia.eva2_power} \n" +
+            //           $"Oxygen\t {uia.eva2_oxy} \n" +
+            //           $"Water Supply\t {uia.eva2_water_supply} \n" +
+            //           $"Water Waste\t {uia.eva2_water_waste} ";
+
+            if (uia.oxy_vent == true) {
+                ventFlip.value = 1.0f;
+            }
+            else {
+                ventFlip.value = 0.0f;
+            }
+
+            if (uia.depress == true) {
+                depressFlip.value = 1.0f;
+            }
+            else {
+                depressFlip.value = 0.0f;
+            }
+            //uiaSide.text = $"Oxygen Vent\t {uia.oxy_vent} \n" +
+            //           $"Depress\t {uia.depress} ";
         }
     }
 
