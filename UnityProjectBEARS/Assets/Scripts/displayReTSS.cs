@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using System.IO;
+using TMPro.Examples;
 
 [Serializable]
 public class RootObject
@@ -139,6 +140,10 @@ public class Comps
 public class displayReTSS : MonoBehaviour
 {
     //TELEMETRY.json
+    public ObjectSpin pri1 = GameObject.Find("priFan1").GetComponent<ObjectSpin>();
+    public ObjectSpin sec1 = GameObject.Find("secFan1").GetComponent<ObjectSpin>();
+    public ObjectSpin pri2 = GameObject.Find("priFan2").GetComponent<ObjectSpin>();
+    public ObjectSpin sec2 = GameObject.Find("secFan2").GetComponent<ObjectSpin>();
     public TMP_Text timeText;
 
     //ev-1
@@ -661,8 +666,31 @@ public class displayReTSS : MonoBehaviour
                 //green is ON
                 //rightRed is OFF
             }
-
-
+            if (telemetry.eva1.fan_pri_rpm == 0) {
+                pri1.SpinSpeed = 0;
+            }
+            else {
+                pri1.SpinSpeed = 200;
+            }
+            if (telemetry.eva1.fan_sec_rpm == 0) {
+                sec1.SpinSpeed = 0;
+            }
+            else {
+                sec1.SpinSpeed = 200;
+            }
+            if (telemetry.eva2.fan_pri_rpm == 0) {
+                pri2.SpinSpeed = 0;
+            }
+            else {
+                pri2.SpinSpeed = 200;
+            }
+            if (telemetry.eva2.fan_sec_rpm == 0) {
+                sec2.SpinSpeed = 0;
+            }
+            else {
+                sec2.SpinSpeed = 200;
+            }
+            
             heartRateText1.text = $"Heart Rate\n{telemetry.eva1.heart_rate} bpm";
             temperatureText1.text = $"Temperature\n{telemetry.eva1.temperature} �F";
             battTimeText1.text = $"Battery Time Left\n{telemetry.eva1.batt_time_left} seconds";
