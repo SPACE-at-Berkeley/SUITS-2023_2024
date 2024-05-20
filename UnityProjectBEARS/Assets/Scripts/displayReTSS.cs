@@ -418,7 +418,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva1.heart_rate > 160)
+            else if (telemetry.eva1.heart_rate > 160)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -438,7 +438,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva1.oxy_pri_storage > 100)
+            else if (telemetry.eva1.oxy_pri_storage > 100)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -457,7 +457,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva1.oxy_sec_storage > 100)
+            else if (telemetry.eva1.oxy_sec_storage > 100)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -476,7 +476,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva1.oxy_pri_pressure > 3000)
+            else if (telemetry.eva1.oxy_pri_pressure > 3000)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -495,7 +495,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva1.oxy_sec_pressure > 3000)
+            else if (telemetry.eva1.oxy_sec_pressure > 3000)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -514,7 +514,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva1.coolant_liquid_pressure > 700)
+            else if (telemetry.eva1.coolant_liquid_pressure > 700)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -533,7 +533,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva1.coolant_gas_pressure > 700)
+            else if (telemetry.eva1.coolant_gas_pressure > 700)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -553,7 +553,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva2.oxy_pri_storage > 100)
+            else if (telemetry.eva2.oxy_pri_storage > 100)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -572,7 +572,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva2.oxy_sec_storage > 100)
+            else if (telemetry.eva2.oxy_sec_storage > 100)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -591,7 +591,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva2.oxy_pri_pressure > 3000)
+            else if (telemetry.eva2.oxy_pri_pressure > 3000)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -610,7 +610,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva2.oxy_sec_pressure > 3000)
+            else if (telemetry.eva2.oxy_sec_pressure > 3000)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -629,7 +629,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva2.coolant_liquid_pressure > 700)
+            else if (telemetry.eva2.coolant_liquid_pressure > 700)
             {
                 //leftRed is OFF
                 //green is OFF
@@ -648,7 +648,7 @@ public class displayReTSS : MonoBehaviour
                 //green is OFF
                 //rightRed is OFF
             } 
-            elif (telemetry.eva2.coolant_gas_pressure > 700)
+            else if (telemetry.eva2.coolant_gas_pressure > 700)
             {
                 //leftRed is OFF
                 //green is OFF
