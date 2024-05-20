@@ -545,6 +545,7 @@ public class displayReTSS : MonoBehaviour
                 //leftRed is OFF
                 //green is ON
                 //rightRed is OFF
+            }
             
              if (telemetry.eva2.oxy_pri_storage < 20)
             {
