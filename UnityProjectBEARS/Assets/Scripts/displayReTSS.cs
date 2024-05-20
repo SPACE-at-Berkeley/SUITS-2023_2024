@@ -218,6 +218,14 @@ public class displayReTSS : MonoBehaviour
     public TMP_Text dcuOxy2;
     public TMP_Text dcuComm2;
 
+    //EVA1
+    public TMP_Text dcuBatt1;
+    public TMP_Text dcuFan1;
+    public TMP_Text dcuPump1;
+    public TMP_Text dcuCo2_1;
+    public TMP_Text dcuOxy1;
+    public TMP_Text dcuComm1;
+
     //ERROR.json
     public TMP_Text errorText;
 
@@ -405,7 +413,7 @@ public class displayReTSS : MonoBehaviour
         {
             //top bar
             heartRateText1.text = $"Heart Rate\n{telemetry.eva1.heart_rate} bpm";
-            temperatureText1.text = $"Temperature\n{telemetry.eva1.temperature} °F";
+            temperatureText1.text = $"Temperature\n{telemetry.eva1.temperature} ï¿½F";
             battTimeText1.text = $"Battery Time Left\n{telemetry.eva1.batt_time_left} seconds";
             oxyTimeText1.text = $"Oxygen Time Left\n{telemetry.eva1.oxy_time_left} seconds";
             co2ProductionText1.text = $"CO2 Production\n{telemetry.eva1.co2_production} psi/min";
@@ -436,7 +444,7 @@ public class displayReTSS : MonoBehaviour
         if (telemetry != null && telemetry.eva2 != null)
         {
             heartRateText2.text = $"Heart Rate\n{telemetry.eva2.heart_rate} bpm";
-            temperatureText2.text = $"Temperature\n{telemetry.eva2.temperature} °F";
+            temperatureText2.text = $"Temperature\n{telemetry.eva2.temperature} ï¿½F";
             battTimeText2.text = $"Battery Time Left\n{telemetry.eva2.batt_time_left} seconds";
             oxyTimeText2.text = $"Oxygen Time Left\n{telemetry.eva2.oxy_time_left} seconds";
             co2ProductionText2.text = $"CO2 Production\n{telemetry.eva2.co2_production} psi/min";
@@ -565,68 +573,58 @@ public class displayReTSS : MonoBehaviour
     {
         if (dcu != null && dcu.eva1 != null)
         {
-            /*dcuText1.text = $"Battery On\t {dcu.eva1.batt} \n" +
-                        $"Oxygen On\t {dcu.eva1.oxy} \n" +
-                        $"Comms On\t {dcu.eva1.comm} \n" +
-                        $"Fan On\t {dcu.eva1.fan} \n" +
-                        $"Pump On\t {dcu.eva1.pump} \n" +
-                        $"CO2 On\t {dcu.eva1.co2} ";*/
-        }
-
-        if (dcu != null && dcu.eva2 != null)
-        {
-            if (dcu.eva2.batt == true)
+            if (dcu.eva1.batt == true)
             {
-                dcuBatt2.text = "ON";
+                dcuBatt1.text = "ON";
             }
             else
             {
                 dcuBatt2.text = "OFF";
             }
 
-            if (dcu.eva2.oxy == true)
+            if (dcu.eva1.oxy == true)
             {
-                dcuOxy2.text = "ON";
+                dcuOxy1.text = "ON";
             }
             else
             {
-                dcuOxy2.text = "OFF";
+                dcuOxy1.text = "OFF";
             }
 
-            if (dcu.eva2.comm == true)
+            if (dcu.eva1.comm == true)
             {
-                dcuComm2.text = "ON";
+                dcuComm1.text = "ON";
             }
             else
             {
-                dcuComm2.text = "OFF";
+                dcuComm1.text = "OFF";
             }
 
-            if (dcu.eva2.fan == true)
+            if (dcu.eva1.fan == true)
             {
-                dcuFan2.text = "ON";
+                dcuFan1.text = "ON";
             }
             else
             {
-                dcuFan2.text = "OFF";
+                dcuFan1.text = "OFF";
             }
 
-            if (dcu.eva2.pump == true)
+            if (dcu.eva1.pump == true)
             {
-                dcuPump2.text = "ON";
+                dcuPump1.text = "ON";
             }
             else
             {
-                dcuPump2.text = "OFF";
+                dcuPump1.text = "OFF";
             }
 
-            if (dcu.eva2.co2 == true)
+            if (dcu.eva1.co2 == true)
             {
-                dcuCo2.text = "ON";
+                dcuCo2_1.text = "ON";
             }
             else
             {
-                dcuCo2.text = "OFF";
+                dcuCo2_1.text = "OFF";
             }
         }
     }
@@ -647,14 +645,14 @@ public class displayReTSS : MonoBehaviour
         {
             imuText1.text = $"Your X Coordinate\t {imu.eva1.posx} longitude\n" +
                         $"Your Y Coordinate\t {imu.eva1.posy} latitude\n" +
-                        $"Your Heading\t {imu.eva1.heading} °";
+                        $"Your Heading\t {imu.eva1.heading} ï¿½";
         }
 
         if (imu != null && imu.eva2 != null)
         {
             imuText2.text = $"Partner's X Coordinate\t {imu.eva2.posx} longitude\n" +
                         $"Partner's Y Coordinate\t {imu.eva2.posy} latitude\n" +
-                        $"Partner's Heading\t {imu.eva2.heading} °";
+                        $"Partner's Heading\t {imu.eva2.heading} ï¿½";
         }
     }
 
