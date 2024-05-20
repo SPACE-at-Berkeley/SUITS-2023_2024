@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2299,7 +2299,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437102651}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7343,7 +7343,7 @@ GameObject:
   - component: {fileID: 331720265}
   - component: {fileID: 331720266}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Pow1Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10235,6 +10235,7 @@ GameObject:
   - component: {fileID: 462412868}
   - component: {fileID: 462412873}
   - component: {fileID: 462412872}
+  - component: {fileID: 462412874}
   m_Layer: 5
   m_Name: ReCanvas
   m_TagString: Untagged
@@ -10367,6 +10368,112 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462412867}
   m_CullTransparentMesh: 1
+--- !u!114 &462412874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462412867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9182376db1fcdf46a2c0e32656bf5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 0}
+  heartRateText1: {fileID: 0}
+  temperatureText1: {fileID: 0}
+  battTimeText1: {fileID: 0}
+  oxyTimeText1: {fileID: 0}
+  oxyConsumptionText1: {fileID: 0}
+  co2ProductionText1: {fileID: 0}
+  suitOxyText1: {fileID: 0}
+  suitCo2Text1: {fileID: 0}
+  suitOtherText1: {fileID: 0}
+  suitTotalText1: {fileID: 0}
+  helmetCo2Text1: {fileID: 0}
+  scrubberAText1: {fileID: 0}
+  scrubberBText1: {fileID: 0}
+  priOxyStorageText1: {fileID: 0}
+  secOxyStorageText1: {fileID: 0}
+  priOxyPressureText1: {fileID: 0}
+  secOxyPressureText1: {fileID: 0}
+  priFanText1: {fileID: 0}
+  secFanText1: {fileID: 0}
+  coolantGasPressureText1: {fileID: 0}
+  coolantLiquidPressureText1: {fileID: 0}
+  coolantText1: {fileID: 0}
+  heartRateText2: {fileID: 0}
+  temperatureText2: {fileID: 0}
+  battTimeText2: {fileID: 0}
+  oxyTimeText2: {fileID: 0}
+  oxyConsumptionText2: {fileID: 0}
+  co2ProductionText2: {fileID: 0}
+  suitOxyText2: {fileID: 0}
+  suitCo2Text2: {fileID: 0}
+  suitOtherText2: {fileID: 0}
+  suitTotalText2: {fileID: 0}
+  helmetCo2Text2: {fileID: 0}
+  scrubberAText2: {fileID: 0}
+  scrubberBText2: {fileID: 0}
+  priOxyStorageText2: {fileID: 0}
+  secOxyStorageText2: {fileID: 0}
+  priOxyPressureText2: {fileID: 0}
+  secOxyPressureText2: {fileID: 0}
+  priFanText2: {fileID: 0}
+  secFanText2: {fileID: 0}
+  coolantGasPressureText2: {fileID: 0}
+  coolantLiquidPressureText2: {fileID: 0}
+  coolantText2: {fileID: 0}
+  evaStatus: {fileID: 0}
+  evaStatusUIA: {fileID: 0}
+  evaStatusDCU: {fileID: 0}
+  evaStatusGEO: {fileID: 0}
+  evaStatusROVER: {fileID: 0}
+  towerText: {fileID: 0}
+  dcuBatt2: {fileID: 850699329}
+  dcuFan2: {fileID: 0}
+  dcuPump2: {fileID: 0}
+  dcuCo2: {fileID: 0}
+  dcuOxy2: {fileID: 0}
+  dcuComm2: {fileID: 0}
+  errorText: {fileID: 0}
+  imuText1: {fileID: 0}
+  imuText2: {fileID: 0}
+  roverText: {fileID: 0}
+  typeBasalt1: {fileID: 0}
+  siText1: {fileID: 0}
+  tiText1: {fileID: 0}
+  alText1: {fileID: 0}
+  feText1: {fileID: 0}
+  mnText1: {fileID: 0}
+  mgText1: {fileID: 0}
+  caText1: {fileID: 0}
+  kText1: {fileID: 0}
+  pText1: {fileID: 0}
+  otherText1: {fileID: 0}
+  typeBasalt2: {fileID: 0}
+  siText2: {fileID: 0}
+  tiText2: {fileID: 0}
+  alText2: {fileID: 0}
+  feText2: {fileID: 0}
+  mnText2: {fileID: 0}
+  mgText2: {fileID: 0}
+  caText2: {fileID: 0}
+  kText2: {fileID: 0}
+  pText2: {fileID: 0}
+  otherText2: {fileID: 0}
+  supplyFlip1: {fileID: 0}
+  wasteFlip1: {fileID: 0}
+  powerFlip1: {fileID: 0}
+  oxygenFlip1: {fileID: 0}
+  supplyFlip2: {fileID: 0}
+  wasteFlip2: {fileID: 0}
+  powerFlip2: {fileID: 0}
+  oxygenFlip2: {fileID: 0}
+  ventFlip: {fileID: 0}
+  depressFlip: {fileID: 0}
+  updateInterval: 1
 --- !u!1 &465808904
 GameObject:
   m_ObjectHideFlags: 0
@@ -10899,7 +11006,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437102651}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16838,7 +16945,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437102651}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17967,7 +18074,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437102651}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19596,7 +19703,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437102651}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20989,7 +21096,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437102651}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -24199,7 +24306,7 @@ GameObject:
   - component: {fileID: 1039647474}
   - component: {fileID: 1039647475}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Waste1Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29147,7 +29254,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437102651}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -35599,6 +35706,7 @@ Transform:
   m_Children:
   - {fileID: 38740175}
   - {fileID: 55991361}
+  - {fileID: 1609363654}
   - {fileID: 924292486}
   - {fileID: 802121388}
   - {fileID: 476483543}
@@ -38745,6 +38853,79 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605833840}
+  m_CullTransparentMesh: 1
+--- !u!1 &1609363653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1609363654}
+  - component: {fileID: 1609363656}
+  - component: {fileID: 1609363655}
+  m_Layer: 5
+  m_Name: RawImage (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1609363654
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609363653}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1437102651}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -775, y: 230}
+  m_SizeDelta: {x: 200, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1609363655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609363653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: c4e618f3ab8fd14479bbe5ee4a88992a, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1609363656
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609363653}
   m_CullTransparentMesh: 1
 --- !u!1 &1625961834
 GameObject:
@@ -48734,7 +48915,7 @@ GameObject:
   - component: {fileID: 2100325554}
   - component: {fileID: 2100325555}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Sup1Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49455,7 +49636,7 @@ GameObject:
   - component: {fileID: 2128821856}
   - component: {fileID: 2128821857}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Oxy1Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

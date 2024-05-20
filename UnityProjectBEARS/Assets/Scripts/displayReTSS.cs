@@ -209,8 +209,14 @@ public class displayReTSS : MonoBehaviour
     public TMP_Text towerText;
 
     //DCU.json
-    public TMP_Text dcuText1;
-    public TMP_Text dcuText2;
+    //public TMP_Text dcuText1;
+    //public TMP_Text dcuText2;
+    public TMP_Text dcuBatt2;
+    public TMP_Text dcuFan2;
+    public TMP_Text dcuPump2;
+    public TMP_Text dcuCo2;
+    public TMP_Text dcuOxy2;
+    public TMP_Text dcuComm2;
 
     //ERROR.json
     public TMP_Text errorText;
@@ -559,22 +565,69 @@ public class displayReTSS : MonoBehaviour
     {
         if (dcu != null && dcu.eva1 != null)
         {
-            dcuText1.text = $"Battery On\t {dcu.eva1.batt} \n" +
+            /*dcuText1.text = $"Battery On\t {dcu.eva1.batt} \n" +
                         $"Oxygen On\t {dcu.eva1.oxy} \n" +
                         $"Comms On\t {dcu.eva1.comm} \n" +
                         $"Fan On\t {dcu.eva1.fan} \n" +
                         $"Pump On\t {dcu.eva1.pump} \n" +
-                        $"CO2 On\t {dcu.eva1.co2} ";
+                        $"CO2 On\t {dcu.eva1.co2} ";*/
         }
 
         if (dcu != null && dcu.eva2 != null)
         {
-            dcuText2.text = $"Battery On\t {dcu.eva2.batt} \n" +
-                        $"Oxygen On\t {dcu.eva2.oxy} \n" +
-                        $"Comms On\t {dcu.eva2.comm} \n" +
-                        $"Fan On\t {dcu.eva2.fan} \n" +
-                        $"Pump On\t {dcu.eva2.pump} \n" +
-                        $"CO2 On\t {dcu.eva2.co2} ";
+            if (dcu.eva2.batt == true)
+            {
+                dcuBatt2.text = "ON";
+            }
+            else
+            {
+                dcuBatt2.text = "OFF";
+            }
+
+            if (dcu.eva2.oxy == true)
+            {
+                dcuOxy2.text = "ON";
+            }
+            else
+            {
+                dcuOxy2.text = "OFF";
+            }
+
+            if (dcu.eva2.comm == true)
+            {
+                dcuComm2.text = "ON";
+            }
+            else
+            {
+                dcuComm2.text = "OFF";
+            }
+
+            if (dcu.eva2.fan == true)
+            {
+                dcuFan2.text = "ON";
+            }
+            else
+            {
+                dcuFan2.text = "OFF";
+            }
+
+            if (dcu.eva2.pump == true)
+            {
+                dcuPump2.text = "ON";
+            }
+            else
+            {
+                dcuPump2.text = "OFF";
+            }
+
+            if (dcu.eva2.co2 == true)
+            {
+                dcuCo2.text = "ON";
+            }
+            else
+            {
+                dcuCo2.text = "OFF";
+            }
         }
     }
 
