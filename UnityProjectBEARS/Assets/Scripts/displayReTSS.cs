@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using System.IO;
+using UnityEngine.Networking;
 
 [Serializable]
 public class RootObject
@@ -317,30 +318,31 @@ public class displayReTSS : MonoBehaviour
     public Slider ventFlip;
     public Slider depressFlip;
 
+    private const string TSS_URL = "http://172.20.3.175:14141";
 
     //file paths
     public float updateInterval = 1f; // Update every second
     //LMCC Laptop path: /home/space/TSS_2024/public/json_data/
-    private string filePathTELEMETRY = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/teams/10/TELEMETRY.json";
-    private string filePathEVA = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/teams/10/EVA.json"; //later add custom variable for 0-10 to set unique team-combo scenarios
-    private string filePathCOMM = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/COMM.json";
-    private string filePathDCU = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/DCU.json";
-    private string filePathERROR = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/ERROR.json";
-    private string filePathIMU = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/IMU.json";
-    private string filePathROVER = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/ROVER.json";
-    private string filePathSPEC = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/SPEC.json";
-    private string filePathUIA = "c/Users/gonza/myUnityProjects/TSS/TSS_2024/public/json_data/UIA.json";
+    private string filePathTELEMETRY = $"http://172.20.3.175:14141/json_data/teams/10/TELEMETRY.json"; //teams/10/TELEMETRY.json";
+    private string filePathEVA = $"{TSS_URL}/json_data/teams/10/EVA.json"; //later add custom variable for 0-10 to set unique team-combo scenarios
+    private string filePathCOMM = $"{TSS_URL}/json_data/COMM.json";
+    private string filePathDCU = $"{TSS_URL}/json_data/DCU.json";
+    private string filePathERROR = $"{TSS_URL}/json_data/ERROR.json";
+    private string filePathIMU = $"{TSS_URL}/json_data/IMU.json";
+    private string filePathROVER = $"{TSS_URL}/json_data/ROVER.json";
+    private string filePathSPEC = $"{TSS_URL}/json_data/SPEC.json";
+    private string filePathUIA = $"{TSS_URL}/json_data/UIA.json";
 
 
     //yet to update lines below this point
     void Start()
     {
-        if (!File.Exists(filePathTELEMETRY))
-        {
-            Debug.LogError("JSON file does not exist: " + filePathTELEMETRY);
-            return;
-        }
-        else if (!File.Exists(filePathEVA))
+        //if (!File.Exists(filePathTELEMETRY))
+        //{
+        //    Debug.LogError("JSON file does not exist: " + filePathTELEMETRY);
+        //    return;
+        //}
+        /*if (!File.Exists(filePathEVA))
         {
             Debug.LogError("JSON file does not exist: " + filePathEVA);
             return;
@@ -384,8 +386,8 @@ public class displayReTSS : MonoBehaviour
         {
             Debug.Log("All files located");
             StartCoroutine(UpdateTSSUI());
-        }
-
+        }*/
+        StartCoroutine(UpdateTSSUI());
         //StartCoroutine(UpdateTelemetry());
     }
 
@@ -393,46 +395,175 @@ public class displayReTSS : MonoBehaviour
     {
         while (true)
         {
-            //string json = File.ReadAllText(filePathTELEMETRY);
-            //RootObject rootObject = JsonUtility.FromJson<RootObject>(json);
-            //UpdateUI(rootObject.telemetry);
-            //yield return new WaitForSeconds(updateInterval);
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(filePathTELEMETRY))
+            {
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
 
-            string jsonTELE = File.ReadAllText(filePathTELEMETRY);
-            RootObject teleObject = JsonUtility.FromJson<RootObject>(jsonTELE);
-            UpdateTelemetryUI(teleObject.telemetry);
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to fetch IMU data: " + webRequest.error);
+                }
+                else
+                {
+                    string jsonTELE = webRequest.downloadHandler.text;
+                    RootObject teleObject = JsonUtility.FromJson<RootObject>(jsonTELE);
+                    UpdateTelemetryUI(teleObject.telemetry);
+                }
+            }
 
-            string jsonEVA = File.ReadAllText(filePathEVA);
-            RootObject evaObject = JsonUtility.FromJson<RootObject>(jsonEVA);
-            UpdateEvaUI(evaObject.eva);
 
-            string jsonCOMM = File.ReadAllText(filePathCOMM);
-            RootObject commObject = JsonUtility.FromJson<RootObject>(jsonCOMM);
-            UpdateCommUI(commObject.comm);
+            /*using (UnityWebRequest webRequest = UnityWebRequest.Get(filePathEVA))
+            {
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
 
-            string jsonDCU = File.ReadAllText(filePathDCU);
-            RootObject dcuObject = JsonUtility.FromJson<RootObject>(jsonDCU);
-            UpdateDcuUI(dcuObject.dcu);
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to fetch IMU data: " + webRequest.error);
+                }
+                else
+                {
+                    Debug.Log("IMU Data: " + webRequest.downloadHandler.text);
 
-            string jsonERROR = File.ReadAllText(filePathERROR);
-            RootObject errorObject = JsonUtility.FromJson<RootObject>(jsonERROR);
-            UpdateErrorUI(errorObject.error);
+                    string jsonEVA = webRequest.downloadHandler.text;
+                    RootObject evaObject = JsonUtility.FromJson<RootObject>(jsonEVA);
+                    UpdateEvaUI(evaObject.eva);
+                }
+            }
 
-            string jsonIMU = File.ReadAllText(filePathIMU);
-            RootObject imuObject = JsonUtility.FromJson<RootObject>(jsonIMU);
-            UpdateImuUI(imuObject.imu);
 
-            string jsonROVER = File.ReadAllText(filePathROVER);
-            RootObject roverObject = JsonUtility.FromJson<RootObject>(jsonROVER);
-            UpdateRoverUI(roverObject.rover);
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(filePathCOMM))
+            {
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
 
-            string jsonSPEC = File.ReadAllText(filePathSPEC);
-            RootObject specObject = JsonUtility.FromJson<RootObject>(jsonSPEC);
-            UpdateSpecUI(specObject.spec);
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to fetch IMU data: " + webRequest.error);
+                }
+                else
+                {
+                    Debug.Log("IMU Data: " + webRequest.downloadHandler.text);
 
-            string jsonUIA = File.ReadAllText(filePathUIA);
-            RootObject uiaObject = JsonUtility.FromJson<RootObject>(jsonUIA);
-            UpdateUiaUI(uiaObject.uia);
+                    string jsonCOMM = webRequest.downloadHandler.text;
+                    RootObject commObject = JsonUtility.FromJson<RootObject>(jsonCOMM);
+                    UpdateCommUI(commObject.comm);
+                }
+            }*/
+
+
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(filePathDCU))
+            {
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to fetch IMU data: " + webRequest.error);
+                }
+                else
+                {
+                    string jsonDCU = webRequest.downloadHandler.text;
+                    RootObject dcuObject = JsonUtility.FromJson<RootObject>(jsonDCU);
+                    UpdateDcuUI(dcuObject.dcu);
+                }
+            }
+
+
+            /*using (UnityWebRequest webRequest = UnityWebRequest.Get(filePathERROR))
+            {
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to fetch IMU data: " + webRequest.error);
+                }
+                else
+                {
+                    Debug.Log("IMU Data: " + webRequest.downloadHandler.text);
+
+                    string jsonERROR = webRequest.downloadHandler.text;
+                    RootObject errorObject = JsonUtility.FromJson<RootObject>(jsonERROR);
+                    UpdateErrorUI(errorObject.error);
+                }
+            }
+
+
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(filePathIMU))
+            {
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to fetch IMU data: " + webRequest.error);
+                }
+                else
+                {
+                    Debug.Log("IMU Data: " + webRequest.downloadHandler.text);
+
+                    string jsonIMU = webRequest.downloadHandler.text;
+                    RootObject imuObject = JsonUtility.FromJson<RootObject>(jsonIMU);
+                    UpdateImuUI(imuObject.imu);
+                }
+            }
+
+
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(filePathROVER))
+            {
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to fetch IMU data: " + webRequest.error);
+                }
+                else
+                {
+                    Debug.Log("IMU Data: " + webRequest.downloadHandler.text);
+
+                    string jsonROVER = webRequest.downloadHandler.text;
+                    RootObject roverObject = JsonUtility.FromJson<RootObject>(jsonROVER);
+                    UpdateRoverUI(roverObject.rover);
+                }
+            }*/
+
+
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(filePathSPEC))
+            {
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to fetch IMU data: " + webRequest.error);
+                }
+                else
+                {
+                    string jsonSPEC = webRequest.downloadHandler.text;
+                    RootObject specObject = JsonUtility.FromJson<RootObject>(jsonSPEC);
+                    UpdateSpecUI(specObject.spec);
+                }
+            }
+
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(filePathUIA))
+            {
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to fetch IMU data: " + webRequest.error);
+                }
+                else
+                {
+                    string jsonUIA = webRequest.downloadHandler.text;
+                    RootObject uiaObject = JsonUtility.FromJson<RootObject>(jsonUIA);
+                    UpdateUiaUI(uiaObject.uia);
+                }
+            }
 
             yield return new WaitForSeconds(updateInterval);
         }
@@ -679,7 +810,7 @@ public class displayReTSS : MonoBehaviour
 
 
             heartRateText1.text = $"Heart Rate\n{telemetry.eva1.heart_rate} bpm";
-            temperatureText1.text = $"Temperature\n{telemetry.eva1.temperature} �F";
+            temperatureText1.text = $"Temperature\n{telemetry.eva1.temperature} F";
             battTimeText1.text = $"Battery Time Left\n{telemetry.eva1.batt_time_left} seconds";
             oxyTimeText1.text = $"Oxygen Time Left\n{telemetry.eva1.oxy_time_left} seconds";
             co2ProductionText1.text = $"CO2 Production\n{telemetry.eva1.co2_production} psi/min";
@@ -689,7 +820,7 @@ public class displayReTSS : MonoBehaviour
             suitOxyText1.text = $"Suit O2 Pressure\n{telemetry.eva1.suit_pressure_oxy} psi";
             suitCo2Text1.text = $"Suit CO2 Pressure\n{telemetry.eva1.suit_pressure_co2} psi";
             suitOtherText1.text = $"Suit Other Pressure\n{telemetry.eva1.suit_pressure_other} psi";
-            suitTotalText1.text = $"Suit Total Pressure\n{telemetry.eva1.suit_pressure_total} psi";
+            //suitTotalText1.text = $"Suit Total Pressure\n{telemetry.eva1.suit_pressure_total} psi";
             helmetCo2Text1.text = $"Helmet CO2 Pressure\n{telemetry.eva1.helmet_pressure_co2} psi";
             scrubberAText1.text = $"Scrubber A Pressure\n{telemetry.eva1.scrubber_a_co2_storage} psi";
             scrubberBText1.text = $"Scrubber B Pressure\n{telemetry.eva1.scrubber_b_co2_storage} psi";
@@ -704,13 +835,13 @@ public class displayReTSS : MonoBehaviour
             secFanText1.text = $"Secondary Fan\n{telemetry.eva1.fan_sec_rpm} rpm";
             coolantGasPressureText1.text = $"H2O Gas Pressure\n{telemetry.eva1.coolant_gas_pressure} psi";
             coolantLiquidPressureText1.text = $"H2O Liquid Pressure\n{telemetry.eva1.coolant_liquid_pressure} psi";
-            coolantText1.text = $"Coolant\n{telemetry.eva1.coolant_ml} ml";
+            //coolantText1.text = $"Coolant\n{telemetry.eva1.coolant_ml} ml";
         }
 
         if (telemetry != null && telemetry.eva2 != null)
         {
             heartRateText2.text = $"Heart Rate\n{telemetry.eva2.heart_rate} bpm";
-            temperatureText2.text = $"Temperature\n{telemetry.eva2.temperature} �F";
+            temperatureText2.text = $"Temperature\n{telemetry.eva2.temperature} F";
             battTimeText2.text = $"Battery Time Left\n{telemetry.eva2.batt_time_left} seconds";
             oxyTimeText2.text = $"Oxygen Time Left\n{telemetry.eva2.oxy_time_left} seconds";
             co2ProductionText2.text = $"CO2 Production\n{telemetry.eva2.co2_production} psi/min";
@@ -719,7 +850,7 @@ public class displayReTSS : MonoBehaviour
             suitOxyText2.text = $"Suit O2 Pressure\n{telemetry.eva2.suit_pressure_oxy} psi";
             suitCo2Text2.text = $"Suit CO2 Pressure\n{telemetry.eva2.suit_pressure_co2} psi";
             suitOtherText2.text = $"Suit Other Pressure\n{telemetry.eva2.suit_pressure_other} psi";
-            suitTotalText2.text = $"Suit Total Pressure\n{telemetry.eva2.suit_pressure_total} psi";
+            //suitTotalText2.text = $"Suit Total Pressure\n{telemetry.eva2.suit_pressure_total} psi";
             helmetCo2Text2.text = $"Helmet CO2 Pressure\n{telemetry.eva2.helmet_pressure_co2} psi";
             scrubberAText2.text = $"Scrubber A Pressure\n{telemetry.eva2.scrubber_a_co2_storage} psi";
             scrubberBText2.text = $"Scrubber B Pressure\n{telemetry.eva2.scrubber_b_co2_storage} psi";
@@ -733,11 +864,11 @@ public class displayReTSS : MonoBehaviour
             secFanText2.text = $"Secondary Fan\n{telemetry.eva2.fan_sec_rpm} rpm";
             coolantGasPressureText2.text = $"H2O Gas Pressure\n{telemetry.eva2.coolant_gas_pressure} psi";
             coolantLiquidPressureText2.text = $"H2O Liquid Pressure\n{telemetry.eva2.coolant_liquid_pressure} psi";
-            coolantText2.text = $"Coolant\n{telemetry.eva2.coolant_ml} ml";
+            //coolantText2.text = $"Coolant\n{telemetry.eva2.coolant_ml} ml";
         }
     }
 
-    void UpdateEvaUI(Telemetry eva)
+    /*void UpdateEvaUI(Telemetry eva)
     {
         if (eva != null)
         {
@@ -833,7 +964,7 @@ public class displayReTSS : MonoBehaviour
         {
             towerText.text = $"Communication Tower Online:\t {comm.comm_tower}";
         }
-    }
+    }*/
 
     void UpdateDcuUI(Telemetry dcu)
     {
@@ -895,7 +1026,7 @@ public class displayReTSS : MonoBehaviour
         }
     }
 
-    void UpdateErrorUI(Telemetry error) //convert into if statments for DCU alerts
+    /*void UpdateErrorUI(Telemetry error) //convert into if statments for DCU alerts
     {
         if (error != null)
         {
@@ -931,7 +1062,7 @@ public class displayReTSS : MonoBehaviour
             //$"Oxygen\t {rover.posy} \n" +
             //$"Water Waste\t {rover.qr_id} ";
         }
-    }
+    }*/
 
     void UpdateSpecUI(Telemetry spec)
     {
@@ -950,12 +1081,17 @@ public class displayReTSS : MonoBehaviour
             pText1.text = $"{data.P2O3}%";
             otherText1.text = $"{data.other}%";
 
-            if (data.SiO2 == 30.75 && data.TiO2 == 0.92 && data.Al2O3 == 4.88 && data.FeO == 17.12 && data.MnO == 0.2 && data.MgO == 12.95 && data.CaO == 2.03 && data.K2O == 0.22 && data.P2O3 == 0.69)
+            Debug.Log((float)data.SiO2);
+
+            if ((float)data.SiO2 == 30.75) //&& (float)data.TiO2 == 0.92 && (float)data.Al2O3 == 4.88 && (float)data.FeO == 17.12 && (float)data.MnO == 0.2 && (float)data.MgO == 12.95 && (float)data.CaO == 2.03 && (float)data.K2O == 0.22 && (float)data.P2O3 == 0.69 && (float)data.other == 30.24)
             {
+                Debug.Log("Mare Basalt");
                 typeBasalt1.text = "Mare Basalt";
+        
             }
-            else if (data.SiO2 == 25.9 && data.TiO2 == 0.88 && data.Al2O3 == 4.75 && data.FeO == 14.1 && data.MnO == 0.24 && data.MgO == 11.22 && data.CaO == 9.01 && data.K2O == 0.23 && data.P2O3 == 0.65)
+            else if ((float)data.SiO2 == 25.9)// data.TiO2 == 0.88 && data.Al2O3 == 4.75 && data.FeO == 14.1 && data.MnO == 0.24 && data.MgO == 11.22 && data.CaO == 9.01 && data.K2O == 0.23 && data.P2O3 == 0.65)
             {
+                Debug.Log("Vesicular Basalt");
                 typeBasalt1.text = "Vesicular Basalt";
             }
             else if (data.SiO2 == 36.64 && data.TiO2 == 0.92 && data.Al2O3 == 8.33 && data.FeO == 18.68 && data.MnO == 0.43 && data.MgO == 6.84 && data.CaO == 5.91 && data.K2O == 0.5 && data.P2O3 == 1.19)
@@ -1027,10 +1163,10 @@ public class displayReTSS : MonoBehaviour
             {
                 typeBasalt1.text = "Ilmenite Basalt";
             }
-            else
-            {
-                typeBasalt1.text = "Basalt Type Unknown";
-            }
+            //else
+            //
+            //  typeBasalt1.text = "Basalt Type Unknown";
+            //
         }
         /*if (spec != null && spec.eva1 != null) {
             geoText1.text = $"Si02\t\t {spec.eva1.data.SiO2} %\n" +

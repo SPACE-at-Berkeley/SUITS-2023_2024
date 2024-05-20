@@ -10629,56 +10629,56 @@ MonoBehaviour:
   secOxyPresLR1: {fileID: 1904868297}
   secOxyPresG1: {fileID: 753099983}
   secOxyPresRR1: {fileID: 1411285217}
-  coolantGasPressureText1: {fileID: 0}
-  gasPresLR1: {fileID: 0}
-  gasPresG1: {fileID: 0}
-  gasPresRR1: {fileID: 0}
-  coolantLiquidPressureText1: {fileID: 0}
-  liqPresLR1: {fileID: 0}
-  liqPresG1: {fileID: 0}
-  liqPresRR1: {fileID: 0}
-  priFanText1: {fileID: 0}
-  secFanText1: {fileID: 0}
+  coolantGasPressureText1: {fileID: 1044558606}
+  gasPresLR1: {fileID: 1627344398}
+  gasPresG1: {fileID: 217510432}
+  gasPresRR1: {fileID: 1812581492}
+  coolantLiquidPressureText1: {fileID: 1315751206}
+  liqPresLR1: {fileID: 1236112376}
+  liqPresG1: {fileID: 40225304}
+  liqPresRR1: {fileID: 1093578599}
+  priFanText1: {fileID: 220720568}
+  secFanText1: {fileID: 219587558}
   coolantText1: {fileID: 0}
-  heartRateText2: {fileID: 0}
-  temperatureText2: {fileID: 0}
-  battTimeText2: {fileID: 0}
-  oxyTimeText2: {fileID: 0}
-  oxyConsumptionText2: {fileID: 0}
-  co2ProductionText2: {fileID: 0}
-  suitOxyText2: {fileID: 0}
-  suitCo2Text2: {fileID: 0}
-  suitOtherText2: {fileID: 0}
+  heartRateText2: {fileID: 1072946831}
+  temperatureText2: {fileID: 625742454}
+  battTimeText2: {fileID: 1955391665}
+  oxyTimeText2: {fileID: 17100459}
+  oxyConsumptionText2: {fileID: 1586009519}
+  co2ProductionText2: {fileID: 905747889}
+  suitOxyText2: {fileID: 1075941789}
+  suitCo2Text2: {fileID: 23375673}
+  suitOtherText2: {fileID: 2129599924}
   suitTotalText2: {fileID: 0}
-  helmetCo2Text2: {fileID: 0}
-  scrubberAText2: {fileID: 0}
-  scrubberBText2: {fileID: 0}
-  priOxyStorageText2: {fileID: 0}
-  priOxyStorLR2: {fileID: 0}
-  priOxyStorG2: {fileID: 0}
-  priOxyStorRR2: {fileID: 0}
-  secOxyStorageText2: {fileID: 0}
-  secOxyStorLR2: {fileID: 0}
-  secOxyStorG2: {fileID: 0}
-  secOxyStorRR2: {fileID: 0}
-  priOxyPressureText2: {fileID: 0}
-  priOxyPresLR2: {fileID: 0}
-  priOxyPresG2: {fileID: 0}
-  priOxyPresRR2: {fileID: 0}
-  secOxyPressureText2: {fileID: 0}
-  secOxyPresLR2: {fileID: 0}
-  secOxyPresG2: {fileID: 0}
-  secOxyPresRR2: {fileID: 0}
-  coolantGasPressureText2: {fileID: 0}
-  gasPresLR2: {fileID: 0}
-  gasPresG2: {fileID: 0}
-  gasPresRR2: {fileID: 0}
-  coolantLiquidPressureText2: {fileID: 0}
-  liqPresLR2: {fileID: 0}
-  liqPresG2: {fileID: 0}
-  liqPresRR2: {fileID: 0}
-  priFanText2: {fileID: 0}
-  secFanText2: {fileID: 0}
+  helmetCo2Text2: {fileID: 1268632370}
+  scrubberAText2: {fileID: 1864682742}
+  scrubberBText2: {fileID: 1763725041}
+  priOxyStorageText2: {fileID: 1075467675}
+  priOxyStorLR2: {fileID: 1020659086}
+  priOxyStorG2: {fileID: 468682452}
+  priOxyStorRR2: {fileID: 1354676222}
+  secOxyStorageText2: {fileID: 1629376125}
+  secOxyStorLR2: {fileID: 1537664091}
+  secOxyStorG2: {fileID: 1648835883}
+  secOxyStorRR2: {fileID: 1328676754}
+  priOxyPressureText2: {fileID: 1653906503}
+  priOxyPresLR2: {fileID: 280168213}
+  priOxyPresG2: {fileID: 1399108632}
+  priOxyPresRR2: {fileID: 1183277131}
+  secOxyPressureText2: {fileID: 220315226}
+  secOxyPresLR2: {fileID: 38442243}
+  secOxyPresG2: {fileID: 1625961834}
+  secOxyPresRR2: {fileID: 761666375}
+  coolantGasPressureText2: {fileID: 1455914044}
+  gasPresLR2: {fileID: 1124786494}
+  gasPresG2: {fileID: 182543006}
+  gasPresRR2: {fileID: 2127981588}
+  coolantLiquidPressureText2: {fileID: 1565396700}
+  liqPresLR2: {fileID: 801118320}
+  liqPresG2: {fileID: 2096808096}
+  liqPresRR2: {fileID: 1191518456}
+  priFanText2: {fileID: 1005730995}
+  secFanText2: {fileID: 984191980}
   coolantText2: {fileID: 0}
   evaStatus: {fileID: 0}
   evaStatusUIA: {fileID: 0}
@@ -10687,53 +10687,53 @@ MonoBehaviour:
   evaStatusROVER: {fileID: 0}
   towerText: {fileID: 0}
   dcuBatt2: {fileID: 850699329}
-  dcuFan2: {fileID: 0}
-  dcuPump2: {fileID: 0}
-  dcuCo2: {fileID: 0}
-  dcuOxy2: {fileID: 0}
-  dcuComm2: {fileID: 0}
-  dcuBatt1: {fileID: 0}
-  dcuFan1: {fileID: 0}
-  dcuPump1: {fileID: 0}
-  dcuCo2_1: {fileID: 0}
-  dcuOxy1: {fileID: 0}
-  dcuComm1: {fileID: 0}
+  dcuFan2: {fileID: 1874427758}
+  dcuPump2: {fileID: 1781085640}
+  dcuCo2: {fileID: 797400440}
+  dcuOxy2: {fileID: 407925245}
+  dcuComm2: {fileID: 93278340}
+  dcuBatt1: {fileID: 1973064067}
+  dcuFan1: {fileID: 948804546}
+  dcuPump1: {fileID: 418582474}
+  dcuCo2_1: {fileID: 281235789}
+  dcuOxy1: {fileID: 1399525598}
+  dcuComm1: {fileID: 1983986335}
   errorText: {fileID: 0}
   imuText1: {fileID: 0}
   imuText2: {fileID: 0}
   roverText: {fileID: 0}
-  typeBasalt1: {fileID: 0}
-  siText1: {fileID: 0}
-  tiText1: {fileID: 0}
-  alText1: {fileID: 0}
-  feText1: {fileID: 0}
-  mnText1: {fileID: 0}
-  mgText1: {fileID: 0}
-  caText1: {fileID: 0}
-  kText1: {fileID: 0}
-  pText1: {fileID: 0}
-  otherText1: {fileID: 0}
-  typeBasalt2: {fileID: 0}
-  siText2: {fileID: 0}
-  tiText2: {fileID: 0}
-  alText2: {fileID: 0}
-  feText2: {fileID: 0}
-  mnText2: {fileID: 0}
-  mgText2: {fileID: 0}
-  caText2: {fileID: 0}
-  kText2: {fileID: 0}
-  pText2: {fileID: 0}
-  otherText2: {fileID: 0}
-  supplyFlip1: {fileID: 0}
-  wasteFlip1: {fileID: 0}
-  powerFlip1: {fileID: 0}
-  oxygenFlip1: {fileID: 0}
-  supplyFlip2: {fileID: 0}
-  wasteFlip2: {fileID: 0}
-  powerFlip2: {fileID: 0}
-  oxygenFlip2: {fileID: 0}
-  ventFlip: {fileID: 0}
-  depressFlip: {fileID: 0}
+  typeBasalt1: {fileID: 1511353804}
+  siText1: {fileID: 1868766106}
+  tiText1: {fileID: 1911648473}
+  alText1: {fileID: 1532875759}
+  feText1: {fileID: 1899852762}
+  mnText1: {fileID: 1795092915}
+  mgText1: {fileID: 1834536078}
+  caText1: {fileID: 215889673}
+  kText1: {fileID: 1157384950}
+  pText1: {fileID: 1024153113}
+  otherText1: {fileID: 830280115}
+  typeBasalt2: {fileID: 87512009}
+  siText2: {fileID: 981749180}
+  tiText2: {fileID: 2060272744}
+  alText2: {fileID: 512461892}
+  feText2: {fileID: 2097348665}
+  mnText2: {fileID: 1257328412}
+  mgText2: {fileID: 820680974}
+  caText2: {fileID: 325980335}
+  kText2: {fileID: 1130267506}
+  pText2: {fileID: 426533308}
+  otherText2: {fileID: 583019746}
+  supplyFlip1: {fileID: 2100325555}
+  wasteFlip1: {fileID: 1039647475}
+  powerFlip1: {fileID: 331720266}
+  oxygenFlip1: {fileID: 2128821857}
+  supplyFlip2: {fileID: 1416238766}
+  wasteFlip2: {fileID: 1052751919}
+  powerFlip2: {fileID: 90402635}
+  oxygenFlip2: {fileID: 786935976}
+  ventFlip: {fileID: 1674338095}
+  depressFlip: {fileID: 1150461106}
   updateInterval: 1
 --- !u!1 &465808904
 GameObject:
