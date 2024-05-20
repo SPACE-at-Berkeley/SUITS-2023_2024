@@ -318,12 +318,12 @@ public class displayReTSS : MonoBehaviour
     public Slider ventFlip;
     public Slider depressFlip;
 
-    private const string TSS_URL = "http://172.20.3.175:14141";
+    private const string TSS_URL = "http://192.168.51.110:14141";
 
     //file paths
-    public float updateInterval = 1f; // Update every second
+    public float updateInterval = 1.0f; // Update every second
     //LMCC Laptop path: /home/space/TSS_2024/public/json_data/
-    private string filePathTELEMETRY = $"http://172.20.3.175:14141/json_data/teams/10/TELEMETRY.json"; //teams/10/TELEMETRY.json";
+    private string filePathTELEMETRY = $"{TSS_URL}/json_data/teams/10/TELEMETRY.json"; //teams/10/TELEMETRY.json";
     private string filePathEVA = $"{TSS_URL}/json_data/teams/10/EVA.json"; //later add custom variable for 0-10 to set unique team-combo scenarios
     private string filePathCOMM = $"{TSS_URL}/json_data/COMM.json";
     private string filePathDCU = $"{TSS_URL}/json_data/DCU.json";
@@ -1070,53 +1070,55 @@ public class displayReTSS : MonoBehaviour
         {
             var data = spec.eva1.data;
 
-            siText1.text = $"{data.SiO2}%";
-            tiText1.text = $"{data.TiO2}%";
-            alText1.text = $"{data.Al2O3}%";
-            feText1.text = $"{data.FeO}%";
-            mnText1.text = $"{data.MnO}%";
-            mgText1.text = $"{data.MgO}%";
-            caText1.text = $"{data.CaO}%";
-            kText1.text = $"{data.K2O}%";
-            pText1.text = $"{data.P2O3}%";
-            otherText1.text = $"{data.other}%";
+            siText1.text = $"{data.SiO2}";
+            tiText1.text = $"{data.TiO2}";
+            alText1.text = $"{data.Al2O3}";
+            feText1.text = $"{data.FeO}";
+            mnText1.text = $"{data.MnO}";
+            mgText1.text = $"{data.MgO}";
+            caText1.text = $"{data.CaO}";
+            kText1.text = $"{data.K2O}";
+            pText1.text = $"{data.P2O3}";
+            otherText1.text = $"{data.other}";
 
-            Debug.Log((float)data.SiO2);
+            bool AreFloatsEqual(float a, float b)
+            {
+                return Mathf.Abs(a - b) < 0.0001;
+            }
 
-            if ((float)data.SiO2 == 30.75) //&& (float)data.TiO2 == 0.92 && (float)data.Al2O3 == 4.88 && (float)data.FeO == 17.12 && (float)data.MnO == 0.2 && (float)data.MgO == 12.95 && (float)data.CaO == 2.03 && (float)data.K2O == 0.22 && (float)data.P2O3 == 0.69 && (float)data.other == 30.24)
+            if (AreFloatsEqual(data.SiO2, (float)30.75)) //&& (float)data.TiO2 == 0.92 && (float)data.Al2O3 == 4.88 && (float)data.FeO == 17.12 && (float)data.MnO == 0.2 && (float)data.MgO == 12.95 && (float)data.CaO == 2.03 && (float)data.K2O == 0.22 && (float)data.P2O3 == 0.69 && (float)data.other == 30.24)
             {
                 Debug.Log("Mare Basalt");
-                typeBasalt1.text = "Mare Basalt";
-        
+                typeBasalt1.text = $"Mare Basalt";
             }
-            else if ((float)data.SiO2 == 25.9)// data.TiO2 == 0.88 && data.Al2O3 == 4.75 && data.FeO == 14.1 && data.MnO == 0.24 && data.MgO == 11.22 && data.CaO == 9.01 && data.K2O == 0.23 && data.P2O3 == 0.65)
+            else if (AreFloatsEqual(data.SiO2, (float)25.9)) // data.TiO2 == 0.88 && data.Al2O3 == 4.75 && data.FeO == 14.1 && data.MnO == 0.24 && data.MgO == 11.22 && data.CaO == 9.01 && data.K2O == 0.23 && data.P2O3 == 0.65)
             {
                 Debug.Log("Vesicular Basalt");
-                typeBasalt1.text = "Vesicular Basalt";
+                typeBasalt1.text = $"Vesicular Basalt";
             }
-            else if (data.SiO2 == 36.64 && data.TiO2 == 0.92 && data.Al2O3 == 8.33 && data.FeO == 18.68 && data.MnO == 0.43 && data.MgO == 6.84 && data.CaO == 5.91 && data.K2O == 0.5 && data.P2O3 == 1.19)
+            else if (AreFloatsEqual(data.SiO2, (float)36.64)) //&& data.TiO2 == 0.92 && data.Al2O3 == 8.33 && data.FeO == 18.68 && data.MnO == 0.43 && data.MgO == 6.84 && data.CaO == 5.91 && data.K2O == 0.5 && data.P2O3 == 1.19)
             {
-                typeBasalt1.text = "Olivine-1 Basalt";
+                typeBasalt1.text = $"Olivine-1 Basalt";
             }
-            else if (data.SiO2 == 38.29 && data.TiO2 == 1.47 && data.Al2O3 == 7.63 && data.FeO == 18.74 && data.MnO == 0.46 && data.MgO == 2.64 && data.CaO == 7.76 && data.K2O == 0.75 && data.P2O3 == 1.68)
+            else if (AreFloatsEqual(data.SiO2, (float)38.29)) //(data.SiO2 == 38.29 && data.TiO2 == 1.47 && data.Al2O3 == 7.63 && data.FeO == 18.74 && data.MnO == 0.46 && data.MgO == 2.64 && data.CaO == 7.76 && data.K2O == 0.75 && data.P2O3 == 1.68)
             {
                 typeBasalt1.text = "Feldspathic Basalt";
             }
-            else if (data.SiO2 == 39.41 && data.TiO2 == 0.39 && data.Al2O3 == 1.94 && data.FeO == 29.3 && data.MnO == 0.71 && data.MgO == 19.27 && data.CaO == 3.8 && data.K2O == 0.12 && data.P2O3 == 0.3)
+            else if (AreFloatsEqual(data.SiO2, (float)39.41)) //(data.SiO2 == 39.41 && data.TiO2 == 0.39 && data.Al2O3 == 1.94 && data.FeO == 29.3 && data.MnO == 0.71 && data.MgO == 19.27 && data.CaO == 3.8 && data.K2O == 0.12 && data.P2O3 == 0.3)
             {
                 typeBasalt1.text = "Pigeonite Basalt";
             }
-            else if (data.SiO2 == 40.36 && data.TiO2 == 0.99 && data.Al2O3 == 2.32 && data.FeO == 25.71 && data.MnO == 0.58 && data.MgO == 12.81 && data.CaO == 5.95 && data.K2O == 0.2 && data.P2O3 == 0.28)
+            else if (AreFloatsEqual(data.SiO2, (float)40.36)) //data.SiO2 == 40.36 && data.TiO2 == 0.99 && data.Al2O3 == 2.32 && data.FeO == 25.71 && data.MnO == 0.58 && data.MgO == 12.81 && data.CaO == 5.95 && data.K2O == 0.2 && data.P2O3 == 0.28)
             {
                 typeBasalt1.text = "Olivine-2 Basalt";
             }
-            else if (data.SiO2 == 43.98 && data.TiO2 == 1.04 && data.Al2O3 == 5.75 && data.FeO == 20.4 && data.MnO == 0.51 && data.MgO == 6.02 && data.CaO == 8.89 && data.K2O == 0.71 && data.P2O3 == 1.09)
+            else if (AreFloatsEqual(data.SiO2, (float)43.98)) //(data.SiO2 == 43.98 && data.TiO2 == 1.04 && data.Al2O3 == 5.75 && data.FeO == 20.4 && data.MnO == 0.51 && data.MgO == 6.02 && data.CaO == 8.89 && data.K2O == 0.71 && data.P2O3 == 1.09)
             {
                 typeBasalt1.text = "Ilmenite Basalt";
             }
             else
             {
-                typeBasalt1.text = "Basalt Type Unknown";
+                typeBasalt1.text = "Basalt Unknown";
             }
         }
 
@@ -1124,44 +1126,55 @@ public class displayReTSS : MonoBehaviour
         {
             var data = spec.eva2.data;
 
-            siText2.text = $"{data.SiO2}%";
-            tiText2.text = $"{data.TiO2}%";
-            alText2.text = $"{data.Al2O3}%";
-            feText2.text = $"{data.FeO}%";
-            mnText2.text = $"{data.MnO}%";
-            mgText2.text = $"{data.MgO}%";
-            caText2.text = $"{data.CaO}%";
-            kText2.text = $"{data.K2O}%";
-            pText2.text = $"{data.P2O3}%";
-            otherText2.text = $"{data.other}%";
+            siText2.text = $"{data.SiO2}";
+            tiText2.text = $"{data.TiO2}";
+            alText2.text = $"{data.Al2O3}";
+            feText2.text = $"{data.FeO}";
+            mnText2.text = $"{data.MnO}";
+            mgText2.text = $"{data.MgO}";
+            caText2.text = $"{data.CaO}";
+            kText2.text = $"{data.K2O}";
+            pText2.text = $"{data.P2O3}";
+            otherText2.text = $"{data.other}";
 
-            if (data.SiO2 == 30.75 && data.TiO2 == 0.92 && data.Al2O3 == 4.88 && data.FeO == 17.12 && data.MnO == 0.2 && data.MgO == 12.95 && data.CaO == 2.03 && data.K2O == 0.22 && data.P2O3 == 0.69)
+            bool AreFloatsEqual(float a, float b)
             {
-                typeBasalt1.text = "Mare Basalt";
+                return Mathf.Abs(a - b) < 0.0001;
             }
-            else if (data.SiO2 == 25.9 && data.TiO2 == 0.88 && data.Al2O3 == 4.75 && data.FeO == 14.1 && data.MnO == 0.24 && data.MgO == 11.22 && data.CaO == 9.01 && data.K2O == 0.23 && data.P2O3 == 0.65)
+
+            if (AreFloatsEqual(data.SiO2, (float)30.75)) //&& (float)data.TiO2 == 0.92 && (float)data.Al2O3 == 4.88 && (float)data.FeO == 17.12 && (float)data.MnO == 0.2 && (float)data.MgO == 12.95 && (float)data.CaO == 2.03 && (float)data.K2O == 0.22 && (float)data.P2O3 == 0.69 && (float)data.other == 30.24)
             {
-                typeBasalt1.text = "Vesicular Basalt";
+                Debug.Log("Mare Basalt");
+                typeBasalt2.text = $"Mare Basalt";
             }
-            else if (data.SiO2 == 36.64 && data.TiO2 == 0.92 && data.Al2O3 == 8.33 && data.FeO == 18.68 && data.MnO == 0.43 && data.MgO == 6.84 && data.CaO == 5.91 && data.K2O == 0.5 && data.P2O3 == 1.19)
+            else if (AreFloatsEqual(data.SiO2, (float)25.9)) // data.TiO2 == 0.88 && data.Al2O3 == 4.75 && data.FeO == 14.1 && data.MnO == 0.24 && data.MgO == 11.22 && data.CaO == 9.01 && data.K2O == 0.23 && data.P2O3 == 0.65)
             {
-                typeBasalt1.text = "Olivine-1 Basalt";
+                Debug.Log("Vesicular Basalt");
+                typeBasalt2.text = $"Vesicular Basalt";
             }
-            else if (data.SiO2 == 38.29 && data.TiO2 == 1.47 && data.Al2O3 == 7.63 && data.FeO == 18.74 && data.MnO == 0.46 && data.MgO == 2.64 && data.CaO == 7.76 && data.K2O == 0.75 && data.P2O3 == 1.68)
+            else if (AreFloatsEqual(data.SiO2, (float)36.64)) //&& data.TiO2 == 0.92 && data.Al2O3 == 8.33 && data.FeO == 18.68 && data.MnO == 0.43 && data.MgO == 6.84 && data.CaO == 5.91 && data.K2O == 0.5 && data.P2O3 == 1.19)
             {
-                typeBasalt1.text = "Feldspathic Basalt";
+                typeBasalt2.text = $"Olivine-1 Basalt";
             }
-            else if (data.SiO2 == 39.41 && data.TiO2 == 0.39 && data.Al2O3 == 1.94 && data.FeO == 29.3 && data.MnO == 0.71 && data.MgO == 19.27 && data.CaO == 3.8 && data.K2O == 0.12 && data.P2O3 == 0.3)
+            else if (AreFloatsEqual(data.SiO2, (float)38.29)) //(data.SiO2 == 38.29 && data.TiO2 == 1.47 && data.Al2O3 == 7.63 && data.FeO == 18.74 && data.MnO == 0.46 && data.MgO == 2.64 && data.CaO == 7.76 && data.K2O == 0.75 && data.P2O3 == 1.68)
             {
-                typeBasalt1.text = "Pigeonite Basalt";
+                typeBasalt2.text = "Feldspathic Basalt";
             }
-            else if (data.SiO2 == 40.36 && data.TiO2 == 0.99 && data.Al2O3 == 2.32 && data.FeO == 25.71 && data.MnO == 0.58 && data.MgO == 12.81 && data.CaO == 5.95 && data.K2O == 0.2 && data.P2O3 == 0.28)
+            else if (AreFloatsEqual(data.SiO2, (float)39.41)) //(data.SiO2 == 39.41 && data.TiO2 == 0.39 && data.Al2O3 == 1.94 && data.FeO == 29.3 && data.MnO == 0.71 && data.MgO == 19.27 && data.CaO == 3.8 && data.K2O == 0.12 && data.P2O3 == 0.3)
             {
-                typeBasalt1.text = "Olivine-2 Basalt";
+                typeBasalt2.text = "Pigeonite Basalt";
             }
-            else if (data.SiO2 == 43.98 && data.TiO2 == 1.04 && data.Al2O3 == 5.75 && data.FeO == 20.4 && data.MnO == 0.51 && data.MgO == 6.02 && data.CaO == 8.89 && data.K2O == 0.71 && data.P2O3 == 1.09)
+            else if (AreFloatsEqual(data.SiO2, (float)40.36)) //data.SiO2 == 40.36 && data.TiO2 == 0.99 && data.Al2O3 == 2.32 && data.FeO == 25.71 && data.MnO == 0.58 && data.MgO == 12.81 && data.CaO == 5.95 && data.K2O == 0.2 && data.P2O3 == 0.28)
             {
-                typeBasalt1.text = "Ilmenite Basalt";
+                typeBasalt2.text = "Olivine-2 Basalt";
+            }
+            else if (AreFloatsEqual(data.SiO2, (float)43.98)) //(data.SiO2 == 43.98 && data.TiO2 == 1.04 && data.Al2O3 == 5.75 && data.FeO == 20.4 && data.MnO == 0.51 && data.MgO == 6.02 && data.CaO == 8.89 && data.K2O == 0.71 && data.P2O3 == 1.09)
+            {
+                typeBasalt2.text = "Ilmenite Basalt";
+            }
+            else
+            {
+                typeBasalt2.text = "Basalt Unknown";
             }
             //else
             //
