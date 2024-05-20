@@ -412,6 +412,256 @@ public class displayReTSS : MonoBehaviour
         if (telemetry != null && telemetry.eva1 != null)
         {
             //top bar
+            if (telemetry.eva1.heart_rate < 50)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva1.heart_rate > 160)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+
+             if (telemetry.eva1.oxy_pri_storage < 20)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva1.oxy_pri_storage > 100)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+             if (telemetry.eva1.oxy_sec_storage < 20)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva1.oxy_sec_storage > 100)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+             if (telemetry.eva1.oxy_pri_pressure < 600)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva1.oxy_pri_pressure > 3000)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+             if (telemetry.eva1.oxy_sec_pressure < 600)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva1.oxy_sec_pressure > 3000)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+             if (telemetry.eva1.coolant_liquid_pressure < 100)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva1.coolant_liquid_pressure > 700)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+             if (telemetry.eva1.coolant_gas_pressure < 0)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva1.coolant_gas_pressure > 700)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            
+             if (telemetry.eva2.oxy_pri_storage < 20)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva2.oxy_pri_storage > 100)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+             if (telemetry.eva2.oxy_sec_storage < 20)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva2.oxy_sec_storage > 100)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+             if (telemetry.eva2.oxy_pri_pressure < 600)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva2.oxy_pri_pressure > 3000)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+             if (telemetry.eva2.oxy_sec_pressure < 600)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva2.oxy_sec_pressure > 3000)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+             if (telemetry.eva2.coolant_liquid_pressure < 100)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva2.coolant_liquid_pressure > 700)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+             if (telemetry.eva2.coolant_gas_pressure < 0)
+            {
+                //leftRed is ON
+                //green is OFF
+                //rightRed is OFF
+            } 
+            elif (telemetry.eva2.coolant_gas_pressure > 700)
+            {
+                //leftRed is OFF
+                //green is OFF
+                //rightRed is ON
+
+            }
+            else
+            {
+                //leftRed is OFF
+                //green is ON
+                //rightRed is OFF
+            }
+
+
             heartRateText1.text = $"Heart Rate\n{telemetry.eva1.heart_rate} bpm";
             temperatureText1.text = $"Temperature\n{telemetry.eva1.temperature} �F";
             battTimeText1.text = $"Battery Time Left\n{telemetry.eva1.batt_time_left} seconds";
