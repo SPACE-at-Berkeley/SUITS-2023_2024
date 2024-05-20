@@ -158,14 +158,33 @@ public class displayReTSS : MonoBehaviour
     public TMP_Text scrubberBText1;
 
     public TMP_Text priOxyStorageText1;
+    public GameObject priOxyStorLR1;
+    public GameObject priOxyStorG1;
+    public GameObject priOxyStorRR1;
     public TMP_Text secOxyStorageText1;
+    public GameObject secOxyStorLR1;
+    public GameObject secOxyStorG1;
+    public GameObject secOxyStorRR1;
     public TMP_Text priOxyPressureText1;
+    public GameObject priOxyPresLR1;
+    public GameObject priOxyPresG1;
+    public GameObject priOxyPresRR1;
     public TMP_Text secOxyPressureText1;
+    public GameObject secOxyPresLR1;
+    public GameObject secOxyPresG1;
+    public GameObject secOxyPresRR1;
+
+    public TMP_Text coolantGasPressureText1;
+    public GameObject gasPresLR1;
+    public GameObject gasPresG1;
+    public GameObject gasPresRR1;
+    public TMP_Text coolantLiquidPressureText1;
+    public GameObject liqPresLR1;
+    public GameObject liqPresG1;
+    public GameObject liqPresRR1;
 
     public TMP_Text priFanText1;
     public TMP_Text secFanText1;
-    public TMP_Text coolantGasPressureText1;
-    public TMP_Text coolantLiquidPressureText1;
     public TMP_Text coolantText1;
 
     //ev-2
@@ -185,14 +204,33 @@ public class displayReTSS : MonoBehaviour
     public TMP_Text scrubberBText2;
 
     public TMP_Text priOxyStorageText2;
+    public GameObject priOxyStorLR2;
+    public GameObject priOxyStorG2;
+    public GameObject priOxyStorRR2;
     public TMP_Text secOxyStorageText2;
+    public GameObject secOxyStorLR2;
+    public GameObject secOxyStorG2;
+    public GameObject secOxyStorRR2;
     public TMP_Text priOxyPressureText2;
+    public GameObject priOxyPresLR2;
+    public GameObject priOxyPresG2;
+    public GameObject priOxyPresRR2;
     public TMP_Text secOxyPressureText2;
+    public GameObject secOxyPresLR2;
+    public GameObject secOxyPresG2;
+    public GameObject secOxyPresRR2;
+
+    public TMP_Text coolantGasPressureText2;
+    public GameObject gasPresLR2;
+    public GameObject gasPresG2;
+    public GameObject gasPresRR2;
+    public TMP_Text coolantLiquidPressureText2;
+    public GameObject liqPresLR2;
+    public GameObject liqPresG2;
+    public GameObject liqPresRR2;
 
     public TMP_Text priFanText2;
     public TMP_Text secFanText2;
-    public TMP_Text coolantGasPressureText2;
-    public TMP_Text coolantLiquidPressureText2;
     public TMP_Text coolantText2;
 
 
@@ -411,255 +449,232 @@ public class displayReTSS : MonoBehaviour
 
         if (telemetry != null && telemetry.eva1 != null)
         {
-            //top bar
-            if (telemetry.eva1.heart_rate < 50)
+            if (telemetry.eva1.oxy_pri_storage < 20)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
-            } 
-            else if (telemetry.eva1.heart_rate > 160)
-            {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
-            }
-            else
-            {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
-            }
-
-             if (telemetry.eva1.oxy_pri_storage < 20)
-            {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                priOxyStorLR1.SetActive(true);
+                priOxyStorG1.SetActive(false);
+                priOxyStorRR1.SetActive(false);
             } 
             else if (telemetry.eva1.oxy_pri_storage > 100)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                priOxyStorLR1.SetActive(false);
+                priOxyStorG1.SetActive(false);
+                priOxyStorRR1.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                priOxyStorLR1.SetActive(false);
+                priOxyStorG1.SetActive(true);
+                priOxyStorRR1.SetActive(false);
             }
-             if (telemetry.eva1.oxy_sec_storage < 20)
+
+            if (telemetry.eva1.oxy_sec_storage < 20)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                secOxyStorLR1.SetActive(true);
+                secOxyStorG1.SetActive(false);
+                secOxyStorRR1.SetActive(false);
             } 
             else if (telemetry.eva1.oxy_sec_storage > 100)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                secOxyStorLR1.SetActive(false);
+                secOxyStorG1.SetActive(false);
+                secOxyStorRR1.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                secOxyStorLR1.SetActive(false);
+                secOxyStorG1.SetActive(true);
+                secOxyStorRR1.SetActive(false);
             }
-             if (telemetry.eva1.oxy_pri_pressure < 600)
+            
+            if (telemetry.eva1.oxy_pri_pressure < 600)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                priOxyPresLR1.SetActive(true);
+                priOxyPresG1.SetActive(false);
+                priOxyPresRR1.SetActive(false);
             } 
             else if (telemetry.eva1.oxy_pri_pressure > 3000)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                priOxyPresLR1.SetActive(false);
+                priOxyPresG1.SetActive(false);
+                priOxyPresRR1.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                priOxyPresLR1.SetActive(false);
+                priOxyPresG1.SetActive(true);
+                priOxyPresRR1.SetActive(false);
             }
-             if (telemetry.eva1.oxy_sec_pressure < 600)
+            
+            if (telemetry.eva1.oxy_sec_pressure < 600)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                secOxyPresLR1.SetActive(true);
+                secOxyPresG1.SetActive(false);
+                secOxyPresRR1.SetActive(false);
             } 
             else if (telemetry.eva1.oxy_sec_pressure > 3000)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                secOxyPresLR1.SetActive(false);
+                secOxyPresG1.SetActive(false);
+                secOxyPresRR1.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                secOxyPresLR1.SetActive(false);
+                secOxyPresG1.SetActive(true);
+                secOxyPresRR1.SetActive(false);
             }
-             if (telemetry.eva1.coolant_liquid_pressure < 100)
+            
+            if (telemetry.eva1.coolant_liquid_pressure < 100)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                liqPresLR1.SetActive(true);
+                liqPresG1.SetActive(false);
+                liqPresRR1.SetActive(false);
             } 
             else if (telemetry.eva1.coolant_liquid_pressure > 700)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                liqPresLR1.SetActive(false);
+                liqPresG1.SetActive(false);
+                liqPresRR1.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                liqPresLR1.SetActive(false);
+                liqPresG1.SetActive(true);
+                liqPresRR1.SetActive(false);
             }
-             if (telemetry.eva1.coolant_gas_pressure < 0)
+            
+            if (telemetry.eva1.coolant_gas_pressure < 0)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                gasPresLR1.SetActive(true);
+                gasPresG1.SetActive(false);
+                gasPresRR1.SetActive(false);
             } 
             else if (telemetry.eva1.coolant_gas_pressure > 700)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                gasPresLR1.SetActive(false);
+                gasPresG1.SetActive(false);
+                gasPresRR1.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                gasPresLR1.SetActive(false);
+                gasPresG1.SetActive(true);
+                gasPresRR1.SetActive(false);
             }
             
-             if (telemetry.eva2.oxy_pri_storage < 20)
+            if (telemetry.eva2.oxy_pri_storage < 20)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                priOxyStorLR2.SetActive(true);
+                priOxyStorG2.SetActive(false);
+                priOxyStorRR2.SetActive(false);
             } 
             else if (telemetry.eva2.oxy_pri_storage > 100)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                priOxyStorLR2.SetActive(false);
+                priOxyStorG2.SetActive(false);
+                priOxyStorRR2.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                priOxyStorLR2.SetActive(false);
+                priOxyStorG2.SetActive(true);
+                priOxyStorRR2.SetActive(false);
             }
-             if (telemetry.eva2.oxy_sec_storage < 20)
+            
+            if (telemetry.eva2.oxy_sec_storage < 20)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                secOxyStorLR2.SetActive(true);
+                secOxyStorG2.SetActive(false);
+                secOxyStorRR2.SetActive(false);
             } 
             else if (telemetry.eva2.oxy_sec_storage > 100)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                secOxyStorLR2.SetActive(false);
+                secOxyStorG2.SetActive(false);
+                secOxyStorRR2.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                secOxyStorLR2.SetActive(false);
+                secOxyStorG2.SetActive(true);
+                secOxyStorRR2.SetActive(false);
             }
-             if (telemetry.eva2.oxy_pri_pressure < 600)
+            
+            if (telemetry.eva2.oxy_pri_pressure < 600)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                priOxyPresLR2.SetActive(true);
+                priOxyPresG2.SetActive(false);
+                priOxyPresRR2.SetActive(false);
             } 
             else if (telemetry.eva2.oxy_pri_pressure > 3000)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                priOxyPresLR2.SetActive(false);
+                priOxyPresG2.SetActive(false);
+                priOxyPresRR2.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                priOxyPresLR2.SetActive(false);
+                priOxyPresG2.SetActive(true);
+                priOxyPresRR2.SetActive(false);
             }
-             if (telemetry.eva2.oxy_sec_pressure < 600)
+            
+            if (telemetry.eva2.oxy_sec_pressure < 600)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                secOxyPresLR2.SetActive(true);
+                secOxyPresG2.SetActive(false);
+                secOxyPresRR2.SetActive(false);
             } 
             else if (telemetry.eva2.oxy_sec_pressure > 3000)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                secOxyPresLR2.SetActive(false);
+                secOxyPresG2.SetActive(false);
+                secOxyPresRR2.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                secOxyPresLR2.SetActive(false);
+                secOxyPresG2.SetActive(true);
+                secOxyPresRR2.SetActive(false);
             }
-             if (telemetry.eva2.coolant_liquid_pressure < 100)
+            
+            if (telemetry.eva2.coolant_liquid_pressure < 100)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
-            } 
+                liqPresLR2.SetActive(true);
+                liqPresG2.SetActive(false);
+                liqPresRR2.SetActive(false);
+            }
             else if (telemetry.eva2.coolant_liquid_pressure > 700)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                liqPresLR2.SetActive(false);
+                liqPresG2.SetActive(false);
+                liqPresRR2.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                liqPresLR2.SetActive(false);
+                liqPresG2.SetActive(true);
+                liqPresRR2.SetActive(false);
             }
-             if (telemetry.eva2.coolant_gas_pressure < 0)
+ 
+            if (telemetry.eva2.coolant_gas_pressure < 0)
             {
-                //leftRed is ON
-                //green is OFF
-                //rightRed is OFF
+                gasPresLR2.SetActive(true);
+                gasPresG2.SetActive(false);
+                gasPresRR2.SetActive(false);
             } 
             else if (telemetry.eva2.coolant_gas_pressure > 700)
             {
-                //leftRed is OFF
-                //green is OFF
-                //rightRed is ON
-
+                gasPresLR2.SetActive(false);
+                gasPresG2.SetActive(false);
+                gasPresRR2.SetActive(true);
             }
             else
             {
-                //leftRed is OFF
-                //green is ON
-                //rightRed is OFF
+                gasPresLR2.SetActive(false);
+                gasPresG2.SetActive(true);
+                gasPresRR2.SetActive(false);
             }
 
 
