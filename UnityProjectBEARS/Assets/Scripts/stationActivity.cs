@@ -34,16 +34,27 @@ public class stationActivity : MonoBehaviour
     public Image specActiveFrame;
     public Image commActiveFrame;
 
+    // Complete variables
+    public Image uiaCompleteFrame;
+    public Image dcuCompleteFrame;
+    public Image roverCompleteFrame;
+    public Image specCompleteFrame;
+
+    public TMP_Text uiaCompleteText;
+    public TMP_Text dcuCompleteText;
+    public TMP_Text roverCompleteText;
+    public TMP_Text specCompleteText;
+
     // station colors
-    public Color white      = new Color(255, 255, 255, 255);
-    public Color red        = new Color(255, 0, 0, 255);
-    public Color green      = new Color(0, 255, 0, 255);
-    public Color black      = new Color(0, 0, 0, 255);
-    public Color uiaColor   = new Color (255, 0, 0, 255);
-    public Color dcuColor   = new Color (0, 255, 0, 255);
-    public Color roverColor = new Color (0, 204, 255, 255);
-    public Color specColor  = new Color (0, 0, 255, 255);
-    public Color commColor  = new Color (157, 83, 255, 255);
+    public Color white;
+    public Color red;
+    public Color green;
+    public Color black;
+    public Color uiaColor;
+    public Color dcuColor;
+    public Color roverColor;
+    public Color specColor;
+    public Color commColor;
 
     // active bools
     public bool isUiaActive;
@@ -52,15 +63,38 @@ public class stationActivity : MonoBehaviour
     public bool isSpecActive;
     public bool isCommActive;
 
+    // complete bools
+    public bool isUiaComplete;
+    public bool isDcuComplete;
+    public bool isRoverComplete;
+    public bool isSpecComplete;
 
     // Start is called before the first frame update
     void Start()
     {
-        isUiaActive = true;
-        isDcuActive = true;
-        isRoverActive = true;
-        isSpecActive = true;
-        isCommActive = true;
+        // Color initialization
+        white      = new Color(255, 255, 255, 255);
+        red        = new Color(255, 0, 0, 255);
+        green      = new Color(0, 255, 0, 255);
+        black      = new Color(0, 0, 0, 255);
+        uiaColor   = new Color(255, 0, 0, 255);
+        dcuColor   = new Color(0, 255, 0, 255);
+        roverColor = new Color(0, 204, 255, 255);
+        specColor  = new Color(255, 255, 0, 255);
+        commColor  = new Color(157, 83, 255, 255);
+        
+        // active bool initialization
+        isUiaActive     = false;
+        isDcuActive     = false;
+        isRoverActive   = false;
+        isSpecActive    = false;
+        isCommActive    = false;
+
+        // complete bool initialization
+        isUiaComplete   = false;
+        isDcuComplete   = false;
+        isRoverComplete = false;
+        isSpecComplete  = false;
 
     }
 
@@ -118,11 +152,51 @@ public class stationActivity : MonoBehaviour
             commActiveFrame.color = green;
         }
 
-        //Update active box colors
+        // ==== Update complete box colors ====
+        // UIA Text Colors
+        if(!isUiaComplete) {
+
+            setNotComplete(uiaCompleteFrame, uiaCompleteText);
+        }
+        else if (isUiaComplete) {
+
+            setComplete(uiaCompleteFrame, uiaCompleteText);
+        }
+
+        // DCU Text Colors
+        if(!isDcuComplete) {
+
+            setNotComplete(dcuCompleteFrame, dcuCompleteText);
+        }
+        else if (isDcuComplete) {
+
+            setComplete(dcuCompleteFrame, dcuCompleteText);
+        }
+
+        // ROVER Text Colors
+        if(!isRoverComplete) {
+
+            setNotComplete(roverCompleteFrame, roverCompleteText);
+        }
+        else if (isRoverComplete) {
+
+            setComplete(roverCompleteFrame, roverCompleteText);
+        }
+
+        // SPEC Text Colors
+        if(!isSpecComplete) {
+
+            setNotComplete(specCompleteFrame, specCompleteText);
+        }
+        else if (isSpecComplete) {
+
+            setComplete(specCompleteFrame, specCompleteText);
+        }
 
         //END Update()
     }
 
+    // set Active and Not Active methods
     void setNotActive(TMP_Text timeText, TMP_Text activeText, Image activeFrame) {
         timeText.color = white;
         activeText.text = "Not Active";
@@ -135,6 +209,19 @@ public class stationActivity : MonoBehaviour
         activeText.text = "Active";
         activeText.color = black;
         activeFrame.color = green;
+    }
+
+    // set complete and not complete methods
+    void setNotComplete(Image completeFrame, TMP_Text completeText) {
+        completeFrame.color = red;
+        completeText.text = "Not complete";
+        completeText.color = white;
+    }
+
+    void setComplete(Image completeFrame, TMP_Text completeText) {
+        completeFrame.color = green;
+        completeText.text = "Complete";
+        completeText.color = black;
     }
 }
 
