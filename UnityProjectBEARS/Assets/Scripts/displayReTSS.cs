@@ -678,18 +678,6 @@ public class displayReTSS : MonoBehaviour
             else {
                 sec1.SpinSpeed = 200;
             }
-            if (telemetry.eva2.fan_pri_rpm == 0) {
-                pri2.SpinSpeed = 0;
-            }
-            else {
-                pri2.SpinSpeed = 200;
-            }
-            if (telemetry.eva2.fan_sec_rpm == 0) {
-                sec2.SpinSpeed = 0;
-            }
-            else {
-                sec2.SpinSpeed = 200;
-            }
             
             heartRateText1.text = $"Heart Rate\n{telemetry.eva1.heart_rate} bpm";
             temperatureText1.text = $"Temperature\n{telemetry.eva1.temperature} �F";
@@ -722,6 +710,18 @@ public class displayReTSS : MonoBehaviour
 
         if (telemetry != null && telemetry.eva2 != null)
         {
+            if (telemetry.eva2.fan_pri_rpm == 0) {
+                pri2.SpinSpeed = 0;
+            }
+            else {
+                pri2.SpinSpeed = 200;
+            }
+            if (telemetry.eva2.fan_sec_rpm == 0) {
+                sec2.SpinSpeed = 0;
+            }
+            else {
+                sec2.SpinSpeed = 200;
+            }
             heartRateText2.text = $"Heart Rate\n{telemetry.eva2.heart_rate} bpm";
             temperatureText2.text = $"Temperature\n{telemetry.eva2.temperature} �F";
             battTimeText2.text = $"Battery Time Left\n{telemetry.eva2.batt_time_left} seconds";
