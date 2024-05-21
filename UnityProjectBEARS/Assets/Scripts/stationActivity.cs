@@ -28,60 +28,113 @@ public class stationActivity : MonoBehaviour
     public TMP_Text specActive;
     public TMP_Text commActive;
 
+    public Image uiaActiveFrame;
+    public Image dcuActiveFrame;
+    public Image roverActiveFrame;
+    public Image specActiveFrame;
+    public Image commActiveFrame;
+
     // station colors
     public Color white      = new Color(255, 255, 255, 255);
+    public Color red        = new Color(255, 0, 0, 255);
+    public Color green      = new Color(0, 255, 0, 255);
+    public Color black      = new Color(0, 0, 0, 255);
     public Color uiaColor   = new Color (255, 0, 0, 255);
     public Color dcuColor   = new Color (0, 255, 0, 255);
     public Color roverColor = new Color (0, 204, 255, 255);
-    public Color specColor  = new Color (255, 255, 0, 255);
+    public Color specColor  = new Color (0, 0, 255, 255);
     public Color commColor  = new Color (157, 83, 255, 255);
+
+    // active bools
+    public bool isUiaActive;
+    public bool isDcuActive;
+    public bool isRoverActive;
+    public bool isSpecActive;
+    public bool isCommActive;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        isUiaActive = true;
+        isDcuActive = true;
+        isRoverActive = true;
+        isSpecActive = true;
+        isCommActive = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(uiaActive.text == "Not active") {
-            uiaHeader.color = white;
-            uiaTime.color   = white;
+        // UIA Text Colors
+        if(!isUiaActive) {
+
+            setNotActive(uiaTime, uiaActive, uiaActiveFrame);
         }
-        else if (uiaActive.text == "Active") {
-            uiaHeader.color = uiaColor;
-            uiaTime.color   = uiaColor;
+        else if (isUiaActive) {
+
+            setActive(uiaTime, uiaActive, uiaActiveFrame, uiaColor);
         }
-        if(dcuActive.text == "Not active") {
-            dcuHeader.color = white;
-            dcuTime.color   = white;
+
+        // DCU Text Colors
+        if(!isDcuActive) {
+
+            setNotActive(dcuTime, dcuActive, dcuActiveFrame);
         }
-        else if (dcuActive.text == "Active") {
-            dcuHeader.color = dcuColor;
-            dcuTime.color   = dcuColor;
+        else if (isDcuActive) {
+
+            setActive(dcuTime, dcuActive, dcuActiveFrame, dcuColor);
         }
-        if(roverActive.text == "Not active") {
-            roverHeader.color = white;
-            roverTime.color   = white;
+
+        // ROVER Text Colors
+        if(!isRoverActive) {
+
+            setNotActive(roverTime, roverActive, roverActiveFrame);
         }
-        else if (roverActive.text == "Active") {
-            roverHeader.color = roverColor;
-            roverTime.color   = roverColor;
+        else if (isRoverActive) {
+
+            setActive(roverTime, roverActive, roverActiveFrame, roverColor);
         }
-        if(specActive.text == "Not active") {
-            specHeader.color = white;
-            specTime.color   = white;
+
+        // SPEC Text Colors
+        if(!isSpecActive) {
+
+            setNotActive(specTime, specActive, specActiveFrame);
         }
-        else if (specActive.text == "Active") {
-            specHeader.color = specColor;
-            specTime.color   = specColor;
+        else if (isSpecActive) {
+
+            setActive(specTime, specActive, specActiveFrame, specColor);
         }
-        if(commActive.text == "Not active") {
-            commHeader.color = white;
+
+        // COMM Text Colors
+        if(!isCommActive) {
+            commActive.text = "Not Active";
+            commActiveFrame.color = red;
         }
-        else if (commActive.text == "Active") {
-            commHeader.color = commColor;
+        else if (isCommActive) {
+            commActive.text = "Active";
+            commActive.color = black;
+            commActiveFrame.color = green;
         }
+
+        //Update active box colors
+
+        //END Update()
+    }
+
+    void setNotActive(TMP_Text timeText, TMP_Text activeText, Image activeFrame) {
+        timeText.color = white;
+        activeText.text = "Not Active";
+        activeText.color = white;
+        activeFrame.color = red;
+    }
+
+    void setActive(TMP_Text timeText, TMP_Text activeText, Image activeFrame, Color stationColor) {
+        timeText.color = stationColor;
+        activeText.text = "Active";
+        activeText.color = black;
+        activeFrame.color = green;
     }
 }
+

@@ -4819,7 +4819,24 @@ MonoBehaviour:
   roverActive: {fileID: 110301901}
   specActive: {fileID: 1232114466}
   commActive: {fileID: 1970346989}
+  uiaActiveFrame: {fileID: 1144718575}
+  dcuActiveFrame: {fileID: 529092661}
+  roverActiveFrame: {fileID: 1692226521}
+  specActiveFrame: {fileID: 2142799288}
+  commActiveFrame: {fileID: 375915630}
   white: {r: 255, g: 255, b: 255, a: 255}
+  red: {r: 255, g: 0, b: 0, a: 255}
+  green: {r: 0, g: 255, b: 0, a: 255}
+  uiaColor: {r: 1, g: 0, b: 0, a: 255}
+  dcuColor: {r: 0, g: 1, b: 0, a: 255}
+  roverColor: {r: 0, g: 0.8, b: 1, a: 255}
+  specColor: {r: 1, g: 1, b: 0, a: 255}
+  commColor: {r: 0.6156863, g: 0.3254902, b: 1, a: 255}
+  isUiaActive: 0
+  isDcuActive: 0
+  isRoverActive: 0
+  isSpecActive: 0
+  isCommActive: 0
 --- !u!1 &248668005
 GameObject:
   m_ObjectHideFlags: 0
