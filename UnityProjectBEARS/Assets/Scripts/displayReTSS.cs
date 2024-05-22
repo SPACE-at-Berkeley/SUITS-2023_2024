@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System;
 using System.IO;
 using UnityEngine.Networking;
+using TMPro.Examples;
 
 [Serializable]
 public class RootObject
@@ -139,6 +140,11 @@ public class Comps
 
 public class displayReTSS : MonoBehaviour
 {
+    public ObjectSpin pri1;
+    public ObjectSpin sec1;
+    public ObjectSpin pri2;
+    public ObjectSpin sec2;
+
     //TELEMETRY.json
     public TMP_Text timeText;
 
@@ -337,6 +343,10 @@ public class displayReTSS : MonoBehaviour
     //yet to update lines below this point
     void Start()
     {
+        pri1 = GameObject.Find("priFan1").GetComponent<ObjectSpin>();
+        sec1 = GameObject.Find("secFan1").GetComponent<ObjectSpin>();
+        pri2 = GameObject.Find("priFan2").GetComponent<ObjectSpin>();
+        sec2 = GameObject.Find("secFan2").GetComponent<ObjectSpin>();
         //if (!File.Exists(filePathTELEMETRY))
         //{
         //    Debug.LogError("JSON file does not exist: " + filePathTELEMETRY);
@@ -580,6 +590,18 @@ public class displayReTSS : MonoBehaviour
 
         if (telemetry != null && telemetry.eva1 != null)
         {
+            if (telemetry.eva1.fan_pri_rpm == 0) {
+                pri1.SpinSpeed = 0;
+            }
+            else {
+                pri1.SpinSpeed = 200;
+            }
+            if (telemetry.eva1.fan_sec_rpm == 0) { 
+                sec1.SpinSpeed = 0;
+            }
+            else {
+                sec1.SpinSpeed = 200;
+            }
             if (telemetry.eva1.oxy_pri_storage < 20)
             {
                 priOxyStorLR1.SetActive(true);
@@ -840,6 +862,18 @@ public class displayReTSS : MonoBehaviour
 
         if (telemetry != null && telemetry.eva2 != null)
         {
+            if (telemetry.eva2.fan_pri_rpm == 0) {
+                pri2.SpinSpeed = 0;
+            }
+            else {
+                pri2.SpinSpeed = 200;
+            }
+            if (telemetry.eva2.fan_sec_rpm == 0) { 
+                sec2.SpinSpeed = 0;
+            }
+            else {
+                sec2.SpinSpeed = 200;
+            }
             heartRateText2.text = $"Heart Rate\n{telemetry.eva2.heart_rate} bpm";
             temperatureText2.text = $"Temperature\n{telemetry.eva2.temperature} F";
             battTimeText2.text = $"Battery Time Left\n{telemetry.eva2.batt_time_left} seconds";
