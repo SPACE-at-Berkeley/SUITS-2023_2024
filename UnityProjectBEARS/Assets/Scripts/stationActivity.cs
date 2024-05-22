@@ -73,15 +73,15 @@ public class stationActivity : MonoBehaviour
     void Start()
     {
         // Color initialization
-        white      = new Color(255, 255, 255, 255);
-        red        = new Color(255, 0, 0, 255);
-        green      = new Color(0, 255, 0, 255);
-        black      = new Color(0, 0, 0, 255);
-        uiaColor   = new Color(255, 0, 0, 255);
-        dcuColor   = new Color(0, 255, 0, 255);
-        roverColor = new Color(0, 204, 255, 255);
-        specColor  = new Color(255, 255, 0, 255);
-        commColor  = new Color(157, 83, 255, 255);
+        white      = new Color32(255, 255, 255, 255);
+        red        = new Color32(255, 0, 0, 255);
+        green      = new Color32(0, 255, 0, 255);
+        black      = new Color32(0, 0, 0, 255);
+        uiaColor   = new Color32(255, 133, 10, 255);
+        dcuColor   = new Color32(202, 202, 170, 255);
+        roverColor = new Color32(0, 204, 255, 255);
+        specColor  = new Color32(255, 255, 0, 255);
+        commColor  = new Color32(157, 83, 255, 255);
         
         // active bool initialization
         isUiaActive     = false;
