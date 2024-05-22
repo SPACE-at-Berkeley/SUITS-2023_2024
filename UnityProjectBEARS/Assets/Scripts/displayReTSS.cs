@@ -308,6 +308,9 @@ public class displayReTSS : MonoBehaviour
     public TMP_Text pText2;
     public TMP_Text otherText2;
 
+    public GameObject rock11, rock12, rock13, rock14, rock15, rock16, rock17;
+    public GameObject rock21, rock22, rock23, rock24, rock25, rock26, rock27;
+
 
     //UIA.json
     //public TMP_Text uiaText1;
@@ -343,10 +346,11 @@ public class displayReTSS : MonoBehaviour
     //yet to update lines below this point
     void Start()
     {
-        pri1 = GameObject.Find("priFan1").GetComponent<ObjectSpin>();
+        /*pri1 = GameObject.Find("priFan1").GetComponent<ObjectSpin>();
         sec1 = GameObject.Find("secFan1").GetComponent<ObjectSpin>();
         pri2 = GameObject.Find("priFan2").GetComponent<ObjectSpin>();
-        sec2 = GameObject.Find("secFan2").GetComponent<ObjectSpin>();
+        sec2 = GameObject.Find("secFan2").GetComponent<ObjectSpin>(); */
+        
         //if (!File.Exists(filePathTELEMETRY))
         //{
         //    Debug.LogError("JSON file does not exist: " + filePathTELEMETRY);
@@ -1120,39 +1124,119 @@ public class displayReTSS : MonoBehaviour
                 return Mathf.Abs(a - b) < 0.0001;
             }
 
+            void showRock(int num)
+            {
+                if (num == 1)
+                {
+                    rock11.SetActive(true);
+                }
+                else
+                {
+                    rock11.SetActive(false);
+                }
+
+
+                if (num == 2)
+                {
+                    rock12.SetActive(true);
+                }
+                else
+                {
+                    rock12.SetActive(false);
+                }
+
+
+                if (num == 3)
+                {
+                    rock13.SetActive(true);
+                }
+                else
+                {
+                    rock13.SetActive(false);
+                }
+
+
+                if (num == 4)
+                {
+                    rock14.SetActive(true);
+                }
+                else
+                {
+                    rock14.SetActive(false);
+                }
+
+
+                if (num == 5)
+                {
+                    rock15.SetActive(true);
+                }
+                else
+                {
+                    rock15.SetActive(false);
+                }
+
+
+                if (num == 6)
+                {
+                    rock16.SetActive(true);
+                }
+                else
+                {
+                    rock16.SetActive(false);
+                }
+
+
+                if (num == 7)
+                {
+                    rock17.SetActive(true);
+                }
+                else
+                {
+                    rock17.SetActive(false);
+                }
+            }
+
             if (AreFloatsEqual(data.SiO2, (float)30.75)) //&& (float)data.TiO2 == 0.92 && (float)data.Al2O3 == 4.88 && (float)data.FeO == 17.12 && (float)data.MnO == 0.2 && (float)data.MgO == 12.95 && (float)data.CaO == 2.03 && (float)data.K2O == 0.22 && (float)data.P2O3 == 0.69 && (float)data.other == 30.24)
             {
                 Debug.Log("Mare Basalt");
                 typeBasalt1.text = $"Mare Basalt";
+                showRock(1);
             }
             else if (AreFloatsEqual(data.SiO2, (float)25.9)) // data.TiO2 == 0.88 && data.Al2O3 == 4.75 && data.FeO == 14.1 && data.MnO == 0.24 && data.MgO == 11.22 && data.CaO == 9.01 && data.K2O == 0.23 && data.P2O3 == 0.65)
             {
                 Debug.Log("Vesicular Basalt");
                 typeBasalt1.text = $"Vesicular Basalt";
+                showRock(2);
             }
             else if (AreFloatsEqual(data.SiO2, (float)36.64)) //&& data.TiO2 == 0.92 && data.Al2O3 == 8.33 && data.FeO == 18.68 && data.MnO == 0.43 && data.MgO == 6.84 && data.CaO == 5.91 && data.K2O == 0.5 && data.P2O3 == 1.19)
             {
                 typeBasalt1.text = $"Olivine-1 Basalt";
+                showRock(3);
             }
             else if (AreFloatsEqual(data.SiO2, (float)38.29)) //(data.SiO2 == 38.29 && data.TiO2 == 1.47 && data.Al2O3 == 7.63 && data.FeO == 18.74 && data.MnO == 0.46 && data.MgO == 2.64 && data.CaO == 7.76 && data.K2O == 0.75 && data.P2O3 == 1.68)
             {
                 typeBasalt1.text = "Feldspathic Basalt";
+                showRock(4);
             }
             else if (AreFloatsEqual(data.SiO2, (float)39.41)) //(data.SiO2 == 39.41 && data.TiO2 == 0.39 && data.Al2O3 == 1.94 && data.FeO == 29.3 && data.MnO == 0.71 && data.MgO == 19.27 && data.CaO == 3.8 && data.K2O == 0.12 && data.P2O3 == 0.3)
             {
                 typeBasalt1.text = "Pigeonite Basalt";
+                showRock(5);
             }
             else if (AreFloatsEqual(data.SiO2, (float)40.36)) //data.SiO2 == 40.36 && data.TiO2 == 0.99 && data.Al2O3 == 2.32 && data.FeO == 25.71 && data.MnO == 0.58 && data.MgO == 12.81 && data.CaO == 5.95 && data.K2O == 0.2 && data.P2O3 == 0.28)
             {
                 typeBasalt1.text = "Olivine-2 Basalt";
+                showRock(6);
             }
             else if (AreFloatsEqual(data.SiO2, (float)43.98)) //(data.SiO2 == 43.98 && data.TiO2 == 1.04 && data.Al2O3 == 5.75 && data.FeO == 20.4 && data.MnO == 0.51 && data.MgO == 6.02 && data.CaO == 8.89 && data.K2O == 0.71 && data.P2O3 == 1.09)
             {
                 typeBasalt1.text = "Ilmenite Basalt";
+                showRock(7);
             }
             else
             {
                 typeBasalt1.text = "Basalt Unknown";
+                showRock(0);
             }
         }
 
@@ -1176,39 +1260,119 @@ public class displayReTSS : MonoBehaviour
                 return Mathf.Abs(a - b) < 0.0001;
             }
 
+            void showRock(int num)
+            {
+                if (num == 1)
+                {
+                    rock21.SetActive(true);
+                }
+                else
+                {
+                    rock21.SetActive(false);
+                }
+
+
+                if (num == 2)
+                {
+                    rock22.SetActive(true);
+                }
+                else
+                {
+                    rock22.SetActive(false);
+                }
+
+
+                if (num == 3)
+                {
+                    rock23.SetActive(true);
+                }
+                else
+                {
+                    rock23.SetActive(false);
+                }
+
+
+                if (num == 4)
+                {
+                    rock24.SetActive(true);
+                }
+                else
+                {
+                    rock24.SetActive(false);
+                }
+
+
+                if (num == 5)
+                {
+                    rock25.SetActive(true);
+                }
+                else
+                {
+                    rock25.SetActive(false);
+                }
+
+
+                if (num == 6)
+                {
+                    rock26.SetActive(true);
+                }
+                else
+                {
+                    rock26.SetActive(false);
+                }
+
+
+                if (num == 7)
+                {
+                    rock27.SetActive(true);
+                }
+                else
+                {
+                    rock27.SetActive(false);
+                }
+            }
+
             if (AreFloatsEqual(data.SiO2, (float)30.75)) //&& (float)data.TiO2 == 0.92 && (float)data.Al2O3 == 4.88 && (float)data.FeO == 17.12 && (float)data.MnO == 0.2 && (float)data.MgO == 12.95 && (float)data.CaO == 2.03 && (float)data.K2O == 0.22 && (float)data.P2O3 == 0.69 && (float)data.other == 30.24)
             {
                 Debug.Log("Mare Basalt");
                 typeBasalt2.text = $"Mare Basalt";
+                showRock(1);
             }
             else if (AreFloatsEqual(data.SiO2, (float)25.9)) // data.TiO2 == 0.88 && data.Al2O3 == 4.75 && data.FeO == 14.1 && data.MnO == 0.24 && data.MgO == 11.22 && data.CaO == 9.01 && data.K2O == 0.23 && data.P2O3 == 0.65)
             {
                 Debug.Log("Vesicular Basalt");
                 typeBasalt2.text = $"Vesicular Basalt";
+                showRock(2);
             }
             else if (AreFloatsEqual(data.SiO2, (float)36.64)) //&& data.TiO2 == 0.92 && data.Al2O3 == 8.33 && data.FeO == 18.68 && data.MnO == 0.43 && data.MgO == 6.84 && data.CaO == 5.91 && data.K2O == 0.5 && data.P2O3 == 1.19)
             {
                 typeBasalt2.text = $"Olivine-1 Basalt";
+                showRock(3);
             }
             else if (AreFloatsEqual(data.SiO2, (float)38.29)) //(data.SiO2 == 38.29 && data.TiO2 == 1.47 && data.Al2O3 == 7.63 && data.FeO == 18.74 && data.MnO == 0.46 && data.MgO == 2.64 && data.CaO == 7.76 && data.K2O == 0.75 && data.P2O3 == 1.68)
             {
                 typeBasalt2.text = "Feldspathic Basalt";
+                showRock(4);
             }
             else if (AreFloatsEqual(data.SiO2, (float)39.41)) //(data.SiO2 == 39.41 && data.TiO2 == 0.39 && data.Al2O3 == 1.94 && data.FeO == 29.3 && data.MnO == 0.71 && data.MgO == 19.27 && data.CaO == 3.8 && data.K2O == 0.12 && data.P2O3 == 0.3)
             {
                 typeBasalt2.text = "Pigeonite Basalt";
+                showRock(5);
             }
             else if (AreFloatsEqual(data.SiO2, (float)40.36)) //data.SiO2 == 40.36 && data.TiO2 == 0.99 && data.Al2O3 == 2.32 && data.FeO == 25.71 && data.MnO == 0.58 && data.MgO == 12.81 && data.CaO == 5.95 && data.K2O == 0.2 && data.P2O3 == 0.28)
             {
                 typeBasalt2.text = "Olivine-2 Basalt";
+                showRock(6);
             }
             else if (AreFloatsEqual(data.SiO2, (float)43.98)) //(data.SiO2 == 43.98 && data.TiO2 == 1.04 && data.Al2O3 == 5.75 && data.FeO == 20.4 && data.MnO == 0.51 && data.MgO == 6.02 && data.CaO == 8.89 && data.K2O == 0.71 && data.P2O3 == 1.09)
             {
                 typeBasalt2.text = "Ilmenite Basalt";
+                showRock(7);
             }
             else
             {
                 typeBasalt2.text = "Basalt Unknown";
+                showRock(0);
             }
             //else
             //
