@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10543,6 +10543,7 @@ RectTransform:
   - {fileID: 868846302}
   - {fileID: 1392289942}
   - {fileID: 702832998}
+  - {fileID: 1379741557}
   - {fileID: 923269577}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -10600,12 +10601,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 1553932633}
-  heartRateText1: {fileID: 1331968256}
-  temperatureText1: {fileID: 1858244651}
   battTimeText1: {fileID: 1462543461}
   oxyTimeText1: {fileID: 789159711}
-  oxyConsumptionText1: {fileID: 1151332595}
-  co2ProductionText1: {fileID: 737690918}
+  heartRateText1: {fileID: 1331968256}
   suitOxyText1: {fileID: 1722043437}
   suitCo2Text1: {fileID: 1838438307}
   suitOtherText1: {fileID: 1160018158}
@@ -10613,39 +10611,21 @@ MonoBehaviour:
   helmetCo2Text1: {fileID: 378495846}
   scrubberAText1: {fileID: 1508445865}
   scrubberBText1: {fileID: 1064100544}
+  co2ProductionText1: {fileID: 737690918}
   priOxyStorageText1: {fileID: 924292487}
-  priOxyStorLR1: {fileID: 193367647}
-  priOxyStorG1: {fileID: 55991360}
-  priOxyStorRR1: {fileID: 1609363653}
   secOxyStorageText1: {fileID: 873150872}
-  secOxyStorLR1: {fileID: 1468283324}
-  secOxyStorG1: {fileID: 802121387}
-  secOxyStorRR1: {fileID: 1777189115}
   priOxyPressureText1: {fileID: 476483544}
-  priOxyPresLR1: {fileID: 1238649000}
-  priOxyPresG1: {fileID: 1207960707}
-  priOxyPresRR1: {fileID: 1405219808}
   secOxyPressureText1: {fileID: 116600485}
-  secOxyPresLR1: {fileID: 1904868297}
-  secOxyPresG1: {fileID: 753099983}
-  secOxyPresRR1: {fileID: 1411285217}
-  coolantGasPressureText1: {fileID: 1044558606}
-  gasPresLR1: {fileID: 1627344398}
-  gasPresG1: {fileID: 217510432}
-  gasPresRR1: {fileID: 1812581492}
-  coolantLiquidPressureText1: {fileID: 1315751206}
-  liqPresLR1: {fileID: 1236112376}
-  liqPresG1: {fileID: 40225304}
-  liqPresRR1: {fileID: 1093578599}
+  oxyConsumptionText1: {fileID: 1151332595}
   priFanText1: {fileID: 220720568}
   secFanText1: {fileID: 219587558}
+  temperatureText1: {fileID: 1858244651}
   coolantText1: {fileID: 0}
-  heartRateText2: {fileID: 1072946831}
-  temperatureText2: {fileID: 625742454}
+  coolantGasPressureText1: {fileID: 1044558606}
+  coolantLiquidPressureText1: {fileID: 1315751206}
   battTimeText2: {fileID: 1955391665}
   oxyTimeText2: {fileID: 17100459}
-  oxyConsumptionText2: {fileID: 1586009519}
-  co2ProductionText2: {fileID: 905747889}
+  heartRateText2: {fileID: 1072946831}
   suitOxyText2: {fileID: 1075941789}
   suitCo2Text2: {fileID: 23375673}
   suitOtherText2: {fileID: 2129599924}
@@ -10653,87 +10633,35 @@ MonoBehaviour:
   helmetCo2Text2: {fileID: 1268632370}
   scrubberAText2: {fileID: 1864682742}
   scrubberBText2: {fileID: 1763725041}
+  co2ProductionText2: {fileID: 905747889}
   priOxyStorageText2: {fileID: 1075467675}
-  priOxyStorLR2: {fileID: 1020659086}
-  priOxyStorG2: {fileID: 468682452}
-  priOxyStorRR2: {fileID: 1354676222}
   secOxyStorageText2: {fileID: 1629376125}
-  secOxyStorLR2: {fileID: 1537664091}
-  secOxyStorG2: {fileID: 1648835883}
-  secOxyStorRR2: {fileID: 1328676754}
   priOxyPressureText2: {fileID: 1653906503}
-  priOxyPresLR2: {fileID: 280168213}
-  priOxyPresG2: {fileID: 1399108632}
-  priOxyPresRR2: {fileID: 1183277131}
   secOxyPressureText2: {fileID: 220315226}
-  secOxyPresLR2: {fileID: 38442243}
-  secOxyPresG2: {fileID: 1625961834}
-  secOxyPresRR2: {fileID: 761666375}
-  coolantGasPressureText2: {fileID: 1455914044}
-  gasPresLR2: {fileID: 1124786494}
-  gasPresG2: {fileID: 182543006}
-  gasPresRR2: {fileID: 2127981588}
-  coolantLiquidPressureText2: {fileID: 1565396700}
-  liqPresLR2: {fileID: 801118320}
-  liqPresG2: {fileID: 2096808096}
-  liqPresRR2: {fileID: 1191518456}
+  oxyConsumptionText2: {fileID: 1586009519}
   priFanText2: {fileID: 1005730995}
   secFanText2: {fileID: 984191980}
+  temperatureText2: {fileID: 625742454}
   coolantText2: {fileID: 0}
+  coolantGasPressureText2: {fileID: 1455914044}
+  coolantLiquidPressureText2: {fileID: 1565396700}
   evaStatus: {fileID: 0}
   evaStatusUIA: {fileID: 0}
   evaStatusDCU: {fileID: 0}
   evaStatusGEO: {fileID: 0}
   evaStatusROVER: {fileID: 0}
   towerText: {fileID: 0}
-  dcuBatt2: {fileID: 850699329}
-  dcuFan2: {fileID: 1874427758}
-  dcuPump2: {fileID: 1781085640}
-  dcuCo2: {fileID: 797400440}
-  dcuOxy2: {fileID: 407925245}
-  dcuComm2: {fileID: 93278340}
-  dcuBatt1: {fileID: 1973064067}
-  dcuFan1: {fileID: 948804546}
-  dcuPump1: {fileID: 418582474}
-  dcuCo2_1: {fileID: 281235789}
-  dcuOxy1: {fileID: 1399525598}
-  dcuComm1: {fileID: 1983986335}
+  dcuText1: {fileID: 0}
+  dcuText2: {fileID: 0}
   errorText: {fileID: 0}
   imuText1: {fileID: 0}
   imuText2: {fileID: 0}
   roverText: {fileID: 0}
-  typeBasalt1: {fileID: 1511353804}
-  siText1: {fileID: 1868766106}
-  tiText1: {fileID: 1911648473}
-  alText1: {fileID: 1532875759}
-  feText1: {fileID: 1899852762}
-  mnText1: {fileID: 1795092915}
-  mgText1: {fileID: 1834536078}
-  caText1: {fileID: 215889673}
-  kText1: {fileID: 1157384950}
-  pText1: {fileID: 1024153113}
-  otherText1: {fileID: 830280115}
-  typeBasalt2: {fileID: 87512009}
-  siText2: {fileID: 981749180}
-  tiText2: {fileID: 2060272744}
-  alText2: {fileID: 512461892}
-  feText2: {fileID: 2097348665}
-  mnText2: {fileID: 1257328412}
-  mgText2: {fileID: 820680974}
-  caText2: {fileID: 325980335}
-  kText2: {fileID: 1130267506}
-  pText2: {fileID: 426533308}
-  otherText2: {fileID: 583019746}
-  supplyFlip1: {fileID: 2100325555}
-  wasteFlip1: {fileID: 1039647475}
-  powerFlip1: {fileID: 331720266}
-  oxygenFlip1: {fileID: 2128821857}
-  supplyFlip2: {fileID: 1416238766}
-  wasteFlip2: {fileID: 1052751919}
-  powerFlip2: {fileID: 90402635}
-  oxygenFlip2: {fileID: 786935976}
-  ventFlip: {fileID: 1674338095}
-  depressFlip: {fileID: 1150461106}
+  geoText1: {fileID: 0}
+  geoText2: {fileID: 0}
+  uiaText1: {fileID: 0}
+  uiaText2: {fileID: 0}
+  uiaSide: {fileID: 0}
   updateInterval: 1
 --- !u!1 &465808904
 GameObject:
@@ -21474,7 +21402,7 @@ Transform:
   - {fileID: 1434120404}
   - {fileID: 1966471447}
   m_Father: {fileID: 462412871}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &924292485
 GameObject:
@@ -34910,6 +34838,108 @@ Transform:
   m_Father: {fileID: 653204124}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1379741556
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 462412871}
+    m_Modifications:
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371872689076439770, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+      propertyPath: m_Name
+      value: Station_UI_with_pins
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+--- !u!224 &1379741557 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3371872689076439765, guid: 0214fd3b003444d0bb81dc828b1f78ff, type: 3}
+  m_PrefabInstance: {fileID: 1379741556}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1386440765
 GameObject:
   m_ObjectHideFlags: 0
@@ -44826,14 +44856,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8490566, g: 0.74967736, b: 0.6117647, a: 1}
+  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e25436c43cb2d5240af73d81c1240162, type: 3}
+  m_Sprite: {fileID: 21300000, guid: baed06a7fcc394ea8b9e618afd63a04e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
