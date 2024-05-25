@@ -327,7 +327,7 @@ public class displayReTSS : MonoBehaviour
     public Slider ventFlip;
     public Slider depressFlip;
 
-    private const string TSS_URL = "http://192.168.51.110:14141";
+    private const string TSS_URL = "http://data.cs.purdue.edu:14141";   //"http://192.168.51.110:14141";
 
     //file paths
     public float updateInterval = 1.0f; // Update every second
